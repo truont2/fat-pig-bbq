@@ -14,6 +14,8 @@ import CssBaseline from "@mui/material/CssBaseline";
 // import MoreIcon from "@mui/icons-material/MoreVert";
 // import HandshakeOutlinedIcon from "@mui/icons-material/HandshakeOutlined";
 import styles from "../styles/Navbar.module.css";
+import pig from "../public/assets/fatpig.png";
+import Image from "next/image";
 
 const ResponsiveAppBar = (props) => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -53,7 +55,7 @@ const ResponsiveAppBar = (props) => {
               >
                 Fat Pig BBQ
               </Typography>
-
+              <Image src={pig} alt="Fat Pig BBQ log" />
               {/* spacer */}
               <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }} />
 
