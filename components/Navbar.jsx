@@ -41,8 +41,7 @@ const ResponsiveAppBar = (props) => {
   return (
     <React.Fragment>
       <CssBaseline />
-      <HideOnScroll {...props}>
-        <AppBar className="navbar" style={{ backgroundColor: "maroon" }}>
+        <AppBar className="navbar" style={{ backgroundColor: "maroon" }} position="static">
           <Container maxWidth="lg">
             <Toolbar disableGutters className="navLinks">
               {/* Logo/Businessname */}
@@ -119,27 +118,9 @@ const ResponsiveAppBar = (props) => {
                   </Typography>
                 </a>
               </Box>
-
-              {/* renders the 3 dots  */}
-              {/* <Box sx={{ display: { xs: "flex", md: "none" } }}>
-                <IconButton
-                  size="large"
-                  aria-label="show more"
-                  aria-controls={mobileMenuId}
-                  aria-haspopup="true"
-                  onClick={handleMobileMenuOpen}
-                  color="inherit"
-                >
-                  <MoreIcon />
-                </IconButton>
-
-                {renderMobileMenu}
-              </Box> */}
             </Toolbar>
           </Container>
         </AppBar>
-      </HideOnScroll>
-      <Toolbar />
     </React.Fragment>
   );
 };
