@@ -42,8 +42,11 @@ const ResponsiveAppBar = (props) => {
     <React.Fragment>
       <CssBaseline />
       <HideOnScroll {...props}>
-        <AppBar className="navbar" style={{ backgroundColor: "maroon" }}>
-          <Container maxWidth="lg">
+        <AppBar
+          className="navbar"
+          style={{ backgroundColor: "maroon", maxWidth: "100%" }}
+        >
+          <Container maxWidth="xlg">
             <Toolbar disableGutters className="navLinks">
               {/* Logo/Businessname */}
               <Typography
@@ -55,7 +58,8 @@ const ResponsiveAppBar = (props) => {
               >
                 Fat Pig BBQ
               </Typography>
-              <Image src={pig} alt="Fat Pig BBQ log" />
+              {/* Fat Pig Logo */}
+              {/* <Image src={pig} alt="Fat Pig BBQ log" /> */}
               {/* spacer */}
               <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }} />
 
@@ -72,6 +76,7 @@ const ResponsiveAppBar = (props) => {
                     Menu
                   </Typography>
                 </a>
+
                 <a href="#Location">
                   <Typography
                     variant="h6"
@@ -107,6 +112,7 @@ const ResponsiveAppBar = (props) => {
                     Merchandise
                   </Typography>
                 </a>
+
                 <a href="#Contact">
                   <Typography
                     variant="h6"
