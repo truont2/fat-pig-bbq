@@ -2,9 +2,25 @@
   background-color: maroon;
 }
 
+.navbar {
+  display: flex;
+  color: black;
+}
+
 .h4 {
   font-size: 1rem;
-  padding: 1rem;
+  padding: 0.5rem;
   display: flex;
   justify-content: end;
+  text-decoration: none;
+}
+/* Need to add hover effect for Navbar */
+.h4:hover {
+}
+
+/* Need to add media queries for medium and small screens */
+@media screen and (max-width: 600px) {
+}
+
+@media screen and (max-width: 1024px) {
 }
