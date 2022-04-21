@@ -3,13 +3,8 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
-import Link from "@mui/material/Link";
-import GitHubIcon from "@mui/icons-material/GitHub";
-import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import FacebookSharpIcon from '@mui/icons-material/FacebookSharp';
 import IconButton from "@mui/material/IconButton";
 import { Button, Stack } from "@mui/material";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
 import styles from "../styles/Footer.module.css";
 import { FaInstagram } from "@react-icons/all-files/fa/FaInstagram";
 import { FaFacebookF } from "@react-icons/all-files/fa/FaFacebookF";
@@ -44,7 +39,7 @@ export default function StickyFooter() {
         }}
       >
         <Container maxWidth="sm">
-            <Copyright />
+          <Copyright />
           <Stack
             sx={{ p: 2 }}
             direction="row"
@@ -57,8 +52,7 @@ export default function StickyFooter() {
               color="inherit"
               className="footer-icon"
               onClick={() =>
-                (window.location.href =
-                  "https://www.facebook.com/myfatpigbbq/")
+                (window.location.href = "https://www.facebook.com/myfatpigbbq/")
               }
             >
               <FaFacebookF />
@@ -70,8 +64,7 @@ export default function StickyFooter() {
               color="inherit"
               className="footer-icon"
               onClick={() =>
-                (window.location.href =
-                  "https://www.instagram.com/fatpigbbq/")
+                (window.location.href = "https://www.instagram.com/fatpigbbq/")
               }
             >
               <FaInstagram />
@@ -82,9 +75,9 @@ export default function StickyFooter() {
               aria-label="mail"
               color="inherit"
               className="footer-icon"
-              onClick={() => window.location = 'mailto:fatpigbbq@yahoo.com'}
+              onClick={() => (window.location = "mailto:fatpigbbq@yahoo.com")}
             >
-                <FaEnvelope />
+              <FaEnvelope />
             </IconButton>
           </Stack>
         </Container>
