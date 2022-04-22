@@ -9,9 +9,9 @@
 
 .h4 {
   font-size: 1rem;
-  padding: 0.5rem;
+  padding: 1rem;
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   text-decoration: none;
 }
 /* Need to add hover effect for Navbar */
@@ -19,8 +19,8 @@
 }
 
 /* Need to add media queries for medium and small screens */
-@media screen and (max-width: 600px) {
+@media screen and (min-width: 600px) {
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (min-width: 1024px) {
 }
