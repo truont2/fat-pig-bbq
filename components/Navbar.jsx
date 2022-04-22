@@ -1,152 +1,88 @@
 import * as React from "react";
+import { useState } from "react";
 import AppBar from "@mui/material/AppBar";
+import { Avatar, Hidden } from "@mui/material";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
+import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+import { SwipeableDrawer, Divider } from "@mui/material";
+import MenuIcon from "@mui/icons-material/Menu";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
 import Typography from "@mui/material/Typography";
-// import Menu from "@mui/material/Menu";
 import Container from "@mui/material/Container";
-// import MenuItem from "@mui/material/MenuItem";
-// import { makeStyles } from "@mui/styles";
 import useScrollTrigger from "@mui/material/useScrollTrigger";
 import Slide from "@mui/material/Slide";
 import CssBaseline from "@mui/material/CssBaseline";
-// import MoreIcon from "@mui/icons-material/MoreVert";
-// import HandshakeOutlinedIcon from "@mui/icons-material/HandshakeOutlined";
 import styles from "../styles/Navbar.module.css";
 import pig from "../public/assets/fatpig.png";
 import Image from "next/image";
+import Link from "@mui/material/Link";
 
-const ResponsiveAppBar = (props) => {
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
+// TO DO: work on spacing of links.
+// TO DO: logo on the left that is an href to the home page
+// TO DO: Hover effect for link items
+// TO DO: Click effect for onClick of nav items
 
-  function HideOnScroll(props) {
-    const { children, window } = props;
-    // Note that you normally won't need to set the window ref as useScrollTrigger
-    // will default to window.
-    // This is only being set here because the demo is in an iframe.
-    const trigger = useScrollTrigger({
-      target: window ? window() : undefined,
-    });
+const navigationLinks = [
+  { name: "Menu", href: "" },
+  { name: "Location", href: "" },
+  { name: "About", href: "" },
+  { name: "Merchandise", href: "" },
+  { name: "Contact Us", href: "" },
+];
 
-    return (
-      <Slide appear={false} direction="down" in={!trigger}>
-        {children}
-      </Slide>
-    );
-  }
-
-  // change the nav bar to scroll to the section on interest
+export default function ResponsiveAppBar() {
+  const [open, setOpen] = useState(false);
   return (
-    <React.Fragment>
-      <CssBaseline />
-      <HideOnScroll {...props}>
-        <AppBar
-          className="navbar"
-          style={{ backgroundColor: "maroon", maxWidth: "100%" }}
-        >
-          <Container maxWidth="xlg">
-            <Toolbar disableGutters className="navLinks">
-              {/* Logo/Businessname */}
-              <Typography
-                variant="h6"
-                noWrap
-                component="div"
-                sx={{ display: { xs: "none", md: "flex" } }}
-                className="h2"
-              >
-                Fat Pig BBQ
-              </Typography>
-              {/* Fat Pig Logo */}
-              {/* <Image src={pig} alt="Fat Pig BBQ log" /> */}
-              {/* spacer */}
-              <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }} />
+    <AppBar
+      sx={{
+        bgcolor: "maroon",
+        display: "flex",
+      }}
+      position="fixed"
+    >
+      <Avatar className="navbarLogo">F</Avatar>
+      <Container className={styles.h4} maxWidth="lg">
+        <Toolbar disableGutters>
+          <Hidden mdDown>
+            {navigationLinks.map((item) => (
+              <Link color="textPrimary" underline="none" href={item.href}>
+                {item.name}
+              </Link>
+            ))}
+          </Hidden>
+          <Hidden mdUp>
+            <IconButton>
+              <MenuIcon onClick={() => setOpen(true)}></MenuIcon>
+            </IconButton>
+          </Hidden>
+        </Toolbar>
+      </Container>
+      <SwipeableDrawer
+        anchor="right"
+        open={open}
+        onOpen={() => setOpen(true)}
+        onClose={() => setOpen(false)}
+      >
+        <div>
+          <IconButton>
+            <ChevronRightIcon onClick={() => setOpen(false)} />
+          </IconButton>
+        </div>
+        <Divider />
 
-              {/* link section */}
-              <Box sx={{ display: { xs: "flex", md: "flex" } }}>
-                <a href="#Menu">
-                  <Typography
-                    variant="h6"
-                    noWrap
-                    component="div"
-                    sx={{ display: { xs: "none", md: "flex" } }}
-                    className={styles.h4}
-                  >
-                    Menu
-                  </Typography>
-                </a>
-
-                <a href="#Location">
-                  <Typography
-                    variant="h6"
-                    noWrap
-                    component="div"
-                    sx={{ display: { xs: "none", md: "flex" } }}
-                    className={styles.h4}
-                  >
-                    Location
-                  </Typography>
-                </a>
-
-                <a href="#About">
-                  <Typography
-                    variant="h6"
-                    noWrap
-                    component="div"
-                    sx={{ display: { xs: "none", md: "flex" } }}
-                    className={styles.h4}
-                  >
-                    About
-                  </Typography>
-                </a>
-
-                <a href="#Merchandise">
-                  <Typography
-                    variant="h6"
-                    noWrap
-                    component="div"
-                    sx={{ display: { xs: "none", md: "flex" } }}
-                    className={styles.h4}
-                  >
-                    Merchandise
-                  </Typography>
-                </a>
-
-                <a href="#Contact">
-                  <Typography
-                    variant="h6"
-                    noWrap
-                    component="div"
-                    sx={{ display: { xs: "none", md: "flex" } }}
-                    className={styles.h4}
-                  >
-                    Contact Us
-                  </Typography>
-                </a>
-              </Box>
-
-              {/* renders the 3 dots  */}
-              {/* <Box sx={{ display: { xs: "flex", md: "none" } }}>
-                <IconButton
-                  size="large"
-                  aria-label="show more"
-                  aria-controls={mobileMenuId}
-                  aria-haspopup="true"
-                  onClick={handleMobileMenuOpen}
-                  color="inherit"
-                >
-                  <MoreIcon />
-                </IconButton>
-
-                {renderMobileMenu}
-              </Box> */}
-            </Toolbar>
-          </Container>
-        </AppBar>
-      </HideOnScroll>
-      <Toolbar />
-    </React.Fragment>
+        <List>
+          {navigationLinks.map((item) => (
+            <ListItem>
+              <Link color="textPrimary" underline="none" href={item.href}>
+                {item.name}
+              </Link>
+            </ListItem>
+          ))}
+        </List>
+      </SwipeableDrawer>
+    </AppBar>
   );
-};
-export default ResponsiveAppBar;
+}
