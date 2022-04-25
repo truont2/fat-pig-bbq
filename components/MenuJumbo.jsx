@@ -8,7 +8,6 @@ import {
   Button,
 } from "@mui/material";
 import React from "react";
-import { Container } from "react-bootstrap";
 import styles from "../styles/MenuCard.module.css";
 import { styled } from "@mui/material/styles";
 
@@ -25,13 +24,11 @@ export const MenuJumbo = () => {
     <div className={styles.menu}>
       <CssBaseline />
       <div className={styles.container}>
-        <div className={styles.left}>
-
-        </div>
+        <div className={styles.left}></div>
         <div className={styles.right}>
-            <div className="content">
-                <h1>this is inner content</h1>
-            </div>
+          <div className="content">
+            <h1>this is inner content</h1>
+          </div>
         </div>
       </div>
     </div>
