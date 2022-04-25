@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Arizonia&family=Bebas+Neue&family=Courgette&family=Lobster&family=Noto+Sans&display=swap');
 
 .jumbo {
-    height: calc(100vh - 56px);
+    height: calc(100vh - 40px);
     background-image: url(../public/assets/flame.jpg);
     background-size: cover;
     background-position: center;
@@ -9,6 +9,7 @@
 
 .container {
     height: 100%;
+    width: 100%;
 }
 
 .content {
