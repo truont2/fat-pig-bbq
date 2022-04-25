@@ -3,6 +3,9 @@ import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import { Jumbotron } from '../components/Jumbotron'
 import { MenuJumbo } from '../components/MenuJumbo'
+import { OrderSection } from '../components/OrderSection';
+
+
 
 export default function Home() {
   return (
@@ -14,6 +17,7 @@ export default function Home() {
       </Head>
       <Jumbotron />
       <MenuJumbo />
+      <OrderSection />
     </div>
   )
 }

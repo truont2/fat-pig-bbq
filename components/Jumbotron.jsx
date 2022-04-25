@@ -19,6 +19,7 @@ export const Jumbotron = () => {
                         <Typography variant="h4">Fat Pig BBQ</Typography>
                         <Typography variant="p">Come try our barbecue</Typography>
                         <Box my={1} >
+                            {/* put complex button from material ui  */}
                             <Button variant="outlined">View our Menu</Button>
                         </Box>
                     </Grid> 
