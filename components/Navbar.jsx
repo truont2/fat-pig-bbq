@@ -55,8 +55,8 @@ export default function ResponsiveAppBar() {
           <div>
             <Box
               sx={{
-                flexGrow: 5,
-                display: { xs: "none", md: "flex", lg: "flex", xlg: "flex" },
+                flexGrow: 2,
+                display: { md: "flex" },
               }}
             />
           </div>
