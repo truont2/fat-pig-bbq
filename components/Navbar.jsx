@@ -30,7 +30,7 @@ const navigationLinks = [
   { name: "Location", href: "" },
   { name: "About", href: "" },
   { name: "Merchandise", href: "" },
-  { name: "ContactUs", href: "" },
+  { name: "Contact Us", href: "" },
 ];
 
 export default function ResponsiveAppBar() {
@@ -40,27 +40,25 @@ export default function ResponsiveAppBar() {
       //AppBar Styling
       sx={{
         bgcolor: "maroon",
+        display: "flex", justifyContent: {xs: "center", md: "space-between"}
       }}
       position="fixed"
     >
       <Container
         className={styles.navlinks}
         maxWidth="xlg"
-        sx={{ display: "flex", justifyContent: "space-evenly" }}
       >
         <Toolbar disableGutters>
           <div>
             <Image src={fatpiglogo} alt="Thiccc Pig" width="120" height="120" />
           </div>
-          <div>
             <Box
               sx={{
                 flexGrow: 2,
-                display: { md: "flex" },
+                display: { xs: "none", md: "flex" },
               }}
             />
-          </div>
-          <div>
+          <Box sx={{ display: { xs: "flex", md: "flex" } }}>
             <Hidden mdDown>
               {navigationLinks.map((item) => (
                 <Link
@@ -78,7 +76,7 @@ export default function ResponsiveAppBar() {
                 <MenuIcon onClick={() => setOpen(true)}></MenuIcon>
               </IconButton>
             </Hidden>
-          </div>
+          </Box>
         </Toolbar>
       </Container>
       {/* Swipeable drawer that shows up on tablets and phones */}
