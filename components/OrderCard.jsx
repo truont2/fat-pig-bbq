@@ -3,7 +3,7 @@ import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import ButtonBase from '@mui/material/ButtonBase';
 import Typography from '@mui/material/Typography';
-import image1 from '../public/assets/fatpig.png';
+import image from '../public/assets/wp2684726.jpg'
 
 const ImageButton = styled(ButtonBase)(({ theme }) => ({
   position: 'relative',
@@ -79,8 +79,7 @@ export const OrderCard = ({image}) => {
             width: image.width,
           }}
         >
-          {/* <ImageSrc style={{ backgroundImage: `url(${image.url})` }} /> */}
-          <ImageSrc style={{ backgroundImage: image1 }} />
+          <ImageSrc style={{ backgroundImage: "url(/public/assets/wp2684726.jpg)" }} />
           <ImageBackdrop className="MuiImageBackdrop-root" />
           <Image>
             <Typography
