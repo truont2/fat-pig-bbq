@@ -18,8 +18,8 @@
 .left {
     position: relative;
     width: 100%;
-    height: 500px;
-    background-image: url(../public/assets/wp2684726.jpg);
+    height: 50vh;
+    background-image: url(../public/assets/rib.jpg);
     background-position: center;
     background-size: cover;
 }
@@ -79,5 +79,28 @@
     }
 }   
 
+@media (max-width: 47.9375rem){
+    .left {
+        margin-bottom: -72px;
+        padding: 0 36px;
+        z-index: 1;
+        width: 80vw;
+        margin-left: auto;
+        margin-right: auto;
+        height: 40vh;
+    }
+
+    .right {
+        padding: 114px 24px 36px;
+        text-align: center;
+    }
+    
+}
 
 
+
+.figure {
+    margin: 0;
+    overflow: hidden;
+    position: relative;
+}
