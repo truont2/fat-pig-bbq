@@ -1,10 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Arizonia&family=Bebas+Neue&family=Courgette&family=Lobster&family=Noto+Sans&display=swap');
 
 .jumbo {
-    height: calc(100vh - 40px);
-    background-image: url(../public/assets/flame.jpg);
-    background-size: cover;
-    background-position: center;
+    height: calc(100vh - 0px);
+    width: 100%;
+    background-image: url(../public/assets/meal.jpeg);
+    background-repeat: no-repeat;
+  background-size: cover;
+  /* background-attachment: fixed; */
+  background-position: center;
 }
 
 .container {

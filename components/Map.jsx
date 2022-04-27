@@ -2,6 +2,7 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css";
 import "leaflet-defaulticon-compatibility";
+import styles from '../styles/Location.module.css'
 
 const Map = () => {
     const location = [47.831, -122.336];
@@ -10,7 +11,8 @@ const Map = () => {
       center={location}
       zoom={14}
       scrollWheelZoom={false}
-      style={{ height: "20vw", width: "80vh" }}
+      style={{ height: "30vh", width: "40%"}}
+      className={styles.map}
     >
       <TileLayer
           attribution='&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'

@@ -7,11 +7,9 @@ import { Jumbotron } from "../components/Jumbotron";
 import { MenuJumbo } from "../components/MenuJumbo";
 import { OrderSection } from "../components/OrderSection";
 import Location from "../components/Location";
+import { Yelp } from "../components/Yelp";
 
 export default function Home() {
-  // const MapWithNoSSR = dynamic(() => import("../components/Map"), {
-  //   ssr: false
-  // });
 
   return (
     <main>
@@ -25,6 +23,7 @@ export default function Home() {
         <MenuJumbo />
         <OrderSection />
         <Location />
+        <Yelp />
       </div>
     </main>
   );
