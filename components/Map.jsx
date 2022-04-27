@@ -1,29 +1,26 @@
-import React from "react";
-import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
-// import { useMap } from "react-leaflet/hooks";
-import "../styles/Map.module.css";
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import "leaflet/dist/leaflet.css";
+import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css";
+import "leaflet-defaulticon-compatibility";
 
-//TODO: finalize map operational
-export default function Map() {
+const Map = () => {
+    const location = [47.831, -122.336];
   return (
-    <div className="map">
-      {" "}
-      <MapContainer
-        className="map"
-        center={[47.831, -122.336]}
-        zoom={15}
-        scrollWheelZoom={false}
-      >
-        <TileLayer
+    <MapContainer
+      center={location}
+      zoom={14}
+      scrollWheelZoom={false}
+      style={{ height: "20vw", width: "80vh" }}
+    >
+      <TileLayer
           attribution='&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
           url="https://tiles.stadiamaps.com/tiles/osm_bright/{z}/{x}/{y}{r}.png"
         />
-        <Marker position={[47.831, -122.336]}>
-          <Popup>
-            Fat Pig BBQ <br /> Delicious Eats!
-          </Popup>
-        </Marker>
-      </MapContainer>
-    </div>
+      <Marker position={location} draggable={true} animate={true}>
+        <Popup>Hey ! I live here</Popup>
+      </Marker>
+    </MapContainer>
   );
-}
+};
+
+export default Map;
