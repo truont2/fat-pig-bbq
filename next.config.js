@@ -1,6 +1,8 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
+module.exports = {
   reactStrictMode: true,
-}
-
-module.exports = nextConfig
+  env: {
+    MAPBOX_ACCESS_TOKEN:
+      "[MAPBOX_TOKEN_HERE]",
+  },
+};
