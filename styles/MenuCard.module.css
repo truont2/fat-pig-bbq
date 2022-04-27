@@ -8,10 +8,11 @@
     display: grid;
     margin-bottom: 60px;
     position: relative;
+    color: black;
 }
 
 .right {
-    background-color: #efebda;
+    background-color: rgb(228, 227, 227);
     align-items: flex-start;
 }
 
