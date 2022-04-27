@@ -8,6 +8,7 @@ import doordashlogo from "../public/assets/doordashlogo.png";
 import ubereatslogo from "../public/assets/ubereatslogo.png";
 import squarespacelogo from "../public/assets/instore.png";
 import Image from 'next/image'
+import { Typography } from "@mui/material";
 
 export const OrderSection = () => {
   const images = [
@@ -38,16 +39,18 @@ export const OrderSection = () => {
   ];
 
   return (
-    <div className={styles.container}>
+    <>
+      <Typography variant="h3" align="center" sx={{my: 0}}>Order Here</Typography>
+      <div className={styles.container}>
+      
       <Box sx={{ width: "100%" }}>
         <Grid
           container
-          rowSpacing={1}
-          columnSpacing={{ xs: 1, sm: 2, md: 3 }}
-          justifyContent="center"
+          direction="row"
+  justifyContent="center"
         >
           {images.map((image) => (
-            <Grid item xs={12} s={6} md={4} lg={3}>
+            <Grid item xs={12} s={6} md={4} lg={2}>
               <a href={image.url} target={"_blank"} rel={"noreferrer"}>
                 <OrderCard image={image} />
               </a>
@@ -56,5 +59,7 @@ export const OrderSection = () => {
         </Grid>
       </Box>
     </div>
+    </>
+    
   );
 };
