@@ -3,10 +3,6 @@ import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import ButtonBase from "@mui/material/ButtonBase";
 import Typography from "@mui/material/Typography";
-import grubhublogo from "../public/assets/grubhublogo.png";
-import doordashlogo from "../public/assets/doordashlogo.png";
-import ubereatslogo from "../public/assets/ubereatslogo.png";
-import squarespacelogo from "../public/assets/instore.png";
 
 const ImageButton = styled(ButtonBase)(({ theme }) => ({
   position: "relative",
@@ -36,7 +32,8 @@ const ImageSrc = styled("span")({
   top: 0,
   bottom: 0,
   backgroundSize: "cover",
-  backgroundPosition: "center 40%",
+  backgroundPosition: "center",
+  backgroundRepeat: "no-repeat",
 });
 
 const Image = styled("span")(({ theme }) => ({
@@ -84,9 +81,9 @@ export const OrderCard = ({ image }) => {
           width: image.width,
         }}
       >
-        {/* <ImageSrc style={{ backgroundImage: `url(${image.url})` }} /> */}
-        <ImageSrc style={{ backgroundImage: { ubereatslogo } }} />
-
+      {/* reference is from public. nextjs looks at public and then looks for file path  */}
+        <ImageSrc style={{ backgroundImage: `url(${image.image})` }} />
+        
         <ImageBackdrop className="MuiImageBackdrop-root" />
         <Image>
           <Typography

@@ -1,0 +1,16 @@
+.location {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.map {
+    margin: 0 auto
+}
+.hours {
+    list-style: none;
+    /* margin-left: -55px; */
+    text-align: center;
+    margin-left: -45px;
+}

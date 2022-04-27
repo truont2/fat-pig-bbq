@@ -8,7 +8,9 @@ import Grid from "@mui/material/Grid";
 import { Button, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 
+
 export const Jumbotron = () => {
+
   return (
     <>
       <CssBaseline />
@@ -21,11 +23,11 @@ export const Jumbotron = () => {
             justifyContent="center"
           >
             <Grid item>
-              <Typography variant="h4">Fat Pig BBQ</Typography>
+              <Typography variant="h1">Fat Pig BBQ</Typography>
               <Typography variant="p">Come try our barbecue</Typography>
               <Box my={1}>
                 {/* put complex button from material ui  */}
-                <Button variant="outlined">View our Menu</Button>
+                <Button variant="outlined" >View our Menu</Button>
               </Box>
             </Grid>
           </Grid>
