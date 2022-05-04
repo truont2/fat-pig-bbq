@@ -20,6 +20,7 @@ import pig from "../public/assets/fatpig.png";
 import Image from "next/image";
 import Link from "@mui/material/Link";
 import fatpiglogo from "../public/assets/fatpiglogo.png";
+import Button from "@mui/material/Button"
 
 // TO DO: logo on the left that is an href to the home page
 // TO DO: Hover effect for link items
@@ -28,8 +29,8 @@ import fatpiglogo from "../public/assets/fatpiglogo.png";
 const navigationLinks = [
   { name: "Menu", href: "" },
   { name: "Location", href: "" },
-  { name: "About", href: "" },
-  { name: "Merchandise", href: "" },
+  { name: "About", href: "/about" },
+  // { name: "Merchandise", href: "" },
   { name: "Contact Us", href: "" },
 ];
 
@@ -39,26 +40,26 @@ export default function ResponsiveAppBar() {
     <AppBar
       //AppBar Styling
       sx={{
-        bgcolor: "maroon",
-        display: "flex", justifyContent: {xs: "center", md: "space-between"}
+        display: "flex", justifyContent: {xs: "center", md: "space-between"}, 
       }}
       position="fixed"
+      className={styles.navbar}
     >
       <Container
         className={styles.navlinks}
         maxWidth="xlg"
       >
         <Toolbar disableGutters>
-          <div>
-            <Image src={fatpiglogo} alt="Thiccc Pig" width="120" height="120" />
+          <div style={{width: "5rem"}}>
+            <Image src={fatpiglogo} alt="Thiccc Pig" width={100} height={100} layout="responsive"/>
           </div>
             <Box
               sx={{
                 flexGrow: 2,
-                display: { xs: "none", md: "flex" },
+                display: { xs: "flex", md: "flex" },
               }}
             />
-          <Box sx={{ display: { xs: "flex", md: "flex" } }}>
+          <Box sx={{ display: { xs: "flex", md: "flex" }, marginRight:"50px" }}>
             <Hidden mdDown>
               {navigationLinks.map((item) => (
                 <Link
@@ -66,6 +67,7 @@ export default function ResponsiveAppBar() {
                   color="textPrimary"
                   underline="none"
                   href={item.href}
+                  style={{fontFamily:"Bebas Neue", color: "whitesmoke", fontSize:'25px' }}
                 >
                   {item.name}
                 </Link>
@@ -95,7 +97,7 @@ export default function ResponsiveAppBar() {
         <Divider />
         {/* Links as a list in the swipeable drawer */}
         <List>
-          {navigationLinks.map((item) => (
+          {navigationLinks.map((item,idx) => (
             <ListItem>
               <Link color="textPrimary" underline="none" href={item.href}>
                 {item.name}

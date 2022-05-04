@@ -3,11 +3,6 @@ import styles from "../styles/OrderSection.module.css";
 import { OrderCard } from "../components/OrderCard";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
-import grubhublogo from "../public/assets/grubhublogo.png";
-import doordashlogo from "../public/assets/doordashlogo.png";
-import ubereatslogo from "../public/assets/ubereatslogo.png";
-import squarespacelogo from "../public/assets/instore.png";
-import Image from 'next/image'
 import { Typography } from "@mui/material";
 
 export const OrderSection = () => {
@@ -50,7 +45,7 @@ export const OrderSection = () => {
   justifyContent="center"
         >
           {images.map((image) => (
-            <Grid item xs={12} s={6} md={4} lg={2}>
+            <Grid item xs={12} s={6} md={4} lg={2} className='ordercards'>
               <a href={image.url} target={"_blank"} rel={"noreferrer"}>
                 <OrderCard image={image} />
               </a>
