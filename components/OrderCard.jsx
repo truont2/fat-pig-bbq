@@ -4,6 +4,12 @@ import Box from "@mui/material/Box";
 import ButtonBase from "@mui/material/ButtonBase";
 import Typography from "@mui/material/Typography";
 
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Button from '@mui/material/Button';
+
 const ImageButton = styled(ButtonBase)(({ theme }) => ({
   position: "relative",
   height: 200,
@@ -103,5 +109,25 @@ export const OrderCard = ({ image }) => {
         </Image>
       </ImageButton>
     </Box>
+    // <Card sx={{ maxWidth: 345 }}>
+    //   <CardMedia
+    //     component="img"
+    //     alt="order"
+    //     height="140"
+    //     image={image.image}                                                      
+    //   />
+    //   <CardContent>
+    //     <Typography gutterBottom variant="h5" component="div">
+    //       {image.title}
+    //     </Typography>
+    //     <Typography variant="body2" color="text.secondary">
+    //       Lizards are a widespread group of squamate reptiles, with over 6,000
+    //       species, ranging across all continents except Antarctica
+    //     </Typography>
+    //   </CardContent>
+    //   <CardActions>
+    //     <Button size="small">Order</Button>
+    //   </CardActions>
+    // </Card>
   );
 };

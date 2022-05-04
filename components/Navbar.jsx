@@ -20,6 +20,7 @@ import pig from "../public/assets/fatpig.png";
 import Image from "next/image";
 import Link from "@mui/material/Link";
 import fatpiglogo from "../public/assets/fatpiglogo.png";
+import Button from "@mui/material/Button"
 
 // TO DO: logo on the left that is an href to the home page
 // TO DO: Hover effect for link items
@@ -28,8 +29,8 @@ import fatpiglogo from "../public/assets/fatpiglogo.png";
 const navigationLinks = [
   { name: "Menu", href: "" },
   { name: "Location", href: "" },
-  { name: "About", href: "" },
-  { name: "Merchandise", href: "" },
+  { name: "About", href: "/about" },
+  // { name: "Merchandise", href: "" },
   { name: "Contact Us", href: "" },
 ];
 
@@ -40,7 +41,7 @@ export default function ResponsiveAppBar() {
       //AppBar Styling
       sx={{
         bgcolor: "maroon",
-        display: "flex", justifyContent: {xs: "center", md: "space-between"}
+        display: "flex", justifyContent: {xs: "center", md: "space-between"}, 
       }}
       position="fixed"
     >
@@ -66,6 +67,7 @@ export default function ResponsiveAppBar() {
                   color="textPrimary"
                   underline="none"
                   href={item.href}
+                  style={{fontFamily:"Bebas Neue", color: "whitesmoke", fontSize:'25px' }}
                 >
                   {item.name}
                 </Link>
@@ -95,9 +97,9 @@ export default function ResponsiveAppBar() {
         <Divider />
         {/* Links as a list in the swipeable drawer */}
         <List>
-          {navigationLinks.map((item) => (
+          {navigationLinks.map((item,idx) => (
             <ListItem>
-              <Link color="textPrimary" underline="none" href={item.href}>
+              <Link color="textPrimary" underline="none" href={item.href} sx={{ mx: 5, color: 'white', display: 'block' }}>
                 {item.name}
               </Link>
             </ListItem>
