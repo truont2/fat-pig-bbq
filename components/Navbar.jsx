@@ -40,10 +40,10 @@ export default function ResponsiveAppBar() {
     <AppBar
       //AppBar Styling
       sx={{
-        bgcolor: "maroon",
         display: "flex", justifyContent: {xs: "center", md: "space-between"}, 
       }}
       position="fixed"
+      className={styles.navbar}
     >
       <Container
         className={styles.navlinks}
@@ -59,7 +59,7 @@ export default function ResponsiveAppBar() {
                 display: { xs: "flex", md: "flex" },
               }}
             />
-          <Box sx={{ display: { xs: "flex", md: "flex" } }}>
+          <Box sx={{ display: { xs: "flex", md: "flex" }, marginRight:"50px" }}>
             <Hidden mdDown>
               {navigationLinks.map((item) => (
                 <Link
@@ -99,7 +99,7 @@ export default function ResponsiveAppBar() {
         <List>
           {navigationLinks.map((item,idx) => (
             <ListItem>
-              <Link color="textPrimary" underline="none" href={item.href} sx={{ mx: 5, color: 'white', display: 'block' }}>
+              <Link color="textPrimary" underline="none" href={item.href}>
                 {item.name}
               </Link>
             </ListItem>

@@ -10,8 +10,8 @@
 } */
 
 .navbar {
-  margin-bottom: 10rem;
   width: 100%;
+  background-color: rgb(156, 13, 13);
 }
 
 .logo {
