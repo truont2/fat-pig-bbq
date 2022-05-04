@@ -72,7 +72,7 @@ const ImageMarked = styled("span")(({ theme }) => ({
 export const OrderCard = ({ image }) => {
   return (
     <Box
-      sx={{ display: "flex", flexWrap: "wrap", minWidth: 300, width: "100%" }}
+      sx={{ display: "flex", flexWrap: "wrap", width: { xs: "80%", md: "100%" }}}
     >
       <ImageButton
         focusRipple

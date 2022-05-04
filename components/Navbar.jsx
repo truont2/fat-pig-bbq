@@ -49,13 +49,13 @@ export default function ResponsiveAppBar() {
         maxWidth="xlg"
       >
         <Toolbar disableGutters>
-          <div>
-            <Image src={fatpiglogo} alt="Thiccc Pig" width="120" height="120" />
+          <div style={{width: "5rem"}}>
+            <Image src={fatpiglogo} alt="Thiccc Pig" width={100} height={100} layout="responsive"/>
           </div>
             <Box
               sx={{
                 flexGrow: 2,
-                display: { xs: "none", md: "flex" },
+                display: { xs: "flex", md: "flex" },
               }}
             />
           <Box sx={{ display: { xs: "flex", md: "flex" } }}>
