@@ -6,11 +6,12 @@
   text-decoration: none;
 }
 /* Need to add hover effect for Navbar */
-.navlinks:hover {
-}
+/* .navlinks:hover {
+} */
 
 .navbar {
   margin-bottom: 10rem;
+  width: 100%;
 }
 
 .logo {
