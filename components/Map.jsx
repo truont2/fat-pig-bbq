@@ -11,7 +11,7 @@ const Map = () => {
       center={location}
       zoom={14}
       scrollWheelZoom={false}
-      style={{ height: "40vh", width: "50%"}}
+      style={{ height: "50vh"}}
       className={styles.map}
     >
       <TileLayer

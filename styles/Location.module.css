@@ -6,11 +6,18 @@
 }
 
 .map {
-    margin: 0 auto
+    margin: 0 auto;
+    width: 80%;
 }
 .hours {
     list-style: none;
     /* margin-left: -55px; */
     text-align: center;
     margin-left: -45px;
+}
+
+@media screen and (max-width: 768px) {
+    .map {
+        width: 100%;
+    }
 }
