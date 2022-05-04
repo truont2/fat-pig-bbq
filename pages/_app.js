@@ -22,6 +22,7 @@ export default function MyApp(props) {
             <Head>
                 <meta name="viewport" 
                     content="initial-scale=1, width=device-width" />
+                    <link href="https://fonts.googleapis.com/css2?family=Arizonia&family=Bebas+Neue&family=Courgette&family=Lobster&family=Noto+Sans&display=swap" rel="stylesheet" />
             </Head>
             <ThemeProvider theme={theme}>
                   
