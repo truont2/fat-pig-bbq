@@ -77,57 +77,57 @@ const ImageMarked = styled("span")(({ theme }) => ({
 
 export const OrderCard = ({ image }) => {
   return (
-    <Box
-      sx={{ display: "flex", flexWrap: "wrap", width: { xs: "80%", md: "100%" }}}
-    >
-      <ImageButton
-        focusRipple
-        key={image.title}
-        style={{
-          width: image.width,
-        }}
-      >
-      {/* reference is from public. nextjs looks at public and then looks for file path  */}
-        <ImageSrc style={{ backgroundImage: `url(${image.image})` }} />
+    // <Box
+    //   sx={{ display: "flex", flexWrap: "wrap", width: { xs: "80%", md: "100%" }}}
+    // >
+    //   <ImageButton
+    //     focusRipple
+    //     key={image.title}
+    //     style={{
+    //       width: image.width,
+    //     }}
+    //   >
+    //   {/* reference is from public. nextjs looks at public and then looks for file path  */}
+    //     <ImageSrc style={{ backgroundImage: `url(${image.image})` }} />
         
-        <ImageBackdrop className="MuiImageBackdrop-root" />
-        <Image>
-          <Typography
-            component="span"
-            variant="subtitle1"
-            color="inherit"
-            sx={{
-              position: "relative",
-              p: 4,
-              pt: 2,
-              pb: (theme) => `calc(${theme.spacing(1)} + 6px)`,
-            }}
-          >
-            {image.title}
-            <ImageMarked className="MuiImageMarked-root" />
-          </Typography>
-        </Image>
-      </ImageButton>
-    </Box>
-    // <Card sx={{ maxWidth: 345 }}>
-    //   <CardMedia
-    //     component="img"
-    //     alt="order"
-    //     height="140"
-    //     image={image.image}                                                      
-    //   />
-    //   <CardContent>
-    //     <Typography gutterBottom variant="h5" component="div">
-    //       {image.title}
-    //     </Typography>
-    //     <Typography variant="body2" color="text.secondary">
-    //       Lizards are a widespread group of squamate reptiles, with over 6,000
-    //       species, ranging across all continents except Antarctica
-    //     </Typography>
-    //   </CardContent>
-    //   <CardActions>
-    //     <Button size="small">Order</Button>
-    //   </CardActions>
-    // </Card>
+    //     <ImageBackdrop className="MuiImageBackdrop-root" />
+    //     <Image>
+    //       <Typography
+    //         component="span"
+    //         variant="subtitle1"
+    //         color="inherit"
+    //         sx={{
+    //           position: "relative",
+    //           p: 4,
+    //           pt: 2,
+    //           pb: (theme) => `calc(${theme.spacing(1)} + 6px)`,
+    //         }}
+    //       >
+    //         {image.title}
+    //         <ImageMarked className="MuiImageMarked-root" />
+    //       </Typography>
+    //     </Image>
+    //   </ImageButton>
+    // </Box>
+    <Card sx={{ maxWidth: 345 }}>
+      <CardMedia
+        component="img"
+        alt="order"
+        height="140"
+        image={image.image}                                                      
+      />
+      <CardContent>
+        <Typography gutterBottom variant="h5" component="div">
+          {image.title}
+        </Typography>
+        <Typography variant="body2" color="text.secondary">
+          Lizards are a widespread group of squamate reptiles, with over 6,000
+          species, ranging across all continents except Antarctica
+        </Typography>
+      </CardContent>
+      <CardActions>
+        <Button size="small">Order</Button>
+      </CardActions>
+    </Card>
   );
 };

@@ -35,11 +35,12 @@ export const OrderSection = () => {
 
   return (
     <>
-      <Typography variant="h3" align="center" sx={{my: 0}}>Order Here</Typography>
+      <Typography variant="h3" align="center" sx={{ my: 0 }}>
+        Order Here
+      </Typography>
       <div className={styles.container}>
-      
-      <Box sx={{ width: "100%" }}>
-        <Grid
+        <Box sx={{ width: "100%" }}>
+          {/* <Grid
           container
           direction="row"
   justifyContent="center"
@@ -51,10 +52,18 @@ export const OrderSection = () => {
               </a>
             </Grid>
           ))}
-        </Grid>
-      </Box>
-    </div>
+        </Grid> */}
+          <Grid container spacing={3} justifyContent="center" direction="row">
+          {images.map((image) => (
+            <Grid item xs={12} s={6} md={4} lg={3} className='ordercards'>
+              <a href={image.url} target={"_blank"} rel={"noreferrer"}>
+                <OrderCard image={image} />
+              </a>
+            </Grid>
+          ))}
+          </Grid>
+        </Box>
+      </div>
     </>
-    
   );
 };

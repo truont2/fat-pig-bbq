@@ -27,7 +27,7 @@ import Button from "@mui/material/Button"
 // TO DO: Click effect for onClick of nav items
 
 const navigationLinks = [
-  { name: "Menu", href: "" },
+  { name: "Menu", href: "/menu" },
   { name: "Location", href: "" },
   { name: "About", href: "/about" },
   // { name: "Merchandise", href: "" },
@@ -51,7 +51,9 @@ export default function ResponsiveAppBar() {
       >
         <Toolbar disableGutters>
           <div style={{width: "5rem"}}>
-            <Image src={fatpiglogo} alt="Thiccc Pig" width={100} height={100} layout="responsive"/>
+            <a href='/'>
+            <Image src={fatpiglogo} alt="Thiccc Pig" width={50} height={60} layout="intrinsic"/>
+            </a>
           </div>
             <Box
               sx={{
