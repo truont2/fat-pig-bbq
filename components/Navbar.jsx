@@ -19,12 +19,12 @@ import styles from "../styles/Navbar.module.css";
 import pig from "../public/assets/fatpig.png";
 import Image from "next/image";
 import Link from "@mui/material/Link";
-import fatpiglogo from "../public/assets/fatpiglogo.png";
-import Button from "@mui/material/Button"
-import AdbIcon from '@mui/icons-material/Adb';
-import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
-import Tooltip from '@mui/material/Tooltip';
+import fatpiglogo from "../public/assets/fatpigbanner.jpg";
+import Button from "@mui/material/Button";
+import AdbIcon from "@mui/icons-material/Adb";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import Tooltip from "@mui/material/Tooltip";
 // TO DO: logo on the left that is an href to the home page
 // TO DO: Hover effect for link items
 // TO DO: Click effect for onClick of nav items
@@ -37,8 +37,8 @@ const navigationLinks = [
   { name: "Contact Us", href: "" },
 ];
 
-const pages = ['Products', 'Pricing', 'Blog'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+const pages = ["Products", "Pricing", "Blog"];
+const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 export default function ResponsiveAppBar() {
   const [open, setOpen] = useState(false);
@@ -64,37 +64,27 @@ export default function ResponsiveAppBar() {
     <AppBar
       //AppBar Styling
       sx={{
-        display: "flex", justifyContent: {xs: "center", md: "space-between"}, 
+        display: "flex",
+        justifyContent: { xs: "center", md: "space-between" },
       }}
       position="fixed"
       className={styles.navbar}
     >
-      <Container
-        className={styles.navlinks}
-        maxWidth="xlg"
-      >
-        <Toolbar disableGutters>
-          <div style={{width: "5rem"}}>
-            <Image src={fatpiglogo} alt="Thiccc Pig" width={60} height={60} layout="fixed"/>
-          </div>
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="/"
+      <Container className={styles.navlinks} maxWidth="xlg">
+        <Toolbar>
+          <Box sx={{
+              display: { xs: "flex", md: "flex" },
+              marginRight: "10px"
+            }}>
+            <Image src={fatpiglogo} alt="Thiccc Pig" width="170" height={60} layout="intrinsic"/>
+          </Box>
+          <Box
             sx={{
-              mr: 2,
-              display: { xs: 'flex', md: 'flex' },
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
+              flexGrow: 1,
+              display: { xs: "none", md: "flex" },
+              marginRight: "50px",
             }}
           >
-            Fat Pig BBQ
-          </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "flex" }, marginRight:"50px" }}>
             <Hidden mdDown>
               {navigationLinks.map((item) => (
                 <Link
@@ -102,7 +92,11 @@ export default function ResponsiveAppBar() {
                   color="textPrimary"
                   underline="none"
                   href={item.href}
-                  style={{fontFamily:"Bebas Neue", color: "whitesmoke", fontSize:'25px' }}
+                  style={{
+                    fontFamily: "Bebas Neue",
+                    color: "whitesmoke",
+                    fontSize: "25px",
+                  }}
                 >
                   {item.name}
                 </Link>
@@ -115,38 +109,50 @@ export default function ResponsiveAppBar() {
             </Hidden>
           </Box>
 
-            <Box
-              sx={{
-                flexGrow: 2,
-                display: { xs: "flex", md: "flex" },
-              }}
-            />
+          <Box
+            sx={{
+              flexGrow: 2,
+              display: { xs: "flex", md: "flex" },
+            }}
+          />
 
-            <Box sx={{ display: { xs: "none", md: "flex" }, marginRight:"50px" }}>
-            <Link
-                  sx={{ m: 0.45 }}
-                  color="textPrimary"
-                  underline="none"
-                  href='/'
-                  style={{fontFamily:"Bebas Neue", color: "whitesmoke", fontSize:'25px' }}
-                >
-                  Login
-                </Link>
-                <Link
-                  sx={{ m: 0.45 }}
-                  color="textPrimary"
-                  underline="none"
-                  href='/'
-                  style={{fontFamily:"Bebas Neue", color: "whitesmoke", fontSize:'25px' }}
-                >
-                  Sign Up
-                </Link>
+          <Box sx={{ display: { xs: "flex", md: "flex" } }}>
+            <Hidden mdDown>
+              <Link
+                sx={{ m: 0.45 }}
+                color="textPrimary"
+                underline="none"
+                href="/"
+                style={{
+                  fontFamily: "Bebas Neue",
+                  color: "whitesmoke",
+                  fontSize: "25px",
+                }}
+              >
+                Login
+              </Link>
+              <Link
+                sx={{ m: 0.45 }}
+                color="textPrimary"
+                underline="none"
+                href="/"
+                style={{
+                  fontFamily: "Bebas Neue",
+                  color: "whitesmoke",
+                  fontSize: "25px",
+                }}
+              >
+                Sign Up
+              </Link>
+            </Hidden>
+            <Hidden mdUp>
+              <IconButton>
+                <MenuIcon onClick={() => setOpen(true)}></MenuIcon>
+              </IconButton>
+            </Hidden>
           </Box>
         </Toolbar>
       </Container>
-
-
-
 
       {/* Swipeable drawer that shows up on tablets and phones */}
       <SwipeableDrawer
@@ -164,7 +170,7 @@ export default function ResponsiveAppBar() {
         <Divider />
         {/* Links as a list in the swipeable drawer */}
         <List>
-          {navigationLinks.map((item,idx) => (
+          {navigationLinks.map((item, idx) => (
             <ListItem>
               <Link color="textPrimary" underline="none" href={item.href}>
                 {item.name}

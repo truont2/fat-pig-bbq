@@ -1,22 +1,33 @@
-@import url('https://fonts.googleapis.com/css2?family=Arizonia&family=Bebas+Neue&family=Courgette&family=Lobster&family=Noto+Sans&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Arizonia&family=Bebas+Neue&family=Courgette&family=Lobster&family=Noto+Sans&display=swap");
 
 .jumbo {
-    height: calc(100vh - 0px);
-    width: 100%;
-    background-image: url(../public/assets/meal.jpeg);
-    background-repeat: no-repeat;
+  height: calc(100vh - 68px);
+  margin-top: 68px;
+  width: 100%;
+  background-image: url(../public/assets/meal.jpeg);
+  background-repeat: no-repeat;
   background-size: cover;
   /* background-attachment: fixed; */
   background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
 }
 
 .container {
-    height: 100%;
-    width: 100%;
+  width: 100%;
+  /* background: rgba(163, 148, 148, 0.3); */
+  width: max-content;
+  display: block;
+  padding: 0.7rem 1.7rem;
+  display: flex;
+  border-radius: 1rem;
+  /* backdrop-filter: blur(30px); */
 }
 
 .content {
-    height: 100%;
-    color: white;
-    font-family: 'Bebas Neue';
+  height: 100%;
+  color: white;
+  font-family: "Bebas Neue";
 }
