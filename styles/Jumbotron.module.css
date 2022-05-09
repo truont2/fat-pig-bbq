@@ -3,7 +3,7 @@
 .jumbo {
   height: calc(100vh - 68px);
   margin-top: 68px;
-  width: 100%;
+  width: 100vw;
   background-image: url(../public/assets/meal.jpeg);
   background-repeat: no-repeat;
   background-size: cover;
