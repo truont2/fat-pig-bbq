@@ -8,6 +8,7 @@ import Grid from "@mui/material/Grid";
 import { Button, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import Alert from "@mui/material/Alert"
 
 export const Jumbotron = () => {
 
@@ -29,17 +30,16 @@ export const Jumbotron = () => {
             container
             alignItems="center"
             justifyContent="center"
+            flexDirection="column"
           >
             <Grid item>
               <ThemeProvider theme={theme}>
-                <Typography variant="h1">Fat Pig BBQ</Typography>
-                <Typography variant="h4" align="center">Come try our barbecue</Typography>
+                <Typography align="center" variant="h1">Fat Pig BBQ</Typography>
+                <Typography align="center" variant="h4">Come try our barbecue</Typography>
               </ThemeProvider>
-              
-              <Box my={1}>
-                {/* put complex button from material ui  */}
-                <Button variant="outlined">View our Menu</Button>
-              </Box>
+            </Grid>
+            <Grid item>
+              <Button>Check out our menu</Button>
             </Grid>
           </Grid>
         </Container>

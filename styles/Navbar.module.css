@@ -11,7 +11,8 @@
 
 .navbar {
   width: 100%;
-  background-color: rgb(156, 13, 13);
+  max-width: 100%;
+  background-color: rgba(129,52,0,255);
 }
 
 .logo {
