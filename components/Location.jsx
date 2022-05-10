@@ -18,9 +18,9 @@ export default function Location() {
       <MapWithNoSSR />
       <h2>Hours</h2>
       <ul className={styles.hours}>
-        <li>Sunday: Closed</li>
-        <li>Monday-Thursday: 11am-7:30pm</li>
-        <li>Friday-Saturday: 11am-8pm</li>
+        <li className={styles.li}>Sunday: Closed</li>
+        <li className={styles.li}>Monday-Thursday: 11am-7:30pm</li>
+        <li className={styles.li}>Friday-Saturday: 11am-8pm</li>
       </ul>
       {/* <Grid
       container
