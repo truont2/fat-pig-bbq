@@ -12,11 +12,19 @@
 .navbar {
   width: 100%;
   max-width: 100%;
-  background-color: rgba(129,52,0,255);
+  background-color: rgba(129, 52, 0, 255);
 }
 
 .logo {
   background-image: url(../public/assets/fatpiglogo.png);
+}
+
+.hidden {
+  display: none;
+  opacity: 0;
+  pointer-events: none;
+  visibility: none;
+  z-index: -1;
 }
 
 /* Need to add media queries for medium and small screens */

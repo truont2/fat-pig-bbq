@@ -34,7 +34,7 @@ const navigationLinks = [
   { name: "Location", href: "" },
   { name: "About", href: "/about" },
   // { name: "Merchandise", href: "" },
-  { name: "Contact Us", href: "" },
+  { name: "Contact Us", href: "/contact" },
 ];
 
 const pages = ["Products", "Pricing", "Blog"];
@@ -72,14 +72,21 @@ export default function ResponsiveAppBar() {
     >
       <Container className={styles.navlinks} maxWidth="xlg">
         <Toolbar>
-          <Box sx={{
+          <Box
+            sx={{
               display: { xs: "flex", md: "flex" },
-              marginRight: "10px"
-            }}>
-              <a href='/'>
-              <Image src={fatpiglogo} alt="Thiccc Pig" width="170" height={60} layout="intrinsic"/>
-              </a>
-            
+              marginRight: "10px",
+            }}
+          >
+            <a href="/">
+              <Image
+                src={fatpiglogo}
+                alt="Thiccc Pig"
+                width="170"
+                height={60}
+                layout="intrinsic"
+              />
+            </a>
           </Box>
           <Box
             sx={{
