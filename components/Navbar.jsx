@@ -76,7 +76,10 @@ export default function ResponsiveAppBar() {
               display: { xs: "flex", md: "flex" },
               marginRight: "10px"
             }}>
-            <Image src={fatpiglogo} alt="Thiccc Pig" width="170" height={60} layout="intrinsic"/>
+              <a href='/'>
+              <Image src={fatpiglogo} alt="Thiccc Pig" width="170" height={60} layout="intrinsic"/>
+              </a>
+            
           </Box>
           <Box
             sx={{
@@ -122,7 +125,7 @@ export default function ResponsiveAppBar() {
                 sx={{ m: 0.45 }}
                 color="textPrimary"
                 underline="none"
-                href="/"
+                href="/login"
                 style={{
                   fontFamily: "Bebas Neue",
                   color: "whitesmoke",
@@ -135,7 +138,7 @@ export default function ResponsiveAppBar() {
                 sx={{ m: 0.45 }}
                 color="textPrimary"
                 underline="none"
-                href="/"
+                href="/signup"
                 style={{
                   fontFamily: "Bebas Neue",
                   color: "whitesmoke",
