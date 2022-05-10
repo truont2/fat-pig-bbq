@@ -11,28 +11,28 @@ export const OrderSection = () => {
       url: "https://www.grubhub.com/restaurant/fat-pig-bbq-7533-olympic-view-dr-edmonds/970085?utm_source=google&utm_medium=organic&utm_campaign=place-action-link",
       title: "GrubHub",
       width: "80%",
-      image: "/assets/grubhublogo.png",
+      image: "/assets/grubhub.jpg",
       description: 'Delivery Service'
     },
     {
       url: "https://www.doordash.com/store/fat-pig-bbq-edmonds-429805/?utm_campaign=gpa",
       title: "DoorDash",
       width: "80%",
-      image: "/assets/doordashlogo.png",
+      image: "/assets/DD.jpg",
       description: 'Delivery Service'
     },
     {
       url: "https://www.ubereats.com/store/fat-pig-bbq/S0VhUzV1RnyR1Jh3vmWdHw",
       title: "Uber Eats",
       width: "80%",
-      image: "/assets/ubereatslogo.png",
+      image: "/assets/uber.jpg",
       description: 'Delivery Service'
     },
     {
       url: "https://www.google.com/",
       title: "SquareSpace",
       width: "80%",
-      image: "/assets/ubereatslogo.png",
+      image: "/assets/squarespace.jpg",
       description: 'Delivery Service'
     },
   ];
