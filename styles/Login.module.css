@@ -1,3 +1,8 @@
 .content {
-    margin-top: 68px;
+  display: flex;
+  margin-top: 100px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+  justify-content: center;
+  background-color: peachpuff;
 }
