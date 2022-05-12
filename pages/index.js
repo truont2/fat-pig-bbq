@@ -22,8 +22,8 @@ export default function Home() {
       <div className={styles.content}>
         <MenuJumbo />
         <OrderSection />
-        <Location />
         <Yelp />
+        <Location />
       </div>
     </main>
   );
