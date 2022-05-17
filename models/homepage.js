@@ -32,23 +32,27 @@ const HomepageSchema = new mongoose.Schema({
         required: true,
     },
     orderDesc: {
-        type: [String], 
+        type: [{
+            text: { type: String, required: true }
+            }], 
         required: true
     },
     hours: {
-        type: [String], 
+        type: [{
+                text: { type: String, required: true }
+                }], 
         required: true
     },
     alert: {
-        type: [{
+        type: {
             text: {type: String, required: true}, 
             status: {type: Boolean, required: true}
-        }], 
+        }, 
         required: true
     },
 
     }, 
     {timestamps: true}
 );
-
+console.log(mongoose.models.Meals, 'testing');
 export default mongoose.models.Homepage || mongoose.model("Homepage", HomepageSchema);

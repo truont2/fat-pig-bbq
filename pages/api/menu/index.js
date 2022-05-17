@@ -1,4 +1,4 @@
-import dbConnect from "../../../util/mongo";
+import dbConnect from "../../../lib/dbConnect";
 import Meals from "../../../models/Meals";
 
 export default async function handler(req, res) {
