@@ -1,8 +1,9 @@
-import "../styles/Contact.module.css";
+import styles from "../styles/Contact.module.css";
 import React from "react";
 import { AiOutlineMail } from "react-icons/ai";
 import { useRef } from "react";
 import emailjs from "emailjs-com";
+import { style } from "@mui/system";
 
 export default function Contact() {
   const form = useRef();
@@ -29,32 +30,39 @@ export default function Contact() {
     e.target.reset();
   };
   return (
-    <section id="contact">
-      <h2>Contact Us</h2>
-      <div className="container contact__container">
-        <div className="contact__options">
-          <article className="contact__option">
-            <AiOutlineMail className="contact__option-icon" />
-            <h4>Email</h4>
-            <h5>fatpigbbq@gmail.com</h5>
-            <a href="mailto:fatpigbbq@gmail.com">Send a message</a>
-          </article>
+    <container className={styles.contactForm}>
+      <section id="contact">
+        <h2>Contact Us</h2>
+        <div className="container contact__container">
+          <div className="contact__options">
+            <article className="contact__option">
+              <AiOutlineMail className="contact__option-icon" />
+              <h4>Email</h4>
+              <h5>fatpigbbq@gmail.com</h5>
+              <a href="mailto:fatpigbbq@gmail.com">Send a message</a>
+            </article>
+          </div>
+          {/* End of contact options */}
+          <form ref={form} onSubmit={sendEmail}>
+            <input type="text" name="name" placeholder="Your Name" required />
+            <input
+              type="email"
+              name="email"
+              placeholder="Your Email"
+              required
+            />
+            <textarea
+              name="message"
+              rows="7"
+              placeholder="Your Message"
+              required
+            ></textarea>
+            <button type="submit" className="btn btn-primary">
+              Send Message
+            </button>
+          </form>
         </div>
-        {/* End of contact options */}
-        <form ref={form} onSubmit={sendEmail}>
-          <input type="text" name="name" placeholder="Your Name" required />
-          <input type="email" name="email" placeholder="Your Email" required />
-          <textarea
-            name="message"
-            rows="7"
-            placeholder="Your Message"
-            required
-          ></textarea>
-          <button type="submit" className="btn btn-primary">
-            Send Message
-          </button>
-        </form>
-      </div>
-    </section>
+      </section>
+    </container>
   );
 }
