@@ -8,34 +8,40 @@ import { Container } from "@mui/material";
 
 export default function login() {
   return (
-    <Card className={styles.content}>
-      <form>
-        <Card.Title>Sign In</Card.Title>
-        <div>
-          <input
-            type="email"
-            className="form-control"
-            placeholder="Email address"
-          />
-        </div>
-        <div>
-          <input
-            type="password"
-            className="form-control"
-            placeholder="Password"
-          />
-        </div>
-        <div>
-          <button type="submit">Login</button>
-        </div>
-        <h6>
-          <a href="#">Forgot password?</a>
-        </h6>
-
-        <h6>
-          Don't have an account? <Link href="/signup">Sign Up</Link>
-        </h6>
-      </form>
-    </Card>
+    <container className={styles.container}>
+      <Card className={styles.content}>
+        <form>
+          <Card.Title>Sign In</Card.Title>
+          <div>
+            <input
+              type="email"
+              className="form-control"
+              placeholder="Email address"
+            />
+          </div>
+          <div>
+            <input
+              type="password"
+              className="form-control"
+              placeholder="Password"
+            />
+          </div>
+          <div>
+            <button type="submit">Login</button>
+          </div>
+          <h6>
+            <a className={styles.text} href="#">
+              Forgot password?
+            </a>
+          </h6>
+          <h6>
+            Don't have an account?{" "}
+            <Link className={styles.text} href="/signup">
+              Sign Up
+            </Link>
+          </h6>
+        </form>
+      </Card>
+    </container>
   );
 }
