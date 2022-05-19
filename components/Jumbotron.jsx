@@ -34,7 +34,7 @@ export const Jumbotron = ({homepage}) => {
             <Grid item>
               <ThemeProvider theme={theme}>
                 <Typography align="center" variant="h1">{homepage.title}</Typography>
-                <Typography align="center" variant="h4">Come try our barbecue</Typography>
+                <Typography align="center" variant="h4">{homepage.desc}</Typography>
               </ThemeProvider>
             </Grid>
             <Grid item>

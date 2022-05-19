@@ -54,5 +54,5 @@ const HomepageSchema = new mongoose.Schema({
     }, 
     {timestamps: true}
 );
-console.log(mongoose.models.Meals, 'testing');
+
 export default mongoose.models.Homepage || mongoose.model("Homepage", HomepageSchema);

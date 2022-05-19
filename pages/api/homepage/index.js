@@ -14,6 +14,7 @@ export default async function handler(req, res) {
       const items = await Homepage.find();
       res.status(200).json(items);
     } catch (err) {
+      console.log(err);
       res.status(500).json(err);
     }
   }

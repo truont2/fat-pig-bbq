@@ -30,7 +30,7 @@ import Tooltip from "@mui/material/Tooltip";
 // TO DO: Click effect for onClick of nav items
 
 const navigationLinks = [
-  { name: "Menu", href: "" },
+  { name: "Menu", href: "/menu" },
   { name: "Location", href: "" },
   { name: "About", href: "/about" },
   // { name: "Merchandise", href: "" },
@@ -154,6 +154,20 @@ export default function ResponsiveAppBar() {
               >
                 Sign Up
               </Link>
+
+              {/* <Link
+                sx={{ m: 0.45 }}
+                color="textPrimary"
+                underline="none"
+                href="/login"
+                style={{
+                  fontFamily: "Bebas Neue",
+                  color: "whitesmoke",
+                  fontSize: "25px",
+                }}
+              >
+                Profile
+              </Link> */}
             </Hidden>
             <Hidden mdUp>
               <IconButton>
