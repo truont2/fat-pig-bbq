@@ -40,7 +40,7 @@ const navigationLinks = [
 const pages = ["Products", "Pricing", "Blog"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
-export default function ResponsiveAppBar() {
+export default function ResponsiveAppBar({user}) {
   const [open, setOpen] = useState(false);
 
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -128,7 +128,22 @@ export default function ResponsiveAppBar() {
 
           <Box sx={{ display: { xs: "flex", md: "flex" } }}>
             <Hidden mdDown>
-              <Link
+              {user ? 
+                <Link
+                  sx={{ m: 0.45 }}
+                  color="textPrimary"
+                  underline="none"
+                  href="/login"
+                  style={{
+                    fontFamily: "Bebas Neue",
+                    color: "whitesmoke",
+                    fontSize: "25px",
+                  }}
+                >
+                  Profile
+                </Link> :
+                <>
+                <Link
                 sx={{ m: 0.45 }}
                 color="textPrimary"
                 underline="none"
@@ -154,6 +169,15 @@ export default function ResponsiveAppBar() {
               >
                 Sign Up
               </Link>
+                </> 
+                
+                
+                
+                
+                
+                }
+              
+              {/* {user ? <h1>user exists</h1> : ""} */}
             </Hidden>
             <Hidden mdUp>
               <IconButton>

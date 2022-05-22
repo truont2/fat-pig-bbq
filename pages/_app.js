@@ -17,7 +17,8 @@ import Button from "@mui/material/Button";
 import CloseIcon from "@mui/icons-material/Close";
 // Client-side cache shared for the whole session
 // of the user in the browser.
-
+import store from "../redux/store";
+import { Provider } from "react-redux";
 const clientSideEmotionCache = createEmotionCache();
 
 export default function MyApp(props) {
@@ -43,7 +44,7 @@ export default function MyApp(props) {
         <Box sx={{ width: "100%" }} className={styles.alert}>
           <Collapse in={open}>
             <Alert
-            className={styles.message}
+              className={styles.message}
               severity="info"
               action={
                 <IconButton
@@ -72,10 +73,11 @@ export default function MyApp(props) {
             Re-open
           </Button>
         </Box>
-
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
+        <Provider store={store}>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </Provider>
       </ThemeProvider>
     </CacheProvider>
   );
