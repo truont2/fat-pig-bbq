@@ -20,10 +20,11 @@ import CloseIcon from "@mui/icons-material/Close";
 import store from "../redux/store";
 import { Provider } from "react-redux";
 const clientSideEmotionCache = createEmotionCache();
+import { useSelector } from "react-redux";
 
 export default function MyApp(props) {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
-
+  
   const [open, setOpen] = useState(true);
 
   return (
@@ -41,38 +42,6 @@ export default function MyApp(props) {
                 build upon. */}
 
         <CssBaseline />
-        <Box sx={{ width: "100%" }} className={styles.alert}>
-          <Collapse in={open}>
-            <Alert
-              className={styles.message}
-              severity="info"
-              action={
-                <IconButton
-                  aria-label="close"
-                  color="inherit"
-                  size="small"
-                  onClick={() => {
-                    setOpen(false);
-                  }}
-                >
-                  <CloseIcon fontSize="inherit" />
-                </IconButton>
-              }
-              sx={{ mb: 2 }}
-            >
-              We are closing on friday the 13th
-            </Alert>
-          </Collapse>
-          <Button
-            disabled={open}
-            variant="outlined"
-            onClick={() => {
-              setOpen(true);
-            }}
-          >
-            Re-open
-          </Button>
-        </Box>
         <Provider store={store}>
           <Layout>
             <Component {...pageProps} />

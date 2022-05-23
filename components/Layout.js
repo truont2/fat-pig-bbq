@@ -8,7 +8,6 @@ import { useState } from "react";
 export default function Layout({children}) {
 
   const {userInfo} = useSelector((state) => state.user);
-
   return (
     <>
       <Navbar user={userInfo}/>
@@ -17,4 +16,13 @@ export default function Layout({children}) {
       <Footer />
     </>
   )
+}
+
+export const getServerSideProps = async () => {
+  const res = await axios.get("http://localhost:3000/api/homepage");
+  return {
+    props: {
+      homepage: res.data
+    }
+  }
 }
