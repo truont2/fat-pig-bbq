@@ -133,7 +133,7 @@ export default function ResponsiveAppBar({user}) {
                   sx={{ m: 0.45 }}
                   color="textPrimary"
                   underline="none"
-                  href="/login"
+                  href="/profile"
                   style={{
                     fontFamily: "Bebas Neue",
                     color: "whitesmoke",
