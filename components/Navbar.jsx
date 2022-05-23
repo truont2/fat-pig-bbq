@@ -30,7 +30,7 @@ import Tooltip from "@mui/material/Tooltip";
 // TO DO: Click effect for onClick of nav items
 
 const navigationLinks = [
-  { name: "Menu", href: "" },
+  { name: "Menu", href: "/menu" },
   { name: "Location", href: "" },
   { name: "About", href: "/about" },
   // { name: "Merchandise", href: "" },

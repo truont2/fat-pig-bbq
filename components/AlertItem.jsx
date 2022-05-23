@@ -10,9 +10,10 @@ import Button from "@mui/material/Button";
 import CloseIcon from "@mui/icons-material/Close";
 import { useSelector } from "react-redux";
 import styles from '../styles/Alert.module.css'
-export default function AlertItem() {
+
+export default function AlertItem({homepage}) {
   
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(homepage.alert.status);
 
   return (
   <>
@@ -36,7 +37,7 @@ export default function AlertItem() {
                 }
                 sx={{ mb: 2 }}
               >
-                We are closing on friday the 13th
+                {homepage.alert.text}
               </Alert>
             </Collapse>
             <Button
