@@ -10,7 +10,7 @@ import { Box } from "@mui/system";
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Alert from "@mui/material/Alert"
 
-export const Jumbotron = () => {
+export const Jumbotron = ({homepage}) => {
 
   const theme = createTheme({
     typography: {
@@ -35,7 +35,7 @@ export const Jumbotron = () => {
             <Grid item>
               <ThemeProvider theme={theme}>
                 <Typography align="center" variant="h1">Fat Pig BBQ</Typography>
-                <Typography align="center" variant="h4">Come try our barbecue</Typography>
+                <Typography align="center" variant="h4">{homepage.desc}</Typography>
               </ThemeProvider>
             </Grid>
             <Grid item>

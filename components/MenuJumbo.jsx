@@ -22,16 +22,17 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
-export const MenuJumbo = () => {
+export const MenuJumbo = ({homepage}) => {
   return (
     <div className={styles.menu}>
       <CssBaseline />
       <div className={styles.container}>
         <div className={styles.left}></div>
+
         <div className={styles.right}>
           <div className="content">
-            <h1>this is inner content</h1>
-            <p>hello andrew</p>
+            <h1>{homepage.menuCardTitle}</h1>
+            <p>{homepage.menuCardDesc}</p>
             <Button variant="outlined" startIcon={<DeleteIcon />}>
               Check out the Menu
             </Button>
