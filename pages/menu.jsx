@@ -20,6 +20,11 @@ export default function menu({ menuItems }) {
   return (
     <div className={styles.container}>
       <h1>Menu</h1>
+      <h4>
+        View PDF version
+      </h4>
+
+      <h2> Meals </h2>
       <Grid
         container
         direction="row"
@@ -29,7 +34,7 @@ export default function menu({ menuItems }) {
         {menuItems.map((item, index) => {
           return (
           <Grid item xs={6} key={index}>
-            <Card sx={{ display: "flex" }}>
+            <Card sx={{ display: "flex", justifyContent: "space-between"}}>
               <Box sx={{ display: "flex", flexDirection: "column" }}>
                 <CardContent sx={{ flex: "1 0 auto" }}>
                   <Typography component="div" variant="h5">
@@ -40,35 +45,14 @@ export default function menu({ menuItems }) {
                     color="text.secondary"
                     component="div"
                   >
-                    Mac Miller
+                    {item.desc}
                   </Typography>
                 </CardContent>
-                <Box
-                  sx={{ display: "flex", alignItems: "center", pl: 1, pb: 1 }}
-                >
-                  <IconButton aria-label="previous">
-                    {theme.direction === "rtl" ? (
-                      <SkipNextIcon />
-                    ) : (
-                      <SkipPreviousIcon />
-                    )}
-                  </IconButton>
-                  <IconButton aria-label="play/pause">
-                    <PlayArrowIcon sx={{ height: 38, width: 38 }} />
-                  </IconButton>
-                  <IconButton aria-label="next">
-                    {theme.direction === "rtl" ? (
-                      <SkipPreviousIcon />
-                    ) : (
-                      <SkipNextIcon />
-                    )}
-                  </IconButton>
-                </Box>
               </Box>
               <CardMedia
                 component="img"
                 sx={{ width: 151 }}
-                image="/static/images/cards/live-from-space.jpg"
+                image={item.img}
                 alt="Live from space album cover"
               />
             </Card>
