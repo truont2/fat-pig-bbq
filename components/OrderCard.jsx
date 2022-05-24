@@ -122,6 +122,7 @@ import Typography from '@mui/material/Typography';
 import styles from '../styles/OrderCard.module.css';
 import { styled } from "@mui/material/styles"
 import { textFieldClasses } from '@mui/material';
+import { Cursor } from 'mongoose';
 export const OrderCard = ({ image }) => {
 
   const MyComponent = styled('button')({
@@ -133,7 +134,8 @@ export const OrderCard = ({ image }) => {
     padding: "0 30px",
     boxShadow: "0 3px 5px 2px rgba(255, 105, 135, .3)",
     textDecoration: "none",
-    textAlign: "center"
+    textAlign: "center", 
+    cursor: "pointer"
   });
 
   return (

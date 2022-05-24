@@ -6,7 +6,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import { CacheProvider } from "@emotion/react";
 import theme from "../src/theme";
 import createEmotionCache from "../src/createEmotionCache";
-import Layout from "../components/Layout";
+import LayoutDefault from "../components/layout/Layout";
 import styles from "../styles/App.module.css";
 import { useState } from "react";
 import Box from "@mui/material/Box";
@@ -24,9 +24,9 @@ import { useSelector } from "react-redux";
 
 export default function MyApp(props) {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
-  
-  const [open, setOpen] = useState(true);
 
+  const [open, setOpen] = useState(true);
+  const Layout = Component.Layout || EmptyLayout;
   return (
     <CacheProvider value={emotionCache}>
       <Head>
@@ -37,20 +37,41 @@ export default function MyApp(props) {
         />
       </Head>
       <ThemeProvider theme={theme}>
-        {/* CssBaseline kickstart an elegant, 
+        {/* CssBaseline kickstart an elegant,
                 consistent, and simple baseline to
                 build upon. */}
 
         <CssBaseline />
-        <Provider store={store}>
-          <Layout>
-            <Component {...pageProps} />
-          </Layout>
-        </Provider>
+          <Provider store={store}>
+            <LayoutDefault>
+              <Layout>
+                <Component {...pageProps} />
+              </Layout>
+            </LayoutDefault>
+          </Provider>;
       </ThemeProvider>
     </CacheProvider>
   );
 }
+
+// function MyApp({ Component, pageProps }) {
+
+//   const Layout = Component.Layout || EmptyLayout;
+//   return (
+//     <Provider store={store}>
+//       <CssBaseline />
+//       <LayoutDefault>
+//       <Layout>
+//         <Component {...pageProps} />
+//       </Layout>
+//       </LayoutDefault>
+//     </Provider>
+//   );
+// }
+
+const EmptyLayout = ({ children }) => <>{children}</>;
+
+// export default MyApp;
 
 MyApp.propTypes = {
   Component: PropTypes.elementType.isRequired,

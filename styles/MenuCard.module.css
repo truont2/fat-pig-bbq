@@ -1,3 +1,9 @@
+.img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
 .menu{
     max-width: 1120px;
     margin: 100px auto;
@@ -20,7 +26,7 @@
     position: relative;
     width: 100%;
     height: 50vh;
-    background-image: url(../public/assets/rib.jpg);
+    /* background-image: url(../public/assets/rib.jpg); */
     background-position: center;
     background-size: cover;
 }
