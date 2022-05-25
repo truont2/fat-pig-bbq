@@ -23,6 +23,19 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 export const MenuJumbo = ({ homepage }) => {
+  const MyComponent = styled('button')({
+    background: "linear-gradient(45deg, #d42a4f 30%, rgba(129,52,0,255) 90%)",
+    borderRadius: 3,
+    border: 0,
+    color: "white",
+    height: 48,
+    padding: "0 30px",
+    boxShadow: "0 3px 5px 2px rgba(255, 105, 135, .3)",
+    textDecoration: "none",
+    textAlign: "center", 
+    cursor: "pointer"
+  });
+  
   return (
     <div className={styles.menu}>
       <CssBaseline />
@@ -34,6 +47,7 @@ export const MenuJumbo = ({ homepage }) => {
             src={homepage.menuIMG}
             layout="fill"
             objectFit="contain"
+            className={styles.img}
           />
         </div>
 
@@ -42,6 +56,8 @@ export const MenuJumbo = ({ homepage }) => {
             <h1
               style={{
                 fontFamily: "Bebas Neue",
+                fontSize: "3rem",
+                marginBottom: "0"
               }}
             >
               {homepage.menuCardTitle}
@@ -49,13 +65,13 @@ export const MenuJumbo = ({ homepage }) => {
             <p
               style={{
                 fontFamily: "Bebas Neue",
+                fontSize: "2rem", 
+                marginTop: "0"
               }}
             >
               {homepage.menuCardDesc}
             </p>
-            <Button variant="outlined" startIcon={<DeleteIcon />}>
-              Check out the Menu
-            </Button>
+            <MyComponent>Checkout the Menu</MyComponent>
           </div>
         </div>
       </div>

@@ -25,12 +25,12 @@ import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
 import SettingsSystemDaydreamOutlinedIcon from "@mui/icons-material/SettingsSystemDaydreamOutlined";
 import PsychologyOutlinedIcon from "@mui/icons-material/PsychologyOutlined";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
+import Link from 'next/link';
+
   export default function Leftbar() {
     return (
       // 
       <div className={styles.sidebar}>
-        <div className={styles.top}><span className={styles.logo}>Fat Pig BBQ</span></div>
-        <hr style={{height: "0", border: "0.5px solid rgb(230,227,227)"}}/>
         <div className={styles.center}>
           <ul className={styles.List}>
             <p className={styles.title}>MAIN</p>
@@ -40,12 +40,31 @@ import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined
             </li>
             <p className="title">LISTS</p>
             <li className={styles.li}>
-              <PersonOutlineIcon className={styles.icon} />
-              <span className={styles.span}>Users</span>
+            <Link href="/profile/modifyUsers" style={{ textDecoration: "none" }}>
+                <a style={{ textDecoration: "none" }}>
+                <PersonOutlineIcon className={styles.icon} />
+                <span className={styles.span}>Users</span>
+                </a>
+                
+              </Link>
+              
             </li>
             <li className={styles.li}>
-            <CreditCardIcon className={styles.icon} />
-              <span className={styles.span}>Orders</span>
+              <Link href="/profile/modifyMenu" style={{ textDecoration: "none" }}>
+                <a style={{ textDecoration: "none" }}>
+                  <PersonOutlineIcon className={styles.icon} />
+                  <span className={styles.span}>Menu</span>
+                </a>
+                
+              </Link>
+            </li>
+            <li className={styles.li}>
+            <Link href="/profile/modifyHomepage" style={{ textDecoration: "none" }}>
+                <a style={{ textDecoration: "none" }}>
+                <CreditCardIcon className={styles.icon} />
+                <span className={styles.span}>Homepage</span>
+                </a>
+            </Link>
             </li>
             <li className={styles.li}>
             <LocalShippingIcon className={styles.icon} />
@@ -65,7 +84,6 @@ import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined
             </li>
           </ul>
         </div>
-        <div className={styles.bottom}>color options</div>
       </div>
     );
   }

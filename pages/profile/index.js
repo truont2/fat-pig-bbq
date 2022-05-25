@@ -3,22 +3,21 @@ import Update from "../../components/Update";
 import profileLayout from "../../components/layout/profileLayout";
 import styles from '../../styles/Profile.module.css'
 import ProfileLayout from '../../components/layout/profileLayout'
+import {useRouter} from 'next/router';
 
 const ProfilePage = () => {
+  const currentUser = false;
+  const router = useRouter();
+
   return (
     <>
-      {/* <div className={styles.container}>
+              {/* <div className={styles.container}>
         <Leftbar />
         <div className={styles.homeContainer}>
           testing
         </div><h1>
       </div> */}
-      <h1>index</h1>
-      <h1>index</h1>
-      <h1>index</h1>
-      <h1>index</h1>
-      <h1>index</h1>
-
+      <h1>Dashboard</h1>
     </>
   );
 };

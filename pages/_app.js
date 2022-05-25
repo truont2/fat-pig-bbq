@@ -54,21 +54,6 @@ export default function MyApp(props) {
   );
 }
 
-// function MyApp({ Component, pageProps }) {
-
-//   const Layout = Component.Layout || EmptyLayout;
-//   return (
-//     <Provider store={store}>
-//       <CssBaseline />
-//       <LayoutDefault>
-//       <Layout>
-//         <Component {...pageProps} />
-//       </Layout>
-//       </LayoutDefault>
-//     </Provider>
-//   );
-// }
-
 const EmptyLayout = ({ children }) => <>{children}</>;
 
 // export default MyApp;
