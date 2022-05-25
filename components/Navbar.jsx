@@ -107,6 +107,7 @@ export default function ResponsiveAppBar({user}) {
                     color: "whitesmoke",
                     fontSize: "25px",
                   }}
+                  className={styles.navLink}
                 >
                   {item.name}
                 </Link>
@@ -139,6 +140,7 @@ export default function ResponsiveAppBar({user}) {
                     color: "whitesmoke",
                     fontSize: "25px",
                   }}
+                  className={styles.navLink}
                 >
                   Profile
                 </Link> :
@@ -153,6 +155,7 @@ export default function ResponsiveAppBar({user}) {
                   color: "whitesmoke",
                   fontSize: "25px",
                 }}
+                className={styles.navLink}
               >
                 Login
               </Link>
@@ -166,6 +169,7 @@ export default function ResponsiveAppBar({user}) {
                   color: "whitesmoke",
                   fontSize: "25px",
                 }}
+                className={styles.navLink}
               >
                 Sign Up
               </Link>

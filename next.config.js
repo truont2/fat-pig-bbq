@@ -4,5 +4,6 @@ module.exports = {
   env: {
     MAPBOX_ACCESS_TOKEN:
       "[MAPBOX_TOKEN_HERE]",
+    API_KEY: process.env.API_KEY,
   }
 };

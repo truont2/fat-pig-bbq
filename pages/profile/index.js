@@ -17,11 +17,7 @@ const ProfilePage = () => {
           testing
         </div><h1>
       </div> */}
-      <h1>index</h1>
-      <h1>index</h1>
-      <h1>index</h1>
-      <h1>index</h1>
-      <h1>index</h1>
+      <h1>Dashboard</h1>
     </>
   );
 };
