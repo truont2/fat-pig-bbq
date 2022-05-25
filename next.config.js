@@ -4,5 +4,5 @@ module.exports = {
   env: {
     MAPBOX_ACCESS_TOKEN:
       "[MAPBOX_TOKEN_HERE]",
-  },
+  }
 };
