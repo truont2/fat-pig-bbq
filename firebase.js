@@ -7,12 +7,12 @@ import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
   apiKey: process.env.API_KEY,
-  authDomain: "fat-pig-bbq-10f61.firebaseapp.com",
-  projectId: "fat-pig-bbq-10f61",
-  storageBucket: "fat-pig-bbq-10f61.appspot.com",
-  messagingSenderId: "545197357705",
-  appId: "1:545197357705:web:1047fb3cbc1feec4c4a458",
-  measurementId: "G-G1RKZYYLFT"
+  authDomain: process.env.AUTH_DOMAIN,
+  projectId: process.env.PROJECT_ID,
+  storageBucket: process.env.STORAGE_ID,
+  messagingSenderId: process.env.MESSAGING_ID,
+  appId: process.env.APP_ID,
+  measurementId: process.env.MEASUREMENT_ID
 };
 
 // Initialize Firebase
