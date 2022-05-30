@@ -23,6 +23,7 @@ import Typography from "@mui/material/Typography";
 import axios from "axios";
 import Table from "../../../components/Table";
 import { set } from "mongoose";
+import Datatable from "../../../components/DataTable";
 
 export default function modifyMenu({ menuItems }) {
   const [file, setFile] = useState("");
@@ -76,8 +77,6 @@ export default function modifyMenu({ menuItems }) {
         ...data,
         timeStamp: serverTimestamp(),
       });
-
-      console.log(res.id);
     } catch (err) {
       console.log(err);
     }
@@ -86,9 +85,9 @@ export default function modifyMenu({ menuItems }) {
   const handleInput = (e) => {
     const id = e.target.id;
     const value = e.target.value;
-
     setData({ ...data, [id]: value });
   }
+
   return (
     <div className={styles.newContainer}>
       <div className={styles.top}>
@@ -165,7 +164,8 @@ export default function modifyMenu({ menuItems }) {
       </div>
       <div className={styles.listContainer}>
           <div className={styles.listTitle}><h1 className={styles.h1}>Current Items</h1></div>
-          <Table menuItems={menuItems}/>
+          {/* <Table menuItems={menuItems}/> */}
+          <Datatable menuItems={menuItems}/>
       </div>
     </div>
   );
@@ -176,6 +176,7 @@ modifyMenu.Layout = ProfileLayout;
 export const getServerSideProps = async () => {
   // currently using mongo ATlas but switching to firebase -> more secure 
   const res = await axios.get("http://localhost:3000/api/menu");
+  console.log(res.data, "testing backend firebase request");
   return {
     props: {
       menuItems: res.data,
