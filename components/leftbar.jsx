@@ -31,12 +31,18 @@ import Link from 'next/link';
     return (
       // 
       <div className={styles.sidebar}>
-        <div className={styles.center}>
+        <div className={styles.center}> 
           <ul className={styles.List}>
             <p className={styles.title}>MAIN</p>
             <li className={styles.li}>
-              <DashboardIcon className={styles.icon} />
-              <span className={styles.span}>Dashboard</span>
+            <Link href="/profile" style={{ textDecoration: "none" }}>
+                <a style={{ textDecoration: "none" }}>
+                <DashboardIcon className={styles.icon} />
+              <span className={styles.span}>Homepage</span>
+                </a>
+                
+              </Link>
+              
             </li>
             <p className="title">LISTS</p>
             <li className={styles.li}>
