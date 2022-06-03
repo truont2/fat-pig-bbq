@@ -12,6 +12,7 @@ import React from "react";
 import styles from "../styles/MenuCard.module.css";
 import { styled } from "@mui/material/styles";
 import DeleteIcon from "@mui/icons-material/Delete";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 import Image from "next/image";
 const Item = styled(Paper)(({ theme }) => ({
@@ -23,25 +24,31 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 export const MenuJumbo = ({ homepage }) => {
-  const MyComponent = styled('button')({
-    background: "linear-gradient(45deg, #d42a4f 30%, rgba(129,52,0,255) 90%)",
+
+  const theme = createTheme({
+    typography: {
+      fontFamily: ["Bebas Neue"].join(","),
+    },
+  });
+
+  const MyComponent = styled("button")({
+    background: "linear-gradient(45deg, #a06874 30%, rgba(129,52,0,255) 90%)",
     borderRadius: 3,
     border: 0,
     color: "white",
     height: 48,
     padding: "0 30px",
-    boxShadow: "0 3px 5px 2px rgba(255, 105, 135, .3)",
+    boxShadow: "0 3px 5px 2px #180a0d4c",
     textDecoration: "none",
-    textAlign: "center", 
-    cursor: "pointer"
+    textAlign: "center",
+    cursor: "pointer",
   });
-  
+
   return (
     <div className={styles.menu}>
       <CssBaseline />
-      <div className={styles.container}>
+      {/* <div className={styles.container}>
         <div className={styles.left}>
-          {/* <img src={homepage.jumboIMG} className={styles.img}/> */}
           <Image
             alt="ribs"
             src={homepage.menuIMG}
@@ -73,6 +80,30 @@ export const MenuJumbo = ({ homepage }) => {
             </p>
             <MyComponent>Checkout the Menu</MyComponent>
           </div>
+        </div>
+      </div> */}
+      <div className={styles.content}>
+        <div className={styles.left1}>
+          <Image
+            alt="ribs"
+            src={homepage.menuIMG}
+            layout="fill"
+            objectFit="contain"
+            className={styles.img}
+          />
+        </div>
+        <div className={styles.right1}>
+          <ThemeProvider theme={theme}>
+            <Typography align="left" variant="h1">
+              Checkout out our Menu
+            </Typography>
+            <Typography align="left" variant="h4">
+              The best Ribs, Chicken, and Pulled Port
+            </Typography>
+          </ThemeProvider>
+          <a href="/menu" target={"_blank"} rel={"noreferrer"} style={{textDecoration:'none'}}>
+              <MyComponent className={styles.button}>Order here</MyComponent>
+            </a>
         </div>
       </div>
     </div>

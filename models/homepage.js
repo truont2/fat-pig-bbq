@@ -33,13 +33,16 @@ const HomepageSchema = new mongoose.Schema({
     },
     orderDesc: {
         type: [{
+            name: { type: String, required: true },
             text: { type: String, required: true }
             }], 
         required: true
     },
     hours: {
         type: [{
-                text: { type: String, required: true }
+                day: { type: String, required: true },
+                start: { type: String, required: true }, 
+                end: { type: String, required: true }
                 }], 
         required: true
     },
