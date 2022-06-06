@@ -324,6 +324,8 @@ const ProfilePage = ({ homepage }) => {
                     value={day.end}
                     onChange={handleInput}
                   />
+                  <input type="time" id="appt" name="appt"
+       min="09:00" max="18:00" required />
                 </div>
               );
             })}
