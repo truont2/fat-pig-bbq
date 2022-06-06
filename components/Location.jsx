@@ -5,18 +5,31 @@ import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
 import dynamic from "next/dynamic";
 import styles from "../styles/Location.module.css";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import Typography from "@mui/material/Typography";
 
 //TODO: Render map and Hours of Op in the grid below.
 export default function Location() {
   const MapWithNoSSR = dynamic(() => import("../components/Map"), {
     ssr: false,
   });
+  const theme = createTheme({
+    typography: {
+      fontFamily: ["Bebas Neue"].join(","),
+    },
+  });
 
   return (
     <div className={styles.location}>
-      <h2>Location</h2>
+      <ThemeProvider theme={theme}>
+            <Typography align="center" variant="h1">
+              Location
+            </Typography>
+          
       <MapWithNoSSR />
-      <h2>Hours</h2>
+      <Typography align="center" variant="h3">
+              Hours
+            </Typography>
       <ul className={styles.hours}>
         <li className={styles.li}>Sunday: Closed</li>
         <li className={styles.li}>Monday-Thursday: 11am-7:30pm</li>
@@ -35,6 +48,7 @@ export default function Location() {
           
         </Grid>
       </Grid> */}
+      </ThemeProvider>
     </div>
   );
 }

@@ -19,19 +19,11 @@ import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 const ProfilePage = ({ homepage }) => {
   const [file1, setFile1] = useState("");
   const [file2, setFile2] = useState("");
-  const [orderOption, setOrderOption] = useState(
-    {
-      name: "", 
-      desc:""
-    }
-  )
-  const [deliveryServices, setDeliveryServices] = useState([]);
-  
-  const [data, setData] = useState({});
+  const [deliveryServices, setDeliveryServices] = useState(homepage.orderDesc);
 
+  const [data, setData] = useState({});
   const [per, setPerc] = useState(null);
-  const [alert, setAlert] = useState({text: "", status:null});
-  console.log(homepage, "homepage info");
+  const [alert, setAlert] = useState({ text: "", status: null });
 
   useEffect(() => {
     const uploadFile = () => {
@@ -109,7 +101,6 @@ const ProfilePage = ({ homepage }) => {
     file2 && uploadFile();
   }, [file2]);
 
-
   const handleAdd = async (e) => {
     e.preventDefault();
     try {
@@ -126,39 +117,52 @@ const ProfilePage = ({ homepage }) => {
     }
   };
 
+  // works on most form items
   const handleInput = (e) => {
     const id = e.target.id;
     const value = e.target.value;
     setData({ ...data, [id]: value });
   };
 
-  const handleOrderOption = (e) => {
-    setDeliveryServices([...deliveryServices, orderOption])
+  const handleOrderOption = (e, index) => {
+    const field = e.target.id;
+    const value = e.target.value;
+    
+    // 1. Make a shallow copy of the items
+    let items = {...deliveryServices};
+    // 2. Make a shallow copy of the item you want to mutate
+    let item = {...items[index]};
+    console.log(item);
+    // 3. Replace the property you're intested in
+    item[field] = value;
+    // 4. Put it back into our array. N.B. we *are* mutating the array here, but that's why we made a copy first
+    items[index] = item;
+    // 5. Set the state to our new copy
+    setDeliveryServices(items);
+    setData({...data, ["orderDesc"]: items})
+    console.log(data, "form data");
+
+  };
+
+  const handleNestedInput = (e) => {
+    // find what item in the array has the same id then update the content
+    console.log("testing");
   }
 
   return (
     <div className={styles.newContainer}>
       <div className={styles.top}>
         <h1 className={styles.h1}>Homepage</h1>
+        <h6 className={styles.h1}>{homepage._id}</h6>
       </div>
       <div className={styles.bottom}>
         <h1 className={styles.h1}>Edit Homepage</h1>
-        {/* <div className={styles.left}>
-          <img
-            className={styles.img}
-            src={
-              file
-                ? URL.createObjectURL(file)
-                : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
-            }
-          alt="image placer"  
-          />
-        </div> */}
         <div className={styles.right}>
           <form onSubmit={handleAdd} className={styles.form}>
             <div className={styles.formInput}>
               <label htmlFor="Jumbofile" className={styles.label}>
-                Jumbo Image: <DriveFolderUploadOutlinedIcon className={styles.icon} />
+                Jumbo Image:{" "}
+                <DriveFolderUploadOutlinedIcon className={styles.icon} />
               </label>
               <input
                 type="file"
@@ -180,7 +184,8 @@ const ProfilePage = ({ homepage }) => {
 
             <div className={styles.formInput}>
               <label htmlFor="Menufile" className={styles.label}>
-                Menu Image: <DriveFolderUploadOutlinedIcon className={styles.icon} />
+                Menu Image:{" "}
+                <DriveFolderUploadOutlinedIcon className={styles.icon} />
               </label>
               <input
                 type="file"
@@ -241,6 +246,7 @@ const ProfilePage = ({ homepage }) => {
                 onChange={handleInput}
               />
             </div>
+
             <div className={styles.formInput} key="8">
               <label className={styles.label}>Menu Card Desc</label>
               <input
@@ -251,83 +257,36 @@ const ProfilePage = ({ homepage }) => {
                 onChange={handleInput}
               />
             </div>
-            <div className={styles.formInput} key="9">
-              <label className={styles.label}>Order Method 1</label>
-              <input
-                id="name"
-                type="text"
-                placeholder="Description"
-                className={styles.input}
-                onChange={(e) => {
-                  setOrderOption({...alert, text: e.target.value})
-                }}
-              />
-              <input
-                id="Order1"
-                type="text"
-                placeholder="Description"
-                className={styles.input}
-                onChange={handleInput}
-              />
-            </div>
-            <div className={styles.formInput} key="10">
-            <label className={styles.label}>Order Method 2</label>
-            <input
-                id="name"
-                type="text"
-                placeholder="Description"
-                className={styles.input}
-                onChange={handleInput}
-              />
-              <input
-                id="Order2"
-                type="text"
-                placeholder="Description"
-                className={styles.input}
-                onChange={handleInput}
-              />
-            </div>
-            <div className={styles.formInput} key="11">
-            <label className={styles.label}>Order Method 3</label>
-            <input
-                id="name"
-                type="text"
-                placeholder="Description"
-                className={styles.input}
-                onChange={handleInput}
-              />
-              <input
-                id="Order3"
-                type="text"
-                placeholder="Description"
-                className={styles.input}
-                onChange={handleInput}
-              />
-            </div>
-            <div className={styles.formInput} key="12">
-            <label className={styles.label}>Order Method 4</label>
-            <input
-                id="name"
-                type="text"
-                placeholder="Description"
-                className={styles.input}
-                onChange={handleInput}
-              />
-              <input
-                id="Order4"
-                type="text"
-                placeholder="Description"
-                className={styles.input}
-                onChange={handleInput}
-              />
-            </div>
+
+            {homepage.orderDesc.map((order, index) => {
+              return (
+                <div className={styles.formInput} key={order._id}>
+                  <label className={styles.label}>{order.name}</label>
+                  <input
+                    id="name"
+                    type="text"
+                    placeholder={order.name}
+                    className={styles.input}
+                    onChange={(e) => handleOrderOption(e, index)}
+                  />
+                  <input
+                    id="Order1"
+                    type="text"
+                    placeholder={order.text}
+                    className={styles.input}
+                    onChange={(e) => handleOrderOption(e, index)}
+                  />
+                </div>
+              );
+            })}
+
             <div className={styles.formInput} key="13">
               <input
                 className={styles.checkbox}
                 type="checkbox"
                 id="Alert"
                 onChange={(e) => {
-                  setAlert({...alert, status: e.target.checked})
+                  setAlert({ ...alert, status: e.target.checked });
                 }}
               />
               <label htmlFor="spicy">Set Alert</label>
@@ -340,41 +299,36 @@ const ProfilePage = ({ homepage }) => {
                 placeholder="Description"
                 className={styles.input}
                 onChange={(e) => {
-                  setAlert({...alert, text: e.target.value})
+                  setAlert({ ...alert, text: e.target.value });
                 }}
               />
             </div>
             {/* if you want to put in an array of values then I think you need to save to a state thats a array the save thtat the database */}
-            <div className={styles.formInput} key="15">
-              <label className={styles.label}>Sunday</label>
-              <input
-                id="SundayTime"
-                type="text"
-                placeholder="Description"
-                className={styles.input}
-                onChange={handleInput}
-              />
-            </div>
-            <div className={styles.formInput} key="16">
-              <label className={styles.label}>Week Day hours</label>
-              <input
-                id="MenuCardDesc"
-                type="text"
-                placeholder="Description"
-                className={styles.input}
-                onChange={handleInput}
-              />
-            </div>
-            <div className={styles.formInput} key="17">
-              <label className={styles.label}>Saturday</label>
-              <input
-                id="MenuCardDesc"
-                type="text"
-                placeholder="Description"
-                className={styles.input}
-                onChange={handleInput}
-              />
-            </div>
+            {homepage.hours.map((day, index) => {
+              return (
+                <div className={styles.formInput} key={day._id}>
+                  <label className={styles.label}>{day.day}</label>
+                  <input
+                    id={day._id}
+                    type="text"
+                    placeholder="Description"
+                    className={styles.input}
+                    value={day.start}
+                    onChange={handleInput}
+                  />
+                  <input
+                    id={day._id}
+                    type="text"
+                    placeholder="Description"
+                    className={styles.input}
+                    value={day.end}
+                    onChange={handleInput}
+                  />
+                  <input type="time" id="appt" name="appt"
+       min="09:00" max="18:00" required />
+                </div>
+              );
+            })}
             {/* depending on the number of order options, you can change the description for each of them so an input form will show for each on and modify the text in that certain card position? */}
 
             <button
@@ -387,10 +341,10 @@ const ProfilePage = ({ homepage }) => {
           </form>
         </div>
       </div>
-      {console.log(data, 'form data')};
     </div>
   );
 };
+
 ProfilePage.Layout = ProfileLayout;
 
 export const getServerSideProps = async () => {
@@ -398,7 +352,7 @@ export const getServerSideProps = async () => {
   const res = await axios.get("http://localhost:3000/api/homepage");
   return {
     props: {
-      homepage: res.data,
+      homepage: res.data[0],
     },
   };
 };
@@ -430,7 +384,6 @@ export default ProfilePage;
 //   const [data, setData] = useState({});
 //   const [per, setPerc] = useState(null);
 //   console.log(homepage, "homepage info");
-
 
 //     const uploadFile = (file) => {
 //       const name = new Date().getTime() + file.name;
@@ -466,7 +419,6 @@ export default ProfilePage;
 //         }
 //       );
 //     };
-
 
 //   const handleAdd = async (e) => {
 //     e.preventDefault();
@@ -504,7 +456,7 @@ export default ProfilePage;
 //                 ? URL.createObjectURL(file)
 //                 : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
 //             }
-//           alt="image placer"  
+//           alt="image placer"
 //           />
 //         </div> */}
 //         <div className={styles.right}>
