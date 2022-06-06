@@ -3,6 +3,8 @@ import React from "react";
 import { AiOutlineMail } from "react-icons/ai";
 import { useRef } from "react";
 import emailjs from "emailjs-com";
+import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
+import EmailIcon from '@mui/icons-material/Email';
 import { style } from "@mui/system";
 
 export default function Contact() {
@@ -31,24 +33,25 @@ export default function Contact() {
   };
   return (
     <container className={styles.contactForm}>
-      <section id="contact">
+      {/* <section id="contact">
         <h2>Contact Us</h2>
         <div className="container contact__container">
           <div className="contact__options">
             <article className="contact__option">
               <AiOutlineMail className="contact__option-icon" />
               <h4>Email</h4>
-              <h5>fatpigbbq@gmail.com</h5>
-              <a href="mailto:fatpigbbq@gmail.com">Send a message</a>
+              <p>fatpigbbq@gmail.com</p>
+              <h4>Phone Number</h4>
+              <p>(425) 361-7640</p>
             </article>
           </div>
           {/* End of contact options */}
-          <form ref={form} onSubmit={sendEmail}>
+          {/* <form ref={form} onSubmit={sendEmail} className="form-input">
             <input type="text" name="name" placeholder="Your Name" required />
             <input
               type="email"
               name="email"
-              placeholder="Your Email"
+              placeholder="Your Email Address"
               required
             />
             <textarea
@@ -62,7 +65,40 @@ export default function Contact() {
             </button>
           </form>
         </div>
-      </section>
+      </section> */}
+      <h1 className={styles.contactHeader}>Contact Information</h1>
+      <div className={styles.contactInfo}>
+        <EmailIcon/>
+        <p>fatpigbbq@gmail.com</p>
+        <LocalPhoneIcon/>
+        <p>(425) 361-7640</p>
+      </div>
+      <div className={styles.contactForm}>
+        <form className={styles.contactForm} ref={form} onSubmit={sendEmail}>
+          <input 
+            type="name" 
+            name="name" 
+            placeholder="Your Name"
+            required
+          />
+          <input 
+            type="email"
+            name="email"
+            placeholder="Your Email Address"
+            required
+          />
+          <textarea
+              name="message"
+              rows="8"
+              placeholder="Your Message"
+              cols="50"
+              required
+            ></textarea>
+          <button type="submit" className="btn btn-primary">
+            Send Message
+          </button>
+        </form>
+      </div>
     </container>
   );
 }

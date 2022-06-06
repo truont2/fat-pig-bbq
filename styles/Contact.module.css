@@ -1,4 +1,4 @@
-.container.contact__container {
+/* .container.contact__container {
   width: 58%;
   display: grid;
   grid-template-columns: 30% 58%;
@@ -23,9 +23,9 @@
 
 /* Form */
 
-.form {
+/* .form {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 1.2rem;
 }
 
@@ -39,6 +39,7 @@
   resize: none;
   color: var(--color-white);
 }
+ */
 
 .contactForm {
   display: flex;
@@ -46,8 +47,16 @@
   align-items: center;
   flex-direction: column;
   gap: 1.2rem;
-  padding: 1.2rem;
   border-radius: 1.2rem;
   text-align: center;
   border: 1px solid transparent;
+}
+
+.contactHeader{
+  text-align: center;
+  margin-top: 100px;
+}
+
+.contactInfo{
+  display: flex;
 }
