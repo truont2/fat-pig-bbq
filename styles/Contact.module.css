@@ -60,3 +60,10 @@
 .contactInfo{
   display: flex;
 }
+
+.contactEmail{
+  margin-right: 10px;
+}
+.contactPhone{
+  margin-left: 10px;
+}

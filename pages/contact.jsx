@@ -68,10 +68,14 @@ export default function Contact() {
       </section> */}
       <h1 className={styles.contactHeader}>Contact Information</h1>
       <div className={styles.contactInfo}>
-        <EmailIcon/>
-        <p>fatpigbbq@gmail.com</p>
-        <LocalPhoneIcon/>
-        <p>(425) 361-7640</p>
+        <div className={styles.contactEmail}>
+          <EmailIcon/>
+          <p>fatpigbbq@gmail.com</p>
+        </div>
+        <div className={styles.contactPhone}>
+          <LocalPhoneIcon/>
+          <p>(425) 361-7640</p>
+        </div>
       </div>
       <div className={styles.contactForm}>
         <form className={styles.contactForm} ref={form} onSubmit={sendEmail}>
