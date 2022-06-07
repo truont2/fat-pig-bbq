@@ -28,7 +28,7 @@ export default async function handler(req, res) {
     //   return res.status(401).json("Not authenticated!")
     // }
     try {
-      const home = await Homepage.findByIdAndUpdate(id, req.body, {
+      const home = await Homepage.findByIdAndUpdate(req.body._id, req.body, {
         new: true,
       });
       res.status(201).json(home);
@@ -46,6 +46,7 @@ export default async function handler(req, res) {
       const home = await Homepage.create(req.body);
       res.status(201).json(home);
     } catch (err) {
+      console.log(err);
       res.status(500).json(err);
     }
   }
