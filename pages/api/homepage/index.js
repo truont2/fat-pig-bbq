@@ -1,6 +1,8 @@
 import { ConstructionOutlined } from "@mui/icons-material";
 import dbConnect from "../../../lib/dbConnect";
 import Homepage from "../../../models/Homepage";
+import { db } from '../../../firebase';
+import { collection, getDoc, deleteDoc, doc, onSnapshot, setDoc, serverTimestamp, limit  } from "firebase/firestore";
 
 export default async function handler(req, res) {
   const {
@@ -14,8 +16,9 @@ export default async function handler(req, res) {
 
   if (method === "GET") {
     try {
-      // const items = await Homepage.find().sort({created_at: -1}).limit(1);
       const items = await Homepage.find().sort({created_at: -1}).limit(1);
+      // const fire = await getDoc(doc(db, "Homepage", "homepage"));
+      // res.status(200).json(fire.data());
       res.status(200).json(items);
     } catch (err) {
       console.log(err);
@@ -43,7 +46,11 @@ export default async function handler(req, res) {
     //   return res.status(401).json("Not authenticated!")
     // }
     try {
-      const home = await Homepage.create(req.body);
+      // const home = await Homepage.create(req.body);
+      const home = await setDoc(doc(db, "Homepage", "homepage"), {
+        ...req.body,
+        timeStamp: serverTimestamp(),
+      });
       res.status(201).json(home);
     } catch (err) {
       console.log(err);

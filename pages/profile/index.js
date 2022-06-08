@@ -111,7 +111,7 @@ const ProfilePage = ({ homepage }) => {
       //   timeStamp: serverTimestamp(),
       // });
       // put request works now so need to convert to firebase
-      const res = await axios.put("http://localhost:3000/api/homepage", data);
+      const res = await axios.post("http://localhost:3000/api/homepage", data);
       if (res.status === 201) {
         console.log("put qorked");
       }
@@ -128,7 +128,6 @@ const ProfilePage = ({ homepage }) => {
     setData({ ...data, [id]: value });
     
   };
-  console.log(data, "data caning");
   const handleOrderOption = (e, index) => {
     const field = e.target.id;
     const value = e.target.value;
@@ -137,7 +136,6 @@ const ProfilePage = ({ homepage }) => {
     let items = { ...deliveryServices };
     // 2. Make a shallow copy of the item you want to mutate
     let item = { ...items[index] };
-    console.log(item);
     // 3. Replace the property you're intested in
     item[field] = value;
     // 4. Put it back into our array. N.B. we *are* mutating the array here, but that's why we made a copy first

@@ -32,8 +32,8 @@ export default function Location() {
             </Typography>
       <ul className={styles.hours}>
         <li className={styles.li}>Sunday: Closed</li>
-        <li className={styles.li}>Monday-Thursday: 11am-7:30pm</li>
-        <li className={styles.li}>Friday-Saturday: 11am-8pm</li>
+        <li className={styles.li}>Monday–Thursday: 11am–7:30pm</li>
+        <li className={styles.li}>Friday–Saturday: 11am–8pm</li>
       </ul>
       {/* <Grid
       container
