@@ -1,7 +1,7 @@
 import dbConnect from "../../../lib/dbConnect";
 import Meals from "../../../models/Meals";
 import { db } from '../../../firebase';
-import { collection, getDocs, deleteDoc, doc, onSnapshot } from "firebase/firestore";
+import { collection, getDocs, deleteDoc, doc, onSnapshot, setDoc , serverTimestamp,} from "firebase/firestore";
 
 export default async function handler(req, res) {
   const { method, cookies } = req;

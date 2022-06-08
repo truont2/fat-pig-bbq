@@ -21,10 +21,9 @@ const ProfilePage = ({ homepage }) => {
   const [file2, setFile2] = useState("");
   const [deliveryServices, setDeliveryServices] = useState(homepage.orderDesc);
 
-  const [data, setData] = useState({});
+  const [data, setData] = useState(homepage);
   const [per, setPerc] = useState(null);
-  const [alert, setAlert] = useState({ text: "", status: null });
-
+  const [alert, setAlert] = useState(homepage.alert);
   useEffect(() => {
     const uploadFile = () => {
       const name = new Date().getTime() + file1.name;
@@ -103,15 +102,20 @@ const ProfilePage = ({ homepage }) => {
 
   const handleAdd = async (e) => {
     e.preventDefault();
+    console.log(data);
     try {
       // creates a new collection named cities with document id LA
       setData({ ...data, alert: alert });
-      const res = await setDoc(doc(db, "Menu", data.Name), {
-        ...data,
-        timeStamp: serverTimestamp(),
-      });
-
-      console.log(res);
+      // const res = await setDoc(doc(db, "Menu", data.Name), {
+      //   ...data,
+      //   timeStamp: serverTimestamp(),
+      // });
+      // put request works now so need to convert to firebase
+      const res = await axios.post("http://localhost:3000/api/homepage", data);
+      if (res.status === 201) {
+        console.log("put qorked");
+      }
+      console.log(res.data);
     } catch (err) {
       console.log(err);
     }
@@ -122,32 +126,30 @@ const ProfilePage = ({ homepage }) => {
     const id = e.target.id;
     const value = e.target.value;
     setData({ ...data, [id]: value });
+    
   };
-
   const handleOrderOption = (e, index) => {
     const field = e.target.id;
     const value = e.target.value;
-    
+
     // 1. Make a shallow copy of the items
-    let items = {...deliveryServices};
+    let items = { ...deliveryServices };
     // 2. Make a shallow copy of the item you want to mutate
-    let item = {...items[index]};
-    console.log(item);
+    let item = { ...items[index] };
     // 3. Replace the property you're intested in
     item[field] = value;
     // 4. Put it back into our array. N.B. we *are* mutating the array here, but that's why we made a copy first
     items[index] = item;
     // 5. Set the state to our new copy
     setDeliveryServices(items);
-    setData({...data, ["orderDesc"]: items})
+    setData({ ...data, ["orderDesc"]: items });
     console.log(data, "form data");
-
   };
 
   const handleNestedInput = (e) => {
     // find what item in the array has the same id then update the content
     console.log("testing");
-  }
+  };
 
   return (
     <div className={styles.newContainer}>
@@ -208,9 +210,9 @@ const ProfilePage = ({ homepage }) => {
             <div className={styles.formInput} key="1">
               <label className={styles.label}>Title</label>
               <input
-                id="JumboHeader"
+                id="title"
                 type="text"
-                placeholder="Jumbo Title"
+                placeholder={homepage.title}
                 className={styles.input}
                 onChange={handleInput}
               />
@@ -218,9 +220,9 @@ const ProfilePage = ({ homepage }) => {
             <div className={styles.formInput} key="2">
               <label className={styles.label}>Desc</label>
               <input
-                id="JumboDescription"
+                id="desc"
                 type="text"
-                placeholder="Description"
+                placeholder={homepage.desc}
                 className={styles.input}
                 onChange={handleInput}
               />
@@ -228,9 +230,9 @@ const ProfilePage = ({ homepage }) => {
             <div className={styles.formInput} key="3">
               <label className={styles.label}>Font</label>
               <input
-                id="PageFont"
+                id="font"
                 type="text"
-                placeholder="Font"
+                placeholder={homepage.font}
                 className={styles.input}
                 onChange={handleInput}
               />
@@ -239,9 +241,9 @@ const ProfilePage = ({ homepage }) => {
             <div className={styles.formInput} key="7">
               <label className={styles.label}>Menu Card Desc</label>
               <input
-                id="MenuCardHeader"
+                id="menuCardTitle"
                 type="text"
-                placeholder="Menu Card Header"
+                placeholder={homepage.menuCardTitle}
                 className={styles.input}
                 onChange={handleInput}
               />
@@ -252,7 +254,7 @@ const ProfilePage = ({ homepage }) => {
               <input
                 id="MenuCardDesc"
                 type="text"
-                placeholder="Menu Card Description"
+                placeholder={homepage.menuCardDesc}
                 className={styles.input}
                 onChange={handleInput}
               />
@@ -309,23 +311,20 @@ const ProfilePage = ({ homepage }) => {
                 <div className={styles.formInput} key={day._id}>
                   <label className={styles.label}>{day.day}</label>
                   <input
-                    id={day._id}
+                    id="start"
                     type="text"
-                    placeholder="Description"
                     className={styles.input}
                     value={day.start}
-                    onChange={handleInput}
+                    onChange={(e) => handleHours(e, index)}
                   />
                   <input
-                    id={day._id}
+                    id="end"
                     type="text"
-                    placeholder="Description"
                     className={styles.input}
                     value={day.end}
-                    onChange={handleInput}
+                    onChange={(e) => handleHours(e, index)}
                   />
-                  <input type="time" id="appt" name="appt"
-       min="09:00" max="18:00" required />
+
                 </div>
               );
             })}

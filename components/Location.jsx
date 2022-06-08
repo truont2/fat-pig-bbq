@@ -22,20 +22,23 @@ export default function Location() {
   return (
     <div className={styles.location}>
       <ThemeProvider theme={theme}>
-            <Typography align="center" variant="h1">
-              Location
-            </Typography>
-          
-      <MapWithNoSSR />
-      <Typography align="center" variant="h3">
-              Hours
-            </Typography>
-      <ul className={styles.hours}>
-        <li className={styles.li}>Sunday: Closed</li>
-        <li className={styles.li}>Monday-Thursday: 11am-7:30pm</li>
-        <li className={styles.li}>Friday-Saturday: 11am-8pm</li>
-      </ul>
-      {/* <Grid
+        <Typography align="center" variant="h1">
+          Location
+        </Typography>
+        <div>
+          <h4>7533 Olympic View Dr, Edmonds, WA 98026</h4>
+        </div>
+
+        <MapWithNoSSR />
+        <Typography align="center" variant="h3">
+          Hours
+        </Typography>
+        <ul className={styles.hours}>
+          <li className={styles.li}>Sunday: Closed</li>
+          <li className={styles.li}>Monday–Thursday: 11am–7:30pm</li>
+          <li className={styles.li}>Friday–Saturday: 11am–8pm</li>
+        </ul>
+        {/* <Grid
       container
         rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}
       >
