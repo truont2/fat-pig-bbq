@@ -65,18 +65,6 @@ import Link from 'next/link';
               </Link>
             </li>
             <li className={styles.li}>
-            <Link href="/profile/modifyHomepage" style={{ textDecoration: "none" }}>
-                <a style={{ textDecoration: "none" }}>
-                <CreditCardIcon className={styles.icon} />
-                <span className={styles.span}>Homepage</span>
-                </a>
-            </Link>
-            </li>
-            <li className={styles.li}>
-            <LocalShippingIcon className={styles.icon} />
-              <span className={styles.span}>Delivery</span>
-            </li>
-            <li className={styles.li}>
             <SettingsApplicationsIcon className={styles.icon} />
             <span className={styles.span}>Settings</span>
             </li>
