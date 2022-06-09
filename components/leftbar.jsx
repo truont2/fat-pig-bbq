@@ -26,6 +26,7 @@ import SettingsSystemDaydreamOutlinedIcon from "@mui/icons-material/SettingsSyst
 import PsychologyOutlinedIcon from "@mui/icons-material/PsychologyOutlined";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import Link from 'next/link';
+import EmailIcon from '@mui/icons-material/Email';
 
   export default function Leftbar() {
     return (
@@ -63,6 +64,10 @@ import Link from 'next/link';
                 </a>
                 
               </Link>
+            </li>
+            <li className={styles.li}>
+            <EmailIcon className={styles.icon} />
+            <span className={styles.span}>Newsletter</span>
             </li>
             <li className={styles.li}>
             <SettingsApplicationsIcon className={styles.icon} />

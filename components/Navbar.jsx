@@ -11,7 +11,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import Typography from "@mui/material/Typography";
-import Container from "@mui/material/Container";
+// import Container from "@mui/material/Container";
 import useScrollTrigger from "@mui/material/useScrollTrigger";
 import Slide from "@mui/material/Slide";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -25,9 +25,11 @@ import AdbIcon from "@mui/icons-material/Adb";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Tooltip from "@mui/material/Tooltip";
-// TO DO: logo on the left that is an href to the home page
-// TO DO: Hover effect for link items
-// TO DO: Click effect for onClick of nav items
+
+import Navbar from 'react-bootstrap/Navbar';
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import NavDropdown from 'react-bootstrap/NavDropdown';
 
 const navigationLinks = [
   { name: "Menu", href: "/menu" },
@@ -70,7 +72,7 @@ export default function ResponsiveAppBar({user}) {
       position="fixed"
       className={styles.navbar}
     >
-      <Container className={styles.navlinks} maxWidth="xlg">
+      <Container className={styles.navlinks} maxWidth="100%">
         <Toolbar>
           <Box
             sx={{
@@ -180,8 +182,6 @@ export default function ResponsiveAppBar({user}) {
                 
                 
                 }
-              
-              {/* {user ? <h1>user exists</h1> : ""} */}
             </Hidden>
             <Hidden mdUp>
               <IconButton>
@@ -218,5 +218,31 @@ export default function ResponsiveAppBar({user}) {
         </List>
       </SwipeableDrawer>
     </AppBar>
+    
+//     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+//   <Container>
+//   <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+//   <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+//   <Navbar.Collapse id="responsive-navbar-nav">
+//     <Nav className="me-auto">
+//       <Nav.Link href="#features">Features</Nav.Link>
+//       <Nav.Link href="#pricing">Pricing</Nav.Link>
+//       <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
+//         <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
+//         <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
+//         <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+//         <NavDropdown.Divider />
+//         <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
+//       </NavDropdown>
+//     </Nav>
+//     <Nav>
+//       <Nav.Link href="#deets">More deets</Nav.Link>
+//       <Nav.Link eventKey={2} href="#memes">
+//         Dank memes
+//       </Nav.Link>
+//     </Nav>
+//   </Navbar.Collapse>
+//   </Container>
+// </Navbar>
   );
 }

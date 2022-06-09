@@ -20,7 +20,7 @@ export default function Home({ homepage }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       {/* mongo section */}
-      <AlertItem homepage={homepage[0]}/>
+      {/* <AlertItem homepage={homepage[0]}/> */}
       <Jumbotron homepage={homepage[0]}/>
       <div className={styles.content}>
         <MenuJumbo homepage={homepage[0]}/>
