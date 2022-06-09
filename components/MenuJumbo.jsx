@@ -101,7 +101,7 @@ export const MenuJumbo = ({ homepage }) => {
             </Typography>
           </ThemeProvider>
           <a href="/menu" target={"_blank"} rel={"noreferrer"} style={{textDecoration:'none'}}>
-              <MyComponent className={styles.button}>Order here</MyComponent>
+              <MyComponent style={{fontFamily: "Bebas Neue", fontSize:"20px"}} className={styles.button}>Order here</MyComponent>
             </a>
         </div>
       </div>

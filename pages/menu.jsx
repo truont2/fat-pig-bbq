@@ -19,7 +19,6 @@ export default function menu({ menuItems }) {
 
   return (
     <div className={styles.container}>
-      <h1>Menu</h1>
       <h4>
         View PDF version
       </h4>

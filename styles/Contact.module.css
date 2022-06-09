@@ -63,8 +63,15 @@
 }
 
 .contactEmail{
+<<<<<<< HEAD
+  margin-right: 25px;
+}
+.contactPhone{
+  margin-left: 25px;
+=======
   margin-right: 35px;
 }
 .contactPhone{
   margin-left: 35px;
+>>>>>>> dev
 }
