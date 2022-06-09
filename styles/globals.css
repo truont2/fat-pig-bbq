@@ -30,3 +30,6 @@ li {
         margin: 20px;
 }
 
+.eapps-widget-toolbar-panel {
+  display: flex;
+}

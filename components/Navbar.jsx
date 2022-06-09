@@ -44,35 +44,12 @@ const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 export default function ResponsiveAppBar({user}) {
   const [open, setOpen] = useState(false);
-
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
-
-  const handleOpenNavMenu = (event) => {
-    setAnchorElNav(event.currentTarget);
-  };
-  const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
-  };
-
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
-
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
-  };
   return (
     <AppBar
       //AppBar Styling
-      sx={{
-        display: "flex",
-        justifyContent: { xs: "center", md: "space-between" },
-      }}
-      position="fixed"
       className={styles.navbar}
     >
-      <Container className={styles.navlinks} maxWidth="100%">
+      <Container className={styles.navlinks}>
         <Toolbar>
           <Box
             sx={{
@@ -83,7 +60,7 @@ export default function ResponsiveAppBar({user}) {
             <a href="/">
               <Image
                 src={fatpiglogo}
-                alt="Fat Pig Logo"
+                alt="Thiccc Pig"
                 width="170"
                 height={60}
                 layout="intrinsic"
@@ -93,7 +70,7 @@ export default function ResponsiveAppBar({user}) {
           <Box
             sx={{
               flexGrow: 1,
-              display: { xs: "none", md: "flex" },
+              display: { xs: "flex", md: "flex" },
               marginRight: "50px",
             }}
           >
@@ -115,17 +92,17 @@ export default function ResponsiveAppBar({user}) {
                 </Link>
               ))}
             </Hidden>
-            <Hidden mdUp>
+            {/* <Hidden mdUp>
               <IconButton>
                 <MenuIcon onClick={() => setOpen(true)}></MenuIcon>
               </IconButton>
-            </Hidden>
+            </Hidden> */}
           </Box>
 
           <Box
             sx={{
-              flexGrow: 2,
-              display: { xs: "flex", md: "flex" },
+              flexGrow: 1,
+              display: { xs: "none", md: "flex" },
             }}
           />
 
@@ -175,13 +152,7 @@ export default function ResponsiveAppBar({user}) {
               >
                 Sign Up
               </Link>
-                </> 
-                
-                
-                
-                
-                
-                }
+                </> }
             </Hidden>
             <Hidden mdUp>
               <IconButton>
@@ -194,7 +165,7 @@ export default function ResponsiveAppBar({user}) {
 
       {/* Swipeable drawer that shows up on tablets and phones */}
       <SwipeableDrawer
-        anchor="right"
+        anchor="top"
         open={open}
         onOpen={() => setOpen(true)}
         onClose={() => setOpen(false)}
@@ -218,31 +189,5 @@ export default function ResponsiveAppBar({user}) {
         </List>
       </SwipeableDrawer>
     </AppBar>
-    
-//     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-//   <Container>
-//   <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
-//   <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-//   <Navbar.Collapse id="responsive-navbar-nav">
-//     <Nav className="me-auto">
-//       <Nav.Link href="#features">Features</Nav.Link>
-//       <Nav.Link href="#pricing">Pricing</Nav.Link>
-//       <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
-//         <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-//         <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-//         <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-//         <NavDropdown.Divider />
-//         <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
-//       </NavDropdown>
-//     </Nav>
-//     <Nav>
-//       <Nav.Link href="#deets">More deets</Nav.Link>
-//       <Nav.Link eventKey={2} href="#memes">
-//         Dank memes
-//       </Nav.Link>
-//     </Nav>
-//   </Navbar.Collapse>
-//   </Container>
-// </Navbar>
   );
 }

@@ -21,8 +21,8 @@ import store from "../redux/store";
 import { Provider } from "react-redux";
 const clientSideEmotionCache = createEmotionCache();
 import { useSelector } from "react-redux";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import SSRProvider from 'react-bootstrap/SSRProvider';
+// import 'bootstrap/dist/css/bootstrap.min.css';
+// import SSRProvider from 'react-bootstrap/SSRProvider';
 
 export default function MyApp(props) {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
