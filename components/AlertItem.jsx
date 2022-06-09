@@ -18,7 +18,7 @@ export default function AlertItem({homepage}) {
   return (
   <>
     <CssBaseline />
-          <Box sx={{ width: "100%" }} className={styles.alert}>
+          <Box sx={{ width: "100vw" }} className={styles.alert}>
             <Collapse in={open}>
               <Alert
                 className={styles.message}

@@ -1,12 +1,23 @@
 .container {
-    margin: 100px auto;
-    height: fit-content;
+    margin-top: 100px ;
+    margin-bottom: 100px;
     text-align: center;
     padding-bottom: 50px;
-    z-index: -1;
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    margin: 100px auto;
+    overflow-x: hidden;
   }
+
+
 
   .component {
     margin-left: 10px;
     margin-right: 10px;
   }
+
+.yelper {
+  margin: 0;
+  padding: 0;
+}

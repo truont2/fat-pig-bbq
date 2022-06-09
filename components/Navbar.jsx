@@ -11,7 +11,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import Typography from "@mui/material/Typography";
-import Container from "@mui/material/Container";
+// import Container from "@mui/material/Container";
 import useScrollTrigger from "@mui/material/useScrollTrigger";
 import Slide from "@mui/material/Slide";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -25,9 +25,11 @@ import AdbIcon from "@mui/icons-material/Adb";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Tooltip from "@mui/material/Tooltip";
-// TO DO: logo on the left that is an href to the home page
-// TO DO: Hover effect for link items
-// TO DO: Click effect for onClick of nav items
+
+import Navbar from 'react-bootstrap/Navbar';
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import NavDropdown from 'react-bootstrap/NavDropdown';
 
 const navigationLinks = [
   { name: "Menu", href: "/menu" },
@@ -42,35 +44,12 @@ const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 export default function ResponsiveAppBar({user}) {
   const [open, setOpen] = useState(false);
-
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
-
-  const handleOpenNavMenu = (event) => {
-    setAnchorElNav(event.currentTarget);
-  };
-  const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
-  };
-
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
-
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
-  };
   return (
     <AppBar
       //AppBar Styling
-      sx={{
-        display: "flex",
-        justifyContent: { xs: "center", md: "space-between" },
-      }}
-      position="fixed"
       className={styles.navbar}
     >
-      <Container className={styles.navlinks} maxWidth="xlg">
+      <Container className={styles.navlinks}>
         <Toolbar>
           <Box
             sx={{
@@ -81,7 +60,7 @@ export default function ResponsiveAppBar({user}) {
             <a href="/">
               <Image
                 src={fatpiglogo}
-                alt="Fat Pig Logo"
+                alt="Thiccc Pig"
                 width="170"
                 height={60}
                 layout="intrinsic"
@@ -91,7 +70,7 @@ export default function ResponsiveAppBar({user}) {
           <Box
             sx={{
               flexGrow: 1,
-              display: { xs: "none", md: "flex" },
+              display: { xs: "flex", md: "flex" },
               marginRight: "50px",
             }}
           >
@@ -113,17 +92,17 @@ export default function ResponsiveAppBar({user}) {
                 </Link>
               ))}
             </Hidden>
-            <Hidden mdUp>
+            {/* <Hidden mdUp>
               <IconButton>
                 <MenuIcon onClick={() => setOpen(true)}></MenuIcon>
               </IconButton>
-            </Hidden>
+            </Hidden> */}
           </Box>
 
           <Box
             sx={{
-              flexGrow: 2,
-              display: { xs: "flex", md: "flex" },
+              flexGrow: 1,
+              display: { xs: "none", md: "flex" },
             }}
           />
 
@@ -173,15 +152,7 @@ export default function ResponsiveAppBar({user}) {
               >
                 Sign Up
               </Link>
-                </> 
-                
-                
-                
-                
-                
-                }
-              
-              {/* {user ? <h1>user exists</h1> : ""} */}
+                </> }
             </Hidden>
             <Hidden mdUp>
               <IconButton>
@@ -194,7 +165,7 @@ export default function ResponsiveAppBar({user}) {
 
       {/* Swipeable drawer that shows up on tablets and phones */}
       <SwipeableDrawer
-        anchor="right"
+        anchor="top"
         open={open}
         onOpen={() => setOpen(true)}
         onClose={() => setOpen(false)}

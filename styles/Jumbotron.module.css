@@ -17,9 +17,7 @@
 .container {
   width: 100%;
   /* background: rgba(163, 148, 148, 0.3); */
-  width: max-content;
   display: block;
-  padding: 0.7rem 1.7rem;
   display: flex;
   border-radius: 1rem;
   /* backdrop-filter: blur(30px); */

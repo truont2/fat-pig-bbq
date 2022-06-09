@@ -26,6 +26,7 @@ export default function Home({ homepage }) {
         <MenuJumbo homepage={homepage[0]}/>
         <OrderSection homepage={homepage[0]}/>
         <Location homepage={homepage[0]}/>
+        {/* issue section causing space on the right */}
         <Yelp homepage={homepage[0]}/>
       </div>
       {/* firebase section */}

@@ -139,7 +139,7 @@ export const OrderCard = ({ image }) => {
   });
 
   return (
-    <Card sx={{ minWidth: 275, maxWidth: 345 }} className={styles.card} elevation={3}>
+    <Card sx={{ width: 300 }} className={styles.card} elevation={3}>
       <CardMedia
         component="img"
         height="150"

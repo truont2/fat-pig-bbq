@@ -47,7 +47,7 @@ export const MenuJumbo = ({ homepage }) => {
   return (
     <div className={styles.menu}>
       <CssBaseline />
-      {/* <div className={styles.container}>
+       {/* <div className={styles.container}>
         <div className={styles.left}>
           <Image
             alt="ribs"
@@ -57,7 +57,6 @@ export const MenuJumbo = ({ homepage }) => {
             className={styles.img}
           />
         </div>
-
         <div className={styles.right}>
           <div className="content">
             <h1
@@ -94,10 +93,10 @@ export const MenuJumbo = ({ homepage }) => {
         </div>
         <div className={styles.right1}>
           <ThemeProvider theme={theme}>
-            <Typography align="left" variant="h1">
+            <Typography variant="h1">
               Checkout out our Menu
             </Typography>
-            <Typography align="left" variant="h4">
+            <Typography variant="h4">
               The best Ribs, Chicken, and Pulled Port
             </Typography>
           </ThemeProvider>

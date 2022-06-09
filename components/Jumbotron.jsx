@@ -21,7 +21,7 @@ export const Jumbotron = ({homepage}) => {
   });
 
   return (
-    <>
+    <div className={styles.container}>
       <CssBaseline />
       <Paper className={styles.jumbo}>
         <Container className={styles.container} maxWidth="md">
@@ -44,6 +44,6 @@ export const Jumbotron = ({homepage}) => {
           </Grid>
         </Container>
       </Paper>
-    </>
+    </div>
   );
 };
