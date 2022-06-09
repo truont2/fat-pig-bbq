@@ -81,7 +81,7 @@ export default function ResponsiveAppBar({user}) {
             <a href="/">
               <Image
                 src={fatpiglogo}
-                alt="Thiccc Pig"
+                alt="Fat Pig Logo"
                 width="170"
                 height={60}
                 layout="intrinsic"

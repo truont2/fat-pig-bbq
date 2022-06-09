@@ -33,46 +33,13 @@ export default function Contact() {
   };
   return (
     <container className={styles.contactForm}>
-      {/* <section id="contact">
-        <h2>Contact Us</h2>
-        <div className="container contact__container">
-          <div className="contact__options">
-            <article className="contact__option">
-              <AiOutlineMail className="contact__option-icon" />
-              <h4>Email</h4>
-              <p>fatpigbbq@gmail.com</p>
-              <h4>Phone Number</h4>
-              <p>(425) 361-7640</p>
-            </article>
-          </div>
-          {/* End of contact options */}
-          {/* <form ref={form} onSubmit={sendEmail} className="form-input">
-            <input type="text" name="name" placeholder="Your Name" required />
-            <input
-              type="email"
-              name="email"
-              placeholder="Your Email Address"
-              required
-            />
-            <textarea
-              name="message"
-              rows="7"
-              placeholder="Your Message"
-              required
-            ></textarea>
-            <button type="submit" className="btn btn-primary">
-              Send Message
-            </button>
-          </form>
-        </div>
-      </section> */}
-      <h1 className={styles.contactHeader}>Contact Information</h1>
+      <h1 className={styles.contactHeader} style={{fontFamily: "Bebas Neue", fontWeight: 100, fontSize:"45px"}}>Contact Information</h1>
       <div className={styles.contactInfo}>
-        <div className={styles.contactEmail}>
+        <div className={styles.contactEmail} style={{fontFamily: "Bebas Neue", fontWeight:100, fontSize:"20px"}}>
           <EmailIcon/>
           <p>fatpigbbq@gmail.com</p>
         </div>
-        <div className={styles.contactPhone}>
+        <div className={styles.contactPhone} style={{fontFamily: "Bebas Neue", fontWeight:100, fontSize:"20px"}}>
           <LocalPhoneIcon/>
           <p>(425) 361-7640</p>
         </div>
