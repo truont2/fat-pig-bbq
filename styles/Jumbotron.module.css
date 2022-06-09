@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Arizonia&family=Bebas+Neue&family=Courgette&family=Lobster&family=Noto+Sans&display=swap");
 
 .jumbo {
-  height: calc(100vh - 68px);
+  height: calc(80vh - 68px);
   margin-top: 68px;
   width: 100vw;
   background-image: url(../public/assets/meal.jpeg);

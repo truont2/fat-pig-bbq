@@ -1,3 +1,8 @@
 .main {
     margin-top: 110px;
 }
+
+.left {
+    position: relative;
+    height: 40vh;
+}
