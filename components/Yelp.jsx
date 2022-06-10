@@ -1,12 +1,21 @@
 import React from 'react'
 import styles from '../styles/Yelp.module.css';
 import { ElfsightWidget } from 'react-elfsight-widget';
-
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import Typography from "@mui/material/Typography";
 export const Yelp = () => {
+  const theme = createTheme({
+    typography: {
+      fontFamily: [
+        'Bebas Neue',
+      ].join(','),
+    },
+  });
   return (
-      
-    
     <div className={styles.container}>
+      <ThemeProvider theme={theme}>
+                <Typography align="center" variant="h1">Reviews</Typography>
+              </ThemeProvider>
         <div className={styles.component}>
         {/* <div class="elfsight-app-e86cd777-5825-4eaf-8a47-2731765a8aaa"></div> */}
         <ElfsightWidget widgetID="8bac85e1-34bb-41f2-980a-7ed8bad66fae" className={styles.yelper}/>
@@ -15,5 +24,4 @@ export const Yelp = () => {
     </div>
   )
 }
-
 

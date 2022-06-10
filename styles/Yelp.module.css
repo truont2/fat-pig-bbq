@@ -8,6 +8,7 @@
     justify-content: center;
     margin: 100px auto;
     overflow-x: hidden;
+    flex-direction: column;
   }
 
 
