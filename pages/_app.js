@@ -82,14 +82,6 @@ export default function MyApp(props) {
               </Provider>
             
           )}
-
-          <Provider store={store}>
-            <LayoutDefault>
-              <Layout>
-                <Component {...pageProps} className={styles.app} />
-              </Layout>
-            </LayoutDefault>
-          </Provider>
         </ClerkProvider>
         {/* </SSRProvider> */}
       </ThemeProvider>

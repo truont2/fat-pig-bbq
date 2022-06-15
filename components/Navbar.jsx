@@ -26,10 +26,12 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Tooltip from "@mui/material/Tooltip";
 
-import Navbar from 'react-bootstrap/Navbar';
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import NavDropdown from 'react-bootstrap/NavDropdown';
+import Navbar from "react-bootstrap/Navbar";
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import NavDropdown from "react-bootstrap/NavDropdown";
+
+import { useUser } from "@clerk/nextjs";
 
 const navigationLinks = [
   { name: "Menu", href: "/menu" },
@@ -41,8 +43,12 @@ const navigationLinks = [
 const pages = ["Products", "Pricing", "Blog"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
-export default function ResponsiveAppBar({user}) {
+export default function ResponsiveAppBar({ user }) {
   const [open, setOpen] = useState(false);
+
+  // get current signed in user and authenticate with firebase before doing anything
+  const { isSignedIn } = useUser();
+  console.log(isSignedIn, "clerk user)");
   return (
     <AppBar
       //AppBar Styling
@@ -102,52 +108,7 @@ export default function ResponsiveAppBar({user}) {
 
           <Box sx={{ display: { xs: "flex", md: "flex" } }}>
             <Hidden mdDown>
-              {user ? 
-                <Link
-                  sx={{ m: 0.45 }}
-                  color="textPrimary"
-                  underline="none"
-                  href="/profile"
-                  style={{
-                    fontFamily: "Bebas Neue",
-                    color: "whitesmoke",
-                    fontSize: "25px",
-                  }}
-                  className={styles.navLink}
-                >
-                  Profile
-                </Link> :
-                <>
-                <Link
-                sx={{ m: 0.45 }}
-                color="textPrimary"
-                underline="none"
-                href="/login"
-                style={{
-                  fontFamily: "Bebas Neue",
-                  color: "whitesmoke",
-                  fontSize: "25px",
-                }}
-                className={styles.navLink}
-              >
-                Login
-              </Link>
-              <Link
-                sx={{ m: 0.45 }}
-                color="textPrimary"
-                underline="none"
-                href="/signup"
-                style={{
-                  fontFamily: "Bebas Neue",
-                  color: "whitesmoke",
-                  fontSize: "25px",
-                }}
-                className={styles.navLink}
-              >
-                Sign Up
-              </Link>
-                </> }
-                {navigationLinks.map((item) => (
+              {navigationLinks.map((item) => (
                 <Link
                   sx={{ m: 0.45 }}
                   color="textPrimary"
@@ -163,6 +124,53 @@ export default function ResponsiveAppBar({user}) {
                   {item.name}
                 </Link>
               ))}
+              {isSignedIn ? (
+                <Link
+                  sx={{ m: 0.45 }}
+                  color="textPrimary"
+                  underline="none"
+                  href="/profile"
+                  style={{
+                    fontFamily: "Bebas Neue",
+                    color: "whitesmoke",
+                    fontSize: "25px",
+                  }}
+                  className={styles.navLink}
+                >
+                  Profile
+                </Link>
+              ) : (
+                <>
+                  <Link
+                    sx={{ m: 0.45 }}
+                    color="textPrimary"
+                    underline="none"
+                    href="/login"
+                    style={{
+                      fontFamily: "Bebas Neue",
+                      color: "whitesmoke",
+                      fontSize: "25px",
+                    }}
+                    className={styles.navLink}
+                  >
+                    Login
+                  </Link>
+                  <Link
+                    sx={{ m: 0.45 }}
+                    color="textPrimary"
+                    underline="none"
+                    href="/signup"
+                    style={{
+                      fontFamily: "Bebas Neue",
+                      color: "whitesmoke",
+                      fontSize: "25px",
+                    }}
+                    className={styles.navLink}
+                  >
+                    Sign Up
+                  </Link>
+                </>
+              )}
             </Hidden>
             <Hidden mdUp>
               <IconButton>
