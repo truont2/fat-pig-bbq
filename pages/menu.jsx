@@ -22,8 +22,7 @@ export default function menu({ menuItems }) {
       <h4>
         View PDF version
       </h4>
-
-      <h2> Meals </h2>
+      <h2 style={{fontFamily: "Bebas Neue", fontWeight: 100, fontSize:"30px"}}> Meals </h2>
       <Grid
         container
         direction="row"
@@ -36,16 +35,17 @@ export default function menu({ menuItems }) {
             <Card sx={{ display: "flex", justifyContent: "space-between"}}>
               <Box sx={{ display: "flex", flexDirection: "column" }}>
                 <CardContent sx={{ flex: "1 0 auto" }}>
-                  <Typography component="div" variant="h5">
-                    Item Name:{item.title}
+                  <Typography component="div" variant="h5" style={{fontFamily: "Bebas Neue", fontWeight: 100, fontSize:"22px"}}>
+                    {item.Name}
                   </Typography>
-                  <Typography>${item.price}</Typography>
+                  <Typography style={{fontFamily: "Bebas Neue", fontWeight: 100, fontSize:"20px"}}>${item.Price}</Typography>
                   <Typography
+                    style={{fontFamily: "Bebas Neue", fontWeight: 100, fontSize:"15px"}}
                     variant="subtitle1"
                     color="text.secondary"
                     component="div"
                   >
-                    Item Description: {item.desc}
+                  {item.Description}
                   </Typography>
                 </CardContent>
               </Box>
