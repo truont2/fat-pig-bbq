@@ -66,7 +66,7 @@ export default function ResponsiveAppBar({user}) {
               />
             </a>
           </Box>
-          <Box
+          {/* <Box
             sx={{
               flexGrow: 1,
               display: { xs: "flex", md: "flex" },
@@ -91,12 +91,7 @@ export default function ResponsiveAppBar({user}) {
                 </Link>
               ))}
             </Hidden>
-            {/* <Hidden mdUp>
-              <IconButton>
-                <MenuIcon onClick={() => setOpen(true)}></MenuIcon>
-              </IconButton>
-            </Hidden> */}
-          </Box>
+          </Box> */}
 
           <Box
             sx={{
@@ -152,6 +147,22 @@ export default function ResponsiveAppBar({user}) {
                 Sign Up
               </Link>
                 </> }
+                {navigationLinks.map((item) => (
+                <Link
+                  sx={{ m: 0.45 }}
+                  color="textPrimary"
+                  underline="none"
+                  href={item.href}
+                  style={{
+                    fontFamily: "Bebas Neue",
+                    color: "whitesmoke",
+                    fontSize: "25px",
+                  }}
+                  className={styles.navLink}
+                >
+                  {item.name}
+                </Link>
+              ))}
             </Hidden>
             <Hidden mdUp>
               <IconButton>

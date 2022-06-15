@@ -21,14 +21,26 @@ import store from "../redux/store";
 import { Provider } from "react-redux";
 const clientSideEmotionCache = createEmotionCache();
 import { useSelector } from "react-redux";
-// import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap/dist/css/bootstrap.min.css";
+// clerk stuff
+import {
+  ClerkProvider,
+  SignedIn,
+  SignedOut,
+  RedirectToSignIn,
+} from "@clerk/nextjs";
+
 // import SSRProvider from 'react-bootstrap/SSRProvider';
+const publicPages = ["/", "/menu", "/about"];
+import { useRouter } from "next/dist/client/router";
 
 export default function MyApp(props) {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
 
-  const [open, setOpen] = useState(true);
   const Layout = Component.Layout || EmptyLayout;
+
+  const { pathname } = useRouter();
+  const isPublicPage = publicPages.includes(pathname);
   return (
     <CacheProvider value={emotionCache}>
       <Head>
@@ -45,14 +57,41 @@ export default function MyApp(props) {
 
         <CssBaseline />
         {/* <SSRProvider> */}
+        <ClerkProvider>
+          {isPublicPage ? (
+            <Provider store={store}>
+              <LayoutDefault>
+                <Layout>
+                  <Component {...pageProps} className={styles.app} />
+                </Layout>
+              </LayoutDefault>
+            </Provider>
+          ) : (
+
+              <Provider store={store}>
+                <SignedIn >
+                <LayoutDefault>
+                  <Layout>
+                    <Component {...pageProps} className={styles.app} />
+                  </Layout>
+                </LayoutDefault>
+                </SignedIn>
+                <SignedOut>
+                  <RedirectToSignIn />
+                </SignedOut>
+              </Provider>
+            
+          )}
+
           <Provider store={store}>
             <LayoutDefault>
               <Layout>
-                <Component {...pageProps} className={styles.app}/>
+                <Component {...pageProps} className={styles.app} />
               </Layout>
             </LayoutDefault>
-          </Provider>;
-          {/* </SSRProvider> */}
+          </Provider>
+        </ClerkProvider>
+        {/* </SSRProvider> */}
       </ThemeProvider>
     </CacheProvider>
   );
