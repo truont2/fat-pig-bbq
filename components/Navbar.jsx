@@ -30,6 +30,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import { signIn, signOut, useSession, getSession } from 'next-auth/react'
 
 const navigationLinks = [
   { name: "Menu", href: "/menu" },
@@ -43,6 +44,9 @@ const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 export default function ResponsiveAppBar({user}) {
   const [open, setOpen] = useState(false);
+  const { data: session } = useSession()
+  console.log(session)
+
   return (
     <AppBar
       //AppBar Styling
@@ -107,7 +111,7 @@ export default function ResponsiveAppBar({user}) {
 
           <Box sx={{ display: { xs: "flex", md: "flex" } }}>
             <Hidden mdDown>
-              {user ? 
+              {session ? 
                 <Link
                   sx={{ m: 0.45 }}
                   color="textPrimary"

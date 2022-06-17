@@ -9,6 +9,7 @@ import styles from "../styles/Footer.module.css";
 import { FaInstagram } from "@react-icons/all-files/fa/FaInstagram";
 import { FaFacebookF } from "@react-icons/all-files/fa/FaFacebookF";
 import { FaEnvelope } from "@react-icons/all-files/fa/FaEnvelope";
+import { useRouter } from "next/router";
 
 function Copyright() {
   return (
@@ -21,6 +22,8 @@ function Copyright() {
 }
 
 export default function StickyFooter() {
+  const router = useRouter();
+
   return (
     <Box
       sx={{
@@ -78,6 +81,17 @@ export default function StickyFooter() {
               onClick={() => (window.location = "mailto:fatpigbbq@yahoo.com")}
             >
               <FaEnvelope />
+            </IconButton>
+            <IconButton
+              size="medium"
+              aria-label="Facebook"
+              color="inherit"
+              className="footer-icon"
+              onClick={() =>
+                (router.push("/login"))
+              }
+            >
+              login
             </IconButton>
           </Stack>
         </Container>

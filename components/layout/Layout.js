@@ -9,11 +9,13 @@ export default function Layout({children}) {
 
   const {userInfo} = useSelector((state) => state.user);
   return (
-    <div className={styles.body}>
+    <div className={styles.body} >
+      <div className={styles.content}>
       <Navbar user={userInfo}/>
       {children}
-      <h1>{userInfo.name}</h1>
+      </div>
       <Footer />
+      
     </div>
   )
 }

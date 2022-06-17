@@ -23,7 +23,7 @@ const clientSideEmotionCache = createEmotionCache();
 import { useSelector } from "react-redux";
 // import 'bootstrap/dist/css/bootstrap.min.css';
 // import SSRProvider from 'react-bootstrap/SSRProvider';
-
+import { SessionProvider } from "next-auth/react"
 export default function MyApp(props) {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
 
@@ -45,17 +45,19 @@ export default function MyApp(props) {
 
         <CssBaseline />
         {/* <SSRProvider> */}
+        <SessionProvider session={pageProps.session}>
           <Provider store={store}>
             <LayoutDefault>
               <Layout>
                 <Component {...pageProps} className={styles.app}/>
               </Layout>
             </LayoutDefault>
-          </Provider>;
+          </Provider>
+          </SessionProvider>
           {/* </SSRProvider> */}
       </ThemeProvider>
     </CacheProvider>
-  );
+  )
 }
 
 const EmptyLayout = ({ children }) => <>{children}</>;

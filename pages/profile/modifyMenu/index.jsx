@@ -13,7 +13,8 @@ import { auth, db, storage } from "../../../firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import styles from "../../../styles/ModifyMenu.module.css";
-
+import { signIn, signOut, useSession, getSession } from 'next-auth/react'
+import { useRouter } from 'next/router';
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
@@ -173,8 +174,17 @@ export default function modifyMenu({ menuItems }) {
 
 modifyMenu.Layout = ProfileLayout;
 
-export const getServerSideProps = async () => {
+export const getServerSideProps = async (context) => {
   // currently using mongo ATlas but switching to firebase -> more secure 
+  const session = await getSession(context)
+  if (!session) {
+    return {
+      redirect: {
+        destination: '/',
+        permanent: false,
+      },
+    }
+  }
   const res = await axios.get("http://localhost:3000/api/menu");
   console.log(res.data, "testing backend firebase request");
   return {
