@@ -24,7 +24,7 @@ export default async function handler(req, res) {
     } catch (err) {
       console.log(err);
       res.status(500).json(err);
-    }
+    } 
   }
 
   if (method === "POST") {
