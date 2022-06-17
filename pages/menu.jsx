@@ -59,6 +59,14 @@ export default function menu({ menuItems }) {
           </Grid>
         )})}
       </Grid>
+      <h2 style={{fontFamily: "Bebas Neue", fontWeight: 100, fontSize:"30px"}}> Sides </h2>
+      <Grid>
+
+      </Grid>
+      <h2 style={{fontFamily: "Bebas Neue", fontWeight: 100, fontSize:"30px"}}> Beverages </h2>
+      <Grid>
+
+      </Grid>
     </div>
   );
 }
