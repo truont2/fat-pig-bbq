@@ -26,20 +26,11 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Tooltip from "@mui/material/Tooltip";
 
-<<<<<<< HEAD
 import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { signIn, signOut, useSession, getSession } from 'next-auth/react'
-=======
-import Navbar from "react-bootstrap/Navbar";
-import Container from "react-bootstrap/Container";
-import Nav from "react-bootstrap/Nav";
-import NavDropdown from "react-bootstrap/NavDropdown";
-
-import { useUser } from "@clerk/nextjs";
->>>>>>> dev
 
 const navigationLinks = [
   { name: "Menu", href: "/menu" },
@@ -115,7 +106,7 @@ export default function ResponsiveAppBar({ user }) {
 
           <Box sx={{ display: { xs: "flex", md: "flex" } }}>
             <Hidden mdDown>
-              {session ? 
+            {session ? (
                 <Link
                   sx={{ m: 0.45 }}
                   color="textPrimary"

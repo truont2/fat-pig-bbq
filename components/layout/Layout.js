@@ -13,11 +13,7 @@ export default function Layout({children}) {
       <div className={styles.content}>
       <Navbar user={userInfo}/>
       {children}
-<<<<<<< HEAD
       </div>
-=======
-      <h1>{userInfo.email}</h1>
->>>>>>> dev
       <Footer />
       
     </div>

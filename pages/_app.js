@@ -22,29 +22,13 @@ import { Provider } from "react-redux";
 const clientSideEmotionCache = createEmotionCache();
 import { useSelector } from "react-redux";
 import "bootstrap/dist/css/bootstrap.min.css";
-// clerk stuff
-import {
-  ClerkProvider,
-  SignedIn,
-  SignedOut,
-  RedirectToSignIn,
-} from "@clerk/nextjs";
 
 // import SSRProvider from 'react-bootstrap/SSRProvider';
-<<<<<<< HEAD
 import { SessionProvider } from "next-auth/react"
-=======
-const publicPages = ["/", "/menu", "/about"];
-import { useRouter } from "next/dist/client/router";
-
->>>>>>> dev
 export default function MyApp(props) {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
 
   const Layout = Component.Layout || EmptyLayout;
-
-  const { pathname } = useRouter();
-  const isPublicPage = publicPages.includes(pathname);
   return (
     <CacheProvider value={emotionCache}>
       <Head>
@@ -61,7 +45,6 @@ export default function MyApp(props) {
 
         <CssBaseline />
         {/* <SSRProvider> */}
-<<<<<<< HEAD
         <SessionProvider session={pageProps.session}>
           <Provider store={store}>
             <LayoutDefault>
@@ -72,35 +55,6 @@ export default function MyApp(props) {
           </Provider>
           </SessionProvider>
           {/* </SSRProvider> */}
-=======
-        <ClerkProvider>
-          {isPublicPage ? (
-            <Provider store={store}>
-              <LayoutDefault>
-                <Layout>
-                  <Component {...pageProps} className={styles.app} />
-                </Layout>
-              </LayoutDefault>
-            </Provider>
-          ) : (
-
-              <Provider store={store}>
-                <SignedIn >
-                <LayoutDefault>
-                  <Layout>
-                    <Component {...pageProps} className={styles.app} />
-                  </Layout>
-                </LayoutDefault>
-                </SignedIn>
-                <SignedOut>
-                  <RedirectToSignIn />
-                </SignedOut>
-              </Provider>
-            
-          )}
-        </ClerkProvider>
-        {/* </SSRProvider> */}
->>>>>>> dev
       </ThemeProvider>
     </CacheProvider>
   )
