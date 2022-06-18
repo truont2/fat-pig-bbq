@@ -35,6 +35,7 @@
   opacity: 0;
   pointer-events: none;
   visibility: none;
+  z-index: -1;
 }
 
 /* Need to add media queries for medium and small screens */
