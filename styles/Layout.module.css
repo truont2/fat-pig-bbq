@@ -8,4 +8,5 @@
 
 .content {
     height: calc(100% - 1000px);
+    margin-bottom: 150px;
 }
