@@ -26,11 +26,20 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Tooltip from "@mui/material/Tooltip";
 
+<<<<<<< HEAD
 import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { signIn, signOut, useSession, getSession } from 'next-auth/react'
+=======
+import Navbar from "react-bootstrap/Navbar";
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import NavDropdown from "react-bootstrap/NavDropdown";
+
+import { useUser } from "@clerk/nextjs";
+>>>>>>> dev
 
 const navigationLinks = [
   { name: "Menu", href: "/menu" },
@@ -42,7 +51,7 @@ const navigationLinks = [
 const pages = ["Products", "Pricing", "Blog"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
-export default function ResponsiveAppBar({user}) {
+export default function ResponsiveAppBar({ user }) {
   const [open, setOpen] = useState(false);
   const { data: session } = useSession()
   console.log(session)
@@ -70,7 +79,7 @@ export default function ResponsiveAppBar({user}) {
               />
             </a>
           </Box>
-          <Box
+          {/* <Box
             sx={{
               flexGrow: 1,
               display: { xs: "flex", md: "flex" },
@@ -95,12 +104,7 @@ export default function ResponsiveAppBar({user}) {
                 </Link>
               ))}
             </Hidden>
-            {/* <Hidden mdUp>
-              <IconButton>
-                <MenuIcon onClick={() => setOpen(true)}></MenuIcon>
-              </IconButton>
-            </Hidden> */}
-          </Box>
+          </Box> */}
 
           <Box
             sx={{
@@ -125,37 +129,39 @@ export default function ResponsiveAppBar({user}) {
                   className={styles.navLink}
                 >
                   Profile
-                </Link> :
+                </Link>
+              ) : (
                 <>
-                <Link
-                sx={{ m: 0.45 }}
-                color="textPrimary"
-                underline="none"
-                href="/login"
-                style={{
-                  fontFamily: "Bebas Neue",
-                  color: "whitesmoke",
-                  fontSize: "25px",
-                }}
-                className={styles.navLink}
-              >
-                Login
-              </Link>
-              <Link
-                sx={{ m: 0.45 }}
-                color="textPrimary"
-                underline="none"
-                href="/signup"
-                style={{
-                  fontFamily: "Bebas Neue",
-                  color: "whitesmoke",
-                  fontSize: "25px",
-                }}
-                className={styles.navLink}
-              >
-                Sign Up
-              </Link>
-                </> }
+                  <Link
+                    sx={{ m: 0.45 }}
+                    color="textPrimary"
+                    underline="none"
+                    href="/login"
+                    style={{
+                      fontFamily: "Bebas Neue",
+                      color: "whitesmoke",
+                      fontSize: "25px",
+                    }}
+                    className={styles.navLink}
+                  >
+                    Login
+                  </Link>
+                  <Link
+                    sx={{ m: 0.45 }}
+                    color="textPrimary"
+                    underline="none"
+                    href="/signup"
+                    style={{
+                      fontFamily: "Bebas Neue",
+                      color: "whitesmoke",
+                      fontSize: "25px",
+                    }}
+                    className={styles.navLink}
+                  >
+                    Sign Up
+                  </Link>
+                </>
+              )}
             </Hidden>
             <Hidden mdUp>
               <IconButton>

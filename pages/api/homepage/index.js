@@ -3,14 +3,19 @@ import dbConnect from "../../../lib/dbConnect";
 import Homepage from "../../../models/Homepage";
 import { db } from '../../../firebase';
 import { collection, getDoc, deleteDoc, doc, onSnapshot, setDoc, serverTimestamp, limit  } from "firebase/firestore";
+import { useUser } from '@clerk/nextjs'
+import { getAuth, signInWithCustomToken } from 'firebase/auth'
 
 export default async function handler(req, res) {
   const {
     method,
     cookies
   } = req;
-
-  const token = cookies.token
+  // // get current signed in user and authenticate with firebase before doing anything 
+  // const user = useUser();
+  // const firebaseClerkToken = await user.getToken('firebase')
+  // const auth = getAuth();
+  // await signInWithCustomToken(auth, firebaseClerkToken);
 
   await dbConnect();
 
