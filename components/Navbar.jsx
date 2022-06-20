@@ -26,12 +26,11 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Tooltip from "@mui/material/Tooltip";
 
-import Navbar from "react-bootstrap/Navbar";
-import Container from "react-bootstrap/Container";
-import Nav from "react-bootstrap/Nav";
-import NavDropdown from "react-bootstrap/NavDropdown";
-
-import { useUser } from "@clerk/nextjs";
+import Navbar from 'react-bootstrap/Navbar';
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import NavDropdown from 'react-bootstrap/NavDropdown';
+import { signIn, signOut, useSession, getSession } from 'next-auth/react'
 
 const navigationLinks = [
   { name: "Menu", href: "/menu" },
@@ -45,10 +44,9 @@ const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 export default function ResponsiveAppBar({ user }) {
   const [open, setOpen] = useState(false);
+  const { data: session } = useSession()
+  console.log(session)
 
-  // get current signed in user and authenticate with firebase before doing anything
-  const { isSignedIn } = useUser();
-  console.log(isSignedIn, "clerk user)");
   return (
     <AppBar
       //AppBar Styling
@@ -66,8 +64,8 @@ export default function ResponsiveAppBar({ user }) {
               <Image
                 src={fatpiglogo}
                 alt="Thiccc Pig"
-                width="170"
-                height={60}
+                width="220"
+                height={80}
                 layout="intrinsic"
               />
             </a>
@@ -108,7 +106,7 @@ export default function ResponsiveAppBar({ user }) {
 
           <Box sx={{ display: { xs: "flex", md: "flex" } }}>
             <Hidden mdDown>
-              {navigationLinks.map((item) => (
+            {navigationLinks.map((item) => (
                 <Link
                   sx={{ m: 0.45 }}
                   color="textPrimary"
@@ -124,7 +122,7 @@ export default function ResponsiveAppBar({ user }) {
                   {item.name}
                 </Link>
               ))}
-              {isSignedIn ? (
+            {session ? (
                 <Link
                   sx={{ m: 0.45 }}
                   color="textPrimary"

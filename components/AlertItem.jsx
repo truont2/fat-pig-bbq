@@ -40,7 +40,7 @@ export default function AlertItem({homepage}) {
                 {homepage.alert.text}
               </Alert>
             </Collapse>
-            <Button
+            {/* <Button
               disabled={open}
               variant="outlined"
               onClick={() => {
@@ -48,10 +48,10 @@ export default function AlertItem({homepage}) {
               }}
             >
               Re-open
-            </Button>
+            </Button> */}
           </Box>
   </>
         
-  );
+  )
 }
 

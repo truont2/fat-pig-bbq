@@ -5,7 +5,8 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 // import { addProduct } from "../../redux/cartSlice";
 import profileLayout from "../../../components/layout/profileLayout";
-
+import { signIn, signOut, useSession, getSession } from 'next-auth/react'
+import { useRouter } from 'next/router';
 const Product = ({ pizza }) => {
 
   return (
@@ -52,7 +53,17 @@ const Product = ({ pizza }) => {
 
 export default Product;
 
-export const getServerSideProps = async ({ params }) => {
+export const getServerSideProps = async ({ params, context }) => {
+  const session = await getSession(context)
+
+  if (!session) {
+    return {
+      redirect: {
+        destination: '/',
+        permanent: false,
+      },
+    }
+  }
   const res = await axios.get(
     `http://localhost:3000/api/menu/${params.id}`
   );

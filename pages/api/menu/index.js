@@ -1,7 +1,16 @@
 import dbConnect from "../../../lib/dbConnect";
 import Meals from "../../../models/Meals";
-import { db } from '../../../firebase';
-import { collection, getDocs, deleteDoc, doc, onSnapshot, setDoc , serverTimestamp,} from "firebase/firestore";
+import { db } from "../../../firebase";
+import {
+  collection,
+  getDocs,
+  deleteDoc,
+  doc,
+  onSnapshot,
+  setDoc,
+  serverTimestamp,
+  collectionGroup
+} from "firebase/firestore";
 
 export default async function handler(req, res) {
   const { method, cookies } = req;
@@ -15,6 +24,12 @@ export default async function handler(req, res) {
       // const items = await Meals.find();
       // res.status(200).json(items);
       let list = [];
+
+
+      const allPosts = await getDocs(collectionGroup(db, "Menu"));
+      allPosts.forEach((doc) => {
+        console.log(doc.data, "menu data");
+      })
       const querySnapshot = await getDocs(collection(db, "Menu"));
       querySnapshot.forEach((doc) => {
         // doc.data() is never undefined for query doc snapshots
@@ -24,7 +39,7 @@ export default async function handler(req, res) {
     } catch (err) {
       console.log(err);
       res.status(500).json(err);
-    } 
+    }
   }
 
   if (method === "POST") {

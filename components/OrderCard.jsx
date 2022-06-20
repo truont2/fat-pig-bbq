@@ -150,8 +150,8 @@ export const OrderCard = ({ image }) => {
         <Typography gutterBottom variant="h5" component="div">
           {image.title}
         </Typography>
-        <Typography variant="body2" color="text.secondary">
-          {image.description}
+        <Typography variant="body" color="text.secondary">
+          {image.text}
         </Typography>
       </CardContent>
       <CardActions>

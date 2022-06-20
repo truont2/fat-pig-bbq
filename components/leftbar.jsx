@@ -27,14 +27,14 @@ import PsychologyOutlinedIcon from "@mui/icons-material/PsychologyOutlined";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import Link from "next/link";
 import EmailIcon from "@mui/icons-material/Email";
-import { useClerk } from "@clerk/clerk-react";
+import { signIn, signOut, useSession, getSession } from 'next-auth/react'
+import { useRouter } from 'next/router'
 
 export default function Leftbar() {
-  const { signOut } = useClerk();
+  const { data: session } = useSession()
+  const router = useRouter()
+  console.log(session)
 
-  function handleSignOut(){
-    signOut();
-  }
   return (
     //
     <div className={styles.sidebar}>
@@ -81,13 +81,10 @@ export default function Leftbar() {
             <AccountCircleOutlinedIcon className={styles.icon} />
             <span className={styles.span}>Profile</span>
           </li>
-          <li className={styles.li} >
+          <li className={styles.li}>
             <ExitToAppIcon className={styles.icon} />
-            <span className={styles.span}>
-              
-            </span>
+            <span className={styles.span} onClick={signOut}>Logout</span>
           </li>
-          <button onClick={handleSignOut}> logout</button>
         </ul>
       </div>
     </div>
