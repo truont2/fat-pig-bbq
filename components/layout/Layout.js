@@ -12,7 +12,7 @@ export default function Layout({children}) {
     <div className={styles.body}>
       <Navbar user={userInfo}/>
       {children}
-      <h1>{userInfo.name}</h1>
+      <h1>{userInfo.email}</h1>
       <Footer />
     </div>
   )
