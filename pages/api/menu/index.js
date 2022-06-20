@@ -15,7 +15,8 @@ export default async function handler(req, res) {
       // const items = await Meals.find();
       // res.status(200).json(items);
       let list = [];
-      const querySnapshot = await getDocs(collection(db, "Menu"));
+      const querySnapshot = await getDocs(collection(db, "Menu", "Meals", "Meals"));
+      // const querySnapshot = await mealRef.list();
       querySnapshot.forEach((doc) => {
         // doc.data() is never undefined for query doc snapshots
         list.push({ id: doc.id, ...doc.data() });
