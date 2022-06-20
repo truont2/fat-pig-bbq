@@ -25,32 +25,33 @@ export default function Home({ homepage }) {
       </Head>
       {/* mongo section */}
       <div className={styles.container}>
-      <AlertItem homepage={homepage[0]}/>
+      {/* <AlertItem homepage={homepage[0]}/>
       <Jumbotron homepage={homepage[0]}/>
       {session ? <p>{session.user.name}</p>: ""}
       <div className={styles.content}>
         <MenuJumbo homepage={homepage[0]}/>
         <OrderSection homepage={homepage[0]}/>
         <Location homepage={homepage[0]}/>
-        {/* issue section causing space on the right */}
         <Yelp homepage={homepage[0]}/>
-      </div>
-      </div>
+      </div> */}
       {/* firebase section */}
-      {/* <AlertItem homepage={homepage}/>
+      <AlertItem homepage={homepage}/>
       <Jumbotron homepage={homepage}/>
       <div className={styles.content}>
         <MenuJumbo homepage={homepage}/>
         <OrderSection homepage={homepage}/>
         <Location homepage={homepage}/>
         <Yelp homepage={homepage}/>
-      </div> */}
+      </div>
+      </div>
+      
     </main>
   );
 }
 
 export const getServerSideProps = async () => {
   const res = await axios.get("http://localhost:3000/api/homepage");
+  console.log(res.data);
   return {
     props: {
       homepage: res.data, 

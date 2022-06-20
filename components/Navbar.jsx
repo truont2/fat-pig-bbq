@@ -64,8 +64,8 @@ export default function ResponsiveAppBar({ user }) {
               <Image
                 src={fatpiglogo}
                 alt="Thiccc Pig"
-                width="170"
-                height={60}
+                width="220"
+                height={80}
                 layout="intrinsic"
               />
             </a>
@@ -106,6 +106,22 @@ export default function ResponsiveAppBar({ user }) {
 
           <Box sx={{ display: { xs: "flex", md: "flex" } }}>
             <Hidden mdDown>
+            {navigationLinks.map((item) => (
+                <Link
+                  sx={{ m: 0.45 }}
+                  color="textPrimary"
+                  underline="none"
+                  href={item.href}
+                  style={{
+                    fontFamily: "Bebas Neue",
+                    color: "whitesmoke",
+                    fontSize: "25px",
+                  }}
+                  className={styles.navLink}
+                >
+                  {item.name}
+                </Link>
+              ))}
             {session ? (
                 <Link
                   sx={{ m: 0.45 }}

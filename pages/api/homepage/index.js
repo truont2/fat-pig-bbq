@@ -20,10 +20,10 @@ export default async function handler(req, res) {
 
   if (method === "GET") {
     try {
-      const items = await Homepage.find().sort({created_at: -1}).limit(1);
-      // const fire = await getDoc(doc(db, "Homepage", "homepage"));
-      // res.status(200).json(fire.data());
-      res.status(200).json(items);
+      // const items = await Homepage.find().sort({created_at: -1}).limit(1);
+      const fire = await getDoc(doc(db, "Homepage", "homepage"));
+      res.status(200).json(fire.data());
+      // res.status(200).json(items);
     } catch (err) {
       console.log(err);
       res.status(500).json(err);

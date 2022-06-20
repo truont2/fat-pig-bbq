@@ -13,6 +13,8 @@ import { auth, db, storage } from "../../../firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import styles from "../../../styles/ModifyMenu.module.css";
+import { signIn, signOut, useSession, getSession } from 'next-auth/react'
+import { useRouter } from 'next/router';
 
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";

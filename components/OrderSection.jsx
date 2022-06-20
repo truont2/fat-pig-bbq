@@ -48,7 +48,15 @@ export const OrderSection = ({homepage}) => {
           direction="row"
   justifyContent="center"
         >
-          {images.map((image) => (
+          {/* {images.map((image) => (
+            <Grid item 
+            direction="row"
+            justifyContent="space-evenly"
+            alignItems="center">
+              <OrderCard image={image} />
+          </Grid>
+          ))} */}
+          {homepage.orderDesc.map((image) => (
             <Grid item 
             direction="row"
             justifyContent="space-evenly"
