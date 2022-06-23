@@ -60,9 +60,9 @@ export const Jumbotron = ({homepage}) => {
                 <Typography align="center" variant="h4">{homepage.desc}</Typography>
               </ThemeProvider>
             </Grid>
-            <Grid item>
+            {/* <Grid item>
               <MyComponent style={{fontFamily: "Bebas Neue", fontSize:"20px"}} className={styles.button} onClick={handleClick}>Menu</MyComponent>
-            </Grid>
+            </Grid> */}
           </Grid>
         </Container>
       </Paper>

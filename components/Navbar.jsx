@@ -33,6 +33,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import { signIn, signOut, useSession, getSession } from 'next-auth/react'
 
 const navigationLinks = [
+  { name: "Home", href: "/" },
   { name: "Menu", href: "/menu" },
   { name: "About", href: "/about" },
   // { name: "Merchandise", href: "" },
@@ -138,36 +139,7 @@ export default function ResponsiveAppBar({ user }) {
                   Profile
                 </Link>
               ) : (
-                <>
-                  <Link
-                    sx={{ m: 0.45 }}
-                    color="textPrimary"
-                    underline="none"
-                    href="/login"
-                    style={{
-                      fontFamily: "Bebas Neue",
-                      color: "whitesmoke",
-                      fontSize: "25px",
-                    }}
-                    className={styles.navLink}
-                  >
-                    Login
-                  </Link>
-                  <Link
-                    sx={{ m: 0.45 }}
-                    color="textPrimary"
-                    underline="none"
-                    href="/signup"
-                    style={{
-                      fontFamily: "Bebas Neue",
-                      color: "whitesmoke",
-                      fontSize: "25px",
-                    }}
-                    className={styles.navLink}
-                  >
-                    Sign Up
-                  </Link>
-                </>
+                ""
               )}
             </Hidden>
             <Hidden mdUp>

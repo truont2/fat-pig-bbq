@@ -94,14 +94,14 @@ export const MenuJumbo = ({ homepage }) => {
         <div className={styles.right1}>
           <ThemeProvider theme={theme}>
             <Typography variant="h1">
-              Checkout out our Menu
+              {homepage.menuCardTitle}
             </Typography>
             <Typography variant="h4">
-              The best Ribs, Chicken, and Pulled Port
+              {homepage.menuCardDesc}
             </Typography>
           </ThemeProvider>
           <a href="/menu" target={"_blank"} rel={"noreferrer"} style={{textDecoration:'none'}}>
-              <MyComponent style={{fontFamily: "Bebas Neue", fontSize:"20px"}} className={styles.button}>Order here</MyComponent>
+              <MyComponent style={{fontFamily: "Bebas Neue", fontSize:"20px"}} className={styles.button}>Menu</MyComponent>
             </a>
         </div>
       </div>

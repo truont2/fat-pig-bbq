@@ -9,7 +9,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
 
 //TODO: Render map and Hours of Op in the grid below.
-export default function Location() {
+export default function Location({homepage}) {
   const MapWithNoSSR = dynamic(() => import("../components/Map"), {
     ssr: false,
   });
@@ -34,23 +34,10 @@ export default function Location() {
           Hours
         </Typography>
         <ul className={styles.hours}>
-          <li className={styles.li}>Sunday: Closed</li>
-          <li className={styles.li}>Monday–Thursday: 11am–7:30pm</li>
-          <li className={styles.li}>Friday–Saturday: 11am–8pm</li>
+          <li className={styles.li}>Sunday: {homepage.hours[0].start}</li>
+          <li className={styles.li}>Monday–Thursday: {homepage.hours[1].start} AM - {homepage.hours[1].end} PM</li>
+          <li className={styles.li}>Friday–Saturday: {homepage.hours[2].start} AM - {homepage.hours[2].end} PM</li>
         </ul>
-        {/* <Grid
-      container
-        rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}
-      >
-        <Grid item xs={8} md={6}>
-          <div className={styles.map}>
-            
-          </div>
-        </Grid>
-        <Grid item xs={12} md={6}>
-          
-        </Grid>
-      </Grid> */}
       </ThemeProvider>
     </div>
   );

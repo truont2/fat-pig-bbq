@@ -16,15 +16,19 @@ import { auth, db, storage } from "../../firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { useSession, signIn, signOut, getSession } from "next-auth/react";
+import { DataGrid } from "@mui/x-data-grid";
 
 const ProfilePage = ({ homepage }) => {
   const [file1, setFile1] = useState("");
   const [file2, setFile2] = useState("");
   const [deliveryServices, setDeliveryServices] = useState(homepage.orderDesc);
-
+  console.log(deliveryServices.length, "deliverry service type");
+  console.log([...deliveryServices])
   const [data, setData] = useState(homepage);
+
   const [per, setPerc] = useState(null);
   const [alert, setAlert] = useState(homepage.alert);
+
   useEffect(() => {
     const uploadFile = () => {
       const name = new Date().getTime() + file1.name;
@@ -105,13 +109,7 @@ const ProfilePage = ({ homepage }) => {
     e.preventDefault();
     console.log(data);
     try {
-      // creates a new collection named cities with document id LA
       setData({ ...data, alert: alert });
-      // const res = await setDoc(doc(db, "Menu", data.Name), {
-      //   ...data,
-      //   timeStamp: serverTimestamp(),
-      // });
-      // put request works now so need to convert to firebase
       const res = await axios.post("http://localhost:3000/api/homepage", data);
       if (res.status === 201) {
         console.log("put qorked");
@@ -128,12 +126,13 @@ const ProfilePage = ({ homepage }) => {
     const value = e.target.value;
     setData({ ...data, [id]: value });
   };
+
   const handleOrderOption = (e, index) => {
     const field = e.target.id;
     const value = e.target.value;
 
     // 1. Make a shallow copy of the items
-    let items = { ...deliveryServices };
+    let items = [ ...deliveryServices ];
     // 2. Make a shallow copy of the item you want to mutate
     let item = { ...items[index] };
     // 3. Replace the property you're intested in
@@ -145,11 +144,56 @@ const ProfilePage = ({ homepage }) => {
     setData({ ...data, ["orderDesc"]: items });
     console.log(data, "form data");
   };
+  const handleOrderImageOption = (e, index) => {
+    console.log("something is happening");
+    const field = e.target.name;
+    const file = e.target.files[0];
+    const storageRef = ref(storage, file.name);
+    const uploadTask = uploadBytesResumable(storageRef, file);
 
-  const handleNestedInput = (e) => {
-    // find what item in the array has the same id then update the content
-    console.log("testing");
-  };
+    uploadTask.on(
+      "state_changed",
+      (snapshot) => {
+        const progress =
+          (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        console.log("Upload is " + progress + "% done");
+        setPerc(progress);
+        switch (snapshot.state) {
+          case "paused":
+            console.log("Upload is paused");
+            break;
+          case "running":
+            console.log("Upload is running");
+            break;
+          default:
+            break;
+        }
+      },
+      (error) => {
+        console.log(error);
+      },
+      () => {
+        getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+
+
+          // 1. Make a shallow copy of the items
+          let items = [...deliveryServices ];
+          // 2. Make a shallow copy of the item you want to mutate
+          let item = { ...items[index] };
+          // 3. Replace the property you're intested in
+          item[field] = downloadURL;
+          // 4. Put it back into our array. N.B. we *are* mutating the array here, but that's why we made a copy first
+          items[index] = item;
+          // 5. Set the state to our new copy
+          setDeliveryServices(items);
+          setData({ ...data, ["orderDesc"]: items });
+          console.log(deliveryServices, "deliver services after I changed the image");
+        });
+      }
+    );
+  }
+
+  const [temp, setTemp] = useState();
   const { data: session, status } = useSession();
   if (status === "loading") {
     return <h1>Loading...</h1>;
@@ -277,31 +321,32 @@ const ProfilePage = ({ homepage }) => {
                         onChange={(e) => handleOrderOption(e, index)}
                       />
                       <input
-                        id="Order1"
+                        id="text"
                         type="text"
                         placeholder={order.text}
                         className={styles.input}
                         onChange={(e) => handleOrderOption(e, index)}
                       />
-                      <label htmlFor="Jumbofile" className={styles.label}>
-                        Jumbo Image:{" "}
+
+                      <label htmlFor={order.name} className={styles.label}>
+                        Order Image:{" "}
                         <DriveFolderUploadOutlinedIcon
                           className={styles.icon}
                         />
                       </label>
+
                       <input
                         type="file"
-                        id="Jumbofile"
-                        onChange={(e) => setFile1(e.target.files[0])}
+                        id={order.name}
+                        name= "image"
+                        onChange={(e) => handleOrderImageOption(e, index)}
                         style={{ display: "none" }}
                         className={styles.input}
                       />
                       <img
-                        className={styles.img}
+                        className={styles.imgOrder}
                         src={
-                          file1
-                            ? URL.createObjectURL(file1)
-                            : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
+                          deliveryServices[index].image
                         }
                         alt="image placer"
                       />
@@ -309,6 +354,7 @@ const ProfilePage = ({ homepage }) => {
                   );
                 })}
 
+                {/* alert section */}
                 <div className={styles.formInput} key="13">
                   <input
                     className={styles.checkbox}
@@ -320,6 +366,7 @@ const ProfilePage = ({ homepage }) => {
                   />
                   <label htmlFor="spicy">Set Alert</label>
                 </div>
+
                 <div className={styles.formInput} key="=14">
                   <label className={styles.label}>Alert Text</label>
                   <input
@@ -332,6 +379,7 @@ const ProfilePage = ({ homepage }) => {
                     }}
                   />
                 </div>
+
                 {/* if you want to put in an array of values then I think you need to save to a state thats a array the save thtat the database */}
                 {homepage.hours.map((day, index) => {
                   return (
@@ -354,6 +402,7 @@ const ProfilePage = ({ homepage }) => {
                     </div>
                   );
                 })}
+                <div></div>
                 {/* depending on the number of order options, you can change the description for each of them so an input form will show for each on and modify the text in that certain card position? */}
 
                 <button
