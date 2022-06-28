@@ -1,8 +1,8 @@
 .container {
   width: 100%;
-  background-color: rgba(129, 52, 0, 255);
+  background-color: #EEEEEE;
   padding: 0;
-  color: white;
+  color: dark;
   position: fixed;
   left: 0;
   bottom: 0;

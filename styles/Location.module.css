@@ -3,8 +3,9 @@
     flex-direction: column;
     justify-content: center;
     text-align: center;
-    background-color: rgba(129, 52, 0, 255);
-    color: rgb(231, 222, 222);
+    /* background-color: rgba(129, 52, 0, 255); */
+    background-color: whitesmoke;
+    color: rgb(26, 23, 23);
 }
 
 .map {

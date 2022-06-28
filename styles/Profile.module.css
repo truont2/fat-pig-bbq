@@ -10,12 +10,14 @@
 }
 
 .new {
-  width: 100%;
+  width: 80%;
   display: flex;
 }
-.newContainer {
+
+/* .newContainer {
   flex: 6;
-}
+} */
+
 .top,
 .bottom {
   -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
@@ -54,9 +56,11 @@
   gap: 30px;
   justify-content: space-around;
 }
+
 .formInput {
-  width: 40%;
+  width: 100%;
 }
+
 .label {
   display: flex;
   align-items: center;

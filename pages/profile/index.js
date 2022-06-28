@@ -22,13 +22,11 @@ const ProfilePage = ({ homepage }) => {
   const [file1, setFile1] = useState("");
   const [file2, setFile2] = useState("");
   const [deliveryServices, setDeliveryServices] = useState(homepage.orderDesc);
-  console.log(deliveryServices.length, "deliverry service type");
-  console.log([...deliveryServices])
   const [data, setData] = useState(homepage);
-
+  console.log(deliveryServices);
   const [per, setPerc] = useState(null);
   const [alert, setAlert] = useState(homepage.alert);
-
+  console.log(alert, "alert");
   useEffect(() => {
     const uploadFile = () => {
       const name = new Date().getTime() + file1.name;
@@ -107,14 +105,13 @@ const ProfilePage = ({ homepage }) => {
 
   const handleAdd = async (e) => {
     e.preventDefault();
-    console.log(data);
     try {
+      console.log("alert stuff");
       setData({ ...data, alert: alert });
       const res = await axios.post("http://localhost:3000/api/homepage", data);
       if (res.status === 201) {
         console.log("put qorked");
       }
-      console.log(res.data);
     } catch (err) {
       console.log(err);
     }
@@ -360,6 +357,7 @@ const ProfilePage = ({ homepage }) => {
                     className={styles.checkbox}
                     type="checkbox"
                     id="Alert"
+                    checked={alert.status}
                     onChange={(e) => {
                       setAlert({ ...alert, status: e.target.checked });
                     }}
@@ -372,7 +370,7 @@ const ProfilePage = ({ homepage }) => {
                   <input
                     id="AlertDesc"
                     type="text"
-                    placeholder="Description"
+                    placeholder={alert.text}
                     className={styles.input}
                     onChange={(e) => {
                       setAlert({ ...alert, text: e.target.value });
