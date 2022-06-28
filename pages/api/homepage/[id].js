@@ -17,7 +17,6 @@ export default async function handler(req, res) {
     try {
       // const items = await Homepage.find().sort({created_at: -1}).limit(1);
       const items = await Homepage.findById(id);
-      console.log(items);
       res.status(200).json(items);
     } catch (err) {
       console.log(err);
