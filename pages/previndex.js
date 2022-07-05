@@ -11,7 +11,7 @@ import { Yelp } from "../components/Yelp";
 import AlertItem from "../components/AlertItem";
 import { signIn, signOut, useSession, getSession } from 'next-auth/react'
 import { useRouter } from 'next/router';
-
+import {HomepageAlert} from '../components/HomepageAlert';
 
 export default function Home({ homepage }) {
   const { data: session } = useSession()
@@ -39,6 +39,7 @@ export default function Home({ homepage }) {
       <Jumbotron homepage={homepage}/>
       <div className={styles.content}>
         <MenuJumbo homepage={homepage}/>
+        <HomepageAlert homepage={homepage}/>
         <OrderSection homepage={homepage}/>
         <Location homepage={homepage}/>
         <Yelp homepage={homepage}/>

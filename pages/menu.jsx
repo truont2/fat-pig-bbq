@@ -141,7 +141,11 @@ export const getStaticProps = async () => {
   const menuItems = await await fetcher(
     `${process.env.NEXT_PUBLIC_STRAPI_URL}/menu-items?populate=*`
   );
-  console.log(menuItems, "menuItemClasses");
+
+  const categories = await await fetcher(
+    `${process.env.NEXT_PUBLIC_STRAPI_URL}/categories?populate=*`
+  );
+  console.log(categories, "menuItemClasses");
   return {
     props: {
       menuItems: menuItems,
