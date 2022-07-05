@@ -8,7 +8,7 @@ export default function DynamicPage({ post }) {
       <Link href="/">
         <a>Go Home</a>
       </Link>
-      <h2>{post.Title}</h2>
+      <h2>{post.attributes.Title}</h2>
     </div>
   );
 }
@@ -17,7 +17,7 @@ export default function DynamicPage({ post }) {
 export async function getStaticPaths(context) {
     console.log(context, "context");
     // attempt to work on the multiple lanugauage part
-    const languages = await context.locales.reduce(
+    const pages = await context.locales.reduce(
         async (currentPagesPromise, locale) => {
           // function runs twice for the number of locals present 2x for en and fr
           const currentPages = await currentPagesPromise
@@ -29,12 +29,12 @@ export async function getStaticPaths(context) {
         },
         Promise.resolve([])
       )
-      console.log(languages);
-  const res = await fetch("http://localhost:1337/api/pages?populate=deep");
-  const pages = await res.json();
+      // console.log(languages, "pages that should be created");
+  // const res = await fetch("http://localhost:1337/api/pages?populate=deep");
+  // const pages = await res.json();
 //   works for just english to get the results we want
     console.log(pages, "pages. fat pig");
-  const paths = pages.data.map((page)=> {
+  const paths = pages.map((page)=> {
     const {slug, locale} = page.attributes;
     const slugArray = !slug ? false : slug.split("/");
     return {
