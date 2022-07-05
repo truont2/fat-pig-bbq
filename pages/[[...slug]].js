@@ -1,14 +1,52 @@
+// import delve from "dlv";
+// import { getDataDependencies } from "../pages/services/api";
+// import { redirectToHomepage, getData } from "../utils";
+// import { getLocalizedParams } from "../utils/localize";
+
+// const Universals = ({ pageData }) => {
+//   const blocks = delve(pageData, "blocks");
+//   return <div></div>;
+// };
+
+// export async function getServerSideProps(context) {
+//   const { slug, locale } = getLocalizedParams(context.query);
+//   try {
+//     const data = getData(slug, locale);
+//     console.log(data);
+//     const res = await fetch(delve(data, "data"));
+//     const json = await res.json();
+//     console.log(json, "json data");
+//     if (!json.length) {
+//       return redirectToHomepage();
+//     }
+//     const pageData = await getDataDependencies(delve(json, "0"));
+//     console.log(pageData, "page data");
+//     return {
+//       props: { pageData },
+//     };
+//   } catch (error) {
+//     return redirectToHomepage();
+//   }
+// }
+// export default Universals;
+// https://medium.com/strapi/how-to-create-pages-on-the-fly-with-dynamic-zone-8eebe64a2e1
+
+
+
 import Link from "next/link";
 import { getPageData, fetchAPI, getGlobalData } from "../utils/api";
 import qs from "qs"
+import { getLocalizedPaths } from "../utils/localize";
 
-export default function DynamicPage({ post }) {
+export default function DynamicPage({ sections }) {
   return (
-    <div>
+    <div style={{marginTop: "300px"}}>
       <Link href="/">
         <a>Go Home</a>
       </Link>
-      <h2>{post.attributes.Title}</h2>
+      {sections.map((section) => {
+        return (<h1>{section.id}</h1>);
+      })}
     </div>
   );
 }
@@ -55,15 +93,25 @@ export async function getStaticProps(context) {
 //  fetch by slug
 // ?filters[slug]=my-article-slug
 // ?filters[slug][$eq]=my-article-slug
-// http://localhost:1337/api/pages?filters[slug][$eq]=${slug}&[populate]=deep
+// http://localhost:1337/api/pages?filters\[Slug\][$eq]=&[populate]=deep
     
 
     // getting local data for page
-  const slugString = !params.slug ? [""] : params.slug;
-  const res = await fetch(`http://localhost:1337/api/pages?filters[slug][$eq]=${slugString}&[populate]=deep`);
+  const slugString = (!params.slug ? [""] : params.slug).join("/");
+  console.log(slugString, "slug");
+  console.log(`http://localhost:1337/api/pages?filters\[Slug\][$eq]=${slugString}&[populate]=deep`, "fetch request");
+  const res = await fetch(`http://localhost:1337/api/pages?filters5C%[Slug5C%][$eq]=${slugString}&[populate]=deep`, {
+    method: 'GET', // *GET, POST, PUT, DELETE, etc.
+    headers: {
+      'Content-Type': 'application/json'
+      // 'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    // body: JSON.stringify(data) // body data type must match "Content-Type" header
+  });
   const data = await res.json();
-  const pageData = data[0];
-    
+  console.log(data, "page data =======") 
+  const pageData = data.data[0];
+    console.log(pageData, "==========")
   if (pageData == null) {
     // Giving the page no props will trigger a 404 page
     return { props: {} }
@@ -78,8 +126,18 @@ export async function getStaticProps(context) {
     slug,
     localizations,
   }
-  
+
+  const localizedPaths = getLocalizedPaths(pageContext);
+  console.log("---------", localizedPaths);
   return {
-    props: { post },
+    props: {
+      sections: contentSections,
+      metadata,
+      // global: globalLocale.data,
+      pageContext: {
+        ...pageContext,
+        localizedPaths,
+      },
+    },
   };
 }
