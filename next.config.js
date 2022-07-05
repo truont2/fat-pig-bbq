@@ -11,5 +11,9 @@ module.exports = {
     MESSAGING_ID: process.env.MESSAGING_ID, 
     APP_ID: process.env.APP_ID, 
     MEASUREMENT_ID: process.env.MEASUREMENT_ID
-  }
+  },
+  i18n: {
+    locales: ['en', 'fr'],
+    defaultLocale: 'en',
+  },
 };
