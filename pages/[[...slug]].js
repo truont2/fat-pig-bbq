@@ -31,55 +31,78 @@
 // export default Universals;
 // https://medium.com/strapi/how-to-create-pages-on-the-fly-with-dynamic-zone-8eebe64a2e1
 
-
-
 import Link from "next/link";
 import { getPageData, fetchAPI, getGlobalData } from "../utils/api";
-import qs from "qs"
+import qs from "qs";
 import { getLocalizedPaths } from "../utils/localize";
+import { useRouter } from "next/router";
+import { NextSeo } from "next-seo";
+import Sections from "../components/section";
+import Seo from "../components/elements/seo";
 
-export default function DynamicPage({ sections }) {
+export default function DynamicPage({
+  sections,
+  metadata,
+  preview,
+  global,
+  pageContext,
+}) {
+  const router = useRouter();
+
+  // Check if the required data was provided
+  if (!router.isFallback && !sections?.length) {
+    return <ErrorPage statusCode={404} />;
+  }
+
+  
+  // Loading screen (only possible in preview mode)
+  if (router.isFallback) {
+    return <div className="container">Loading...</div>
+  }
+
   return (
-    <div style={{marginTop: "300px"}}>
+    <div style={{ marginTop: "300px" }}>
       <Link href="/">
         <a>Go Home</a>
       </Link>
       {sections.map((section) => {
-        return (<h1>{section.id}</h1>);
+        return <h1>{section.id}</h1>;
       })}
+    {/* <Seo metadata={metadataWithDefaults} /> */}
+    <Sections sections={sections} preview={preview} />
     </div>
   );
 }
 
 // tell next.js how many pages there are
 export async function getStaticPaths(context) {
-    console.log(context, "context");
-    // attempt to work on the multiple lanugauage part
-    const pages = await context.locales.reduce(
-        async (currentPagesPromise, locale) => {
-          // function runs twice for the number of locals present 2x for en and fr
-          const currentPages = await currentPagesPromise
-          const localePages = await fetchAPI("/pages", {
-            locale,
-            fields: ["slug", "locale"],
-          })
-          return [...currentPages, ...localePages.data]
-        },
-        Promise.resolve([])
-      )
-      // console.log(languages, "pages that should be created");
+  console.log(context, "context");
+  // attempt to work on the multiple lanugauage part
+  const pages = await context.locales.reduce(
+    async (currentPagesPromise, locale) => {
+      // function runs twice for the number of locals present 2x for en and fr
+      const currentPages = await currentPagesPromise;
+      const localePages = await fetchAPI("/pages", {
+        locale,
+        fields: ["slug", "locale"],
+      });
+      return [...currentPages, ...localePages.data];
+    },
+    Promise.resolve([])
+  );
+  // console.log(languages, "pages that should be created");
   // const res = await fetch("http://localhost:1337/api/pages?populate=deep");
   // const pages = await res.json();
-//   works for just english to get the results we want
-    console.log(pages, "pages. fat pig");
-  const paths = pages.map((page)=> {
-    const {slug, locale} = page.attributes;
+  //   works for just english to get the results we want
+  console.log(pages, "pages. fat pig");
+  const paths = pages.map((page) => {
+    const { slug, locale } = page.attributes;
     const slugArray = !slug ? false : slug.split("/");
     return {
-        params: {slug: slugArray}, 
-        locale
-    }
-  })
+      params: { slug: slugArray },
+      locale,
+    };
+  });
   console.log(paths, "fatpig");
   return {
     paths,
@@ -89,35 +112,41 @@ export async function getStaticPaths(context) {
 
 // for each individual page: get the data for that page
 export async function getStaticProps(context) {
-    const { params, locale, locales, defaultLocale } = context;
-//  fetch by slug
-// ?filters[slug]=my-article-slug
-// ?filters[slug][$eq]=my-article-slug
-// http://localhost:1337/api/pages?filters\[Slug\][$eq]=&[populate]=deep
-    
+  const { params, locale, locales, defaultLocale, preview = null } = context;
+  //  fetch by slug
+  // ?filters[slug]=my-article-slug
+  // ?filters[slug][$eq]=my-article-slug
+  // http://localhost:1337/api/pages?filters\[Slug\][$eq]=&[populate]=deep
 
-    // getting local data for page
+  // getting local data for page
   const slugString = (!params.slug ? [""] : params.slug).join("/");
   console.log(slugString, "slug");
-  console.log(`http://localhost:1337/api/pages?filters\[Slug\][$eq]=${slugString}&[populate]=deep`, "fetch request");
-  const res = await fetch(`http://localhost:1337/api/pages?filters5C%[Slug5C%][$eq]=${slugString}&[populate]=deep`, {
-    method: 'GET', // *GET, POST, PUT, DELETE, etc.
-    headers: {
-      'Content-Type': 'application/json'
-      // 'Content-Type': 'application/x-www-form-urlencoded',
-    },
-    // body: JSON.stringify(data) // body data type must match "Content-Type" header
-  });
+  console.log(
+    `http://localhost:1337/api/pages?filters\[Slug\][$eq]=${slugString}&[populate]=deep`,
+    "fetch request"
+  );
+  const res = await fetch(
+    `http://localhost:1337/api/pages?filters5C%[Slug5C%][$eq]=${slugString}&[populate]=deep`,
+    {
+      method: "GET", // *GET, POST, PUT, DELETE, etc.
+      headers: {
+        "Content-Type": "application/json",
+        // 'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      // body: JSON.stringify(data) // body data type must match "Content-Type" header
+    }
+  );
   const data = await res.json();
-  console.log(data, "page data =======") 
+  console.log(data, "page data =======");
   const pageData = data.data[0];
-    console.log(pageData, "==========")
+  console.log(pageData, "==========");
   if (pageData == null) {
     // Giving the page no props will trigger a 404 page
-    return { props: {} }
+    return { props: {} };
   }
 
-  const { contentSections, metadata, localizations, slug } = pageData.attributes
+  const { contentSections, metadata, localizations, slug } =
+    pageData.attributes;
 
   const pageContext = {
     locale,
@@ -125,12 +154,13 @@ export async function getStaticProps(context) {
     defaultLocale,
     slug,
     localizations,
-  }
+  };
 
   const localizedPaths = getLocalizedPaths(pageContext);
   console.log("---------", localizedPaths);
   return {
     props: {
+      preview,
       sections: contentSections,
       metadata,
       // global: globalLocale.data,
