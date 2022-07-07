@@ -25,7 +25,8 @@ const sectionComponents = {
 // Display a section individually
 const Section = ({ sectionData }) => {
   // Prepare the component
-  const SectionComponent = sectionComponents[sectionData.__typename]
+  console.log(sectionData.SectionName, "supposed type name");
+  const SectionComponent = sectionComponents[sectionData.SectionName]
 
   if (!SectionComponent) {
     return null
@@ -64,11 +65,10 @@ const Sections = ({ sections, preview }) => {
       {preview && <PreviewModeBanner />}
       {/* Show the actual sections */}
       {sections.map((section) => (
-        // <Section
-        //   sectionData={section}
-        //   key={`${section.__typename}${section.id}`}
-        // />
-        <h1>{section.description}</h1>
+        <Section
+          sectionData={section}
+          key={`${section.SectionName}${section.id}`}
+        />
       ))}
     </div>
   )

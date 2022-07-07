@@ -39,3 +39,5 @@ const Hero = ({ data }) => {
 }
 
 export default Hero
+
+

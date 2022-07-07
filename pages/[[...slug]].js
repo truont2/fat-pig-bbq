@@ -61,10 +61,7 @@ export default function DynamicPage({
   }
 
   return (
-    <div style={{ marginTop: "300px" }}>
-      <Link href="/">
-        <a>Go Home</a>
-      </Link>
+    <div style={{ marginTop: "90px", background: "white" }}>
       {sections.map((section) => {
         return <h1>{section.id}</h1>;
       })}
