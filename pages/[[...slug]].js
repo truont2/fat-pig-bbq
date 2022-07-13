@@ -51,7 +51,8 @@ export default function DynamicPage({
 
   // Check if the required data was provided
   if (!router.isFallback && !sections?.length) {
-    return <ErrorPage statusCode={404} />;
+    // return <ErrorPage statusCode={404} />;
+    return <h1>broken</h1>
   }
 
   
@@ -113,14 +114,15 @@ export async function getStaticProps(context) {
   // http://localhost:1337/api/pages?filters\[Slug\][$eq]=&[populate]=deep
 
   // getting local data for page
-  const slugString = (!params.slug ? [""] : params.slug).join("/");
+  console.log(params.slug);
+  const slugString = (!params.slug ? ["homepage"] : params.slug).join("/");
   console.log(slugString, "slug");
   console.log(
     `http://localhost:1337/api/pages?filters[slug][$eq]=${slugString}&[populate]=deep`,
     "fetch request"
   );
   const res = await fetch(
-    `http://localhost:1337/api/pages?filters5C%[Slug5C%][$eq]=${slugString}&[populate]=deep`,
+    `http://localhost:1337/api/pages?filters[slug][$eq]=${slugString}&[populate]=deep`,
     {
       method: "GET", // *GET, POST, PUT, DELETE, etc.
       headers: {
