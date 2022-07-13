@@ -4,7 +4,7 @@ import PropTypes from "prop-types"
 import { mediaPropTypes } from "../../utils/types"
 
 const NextImage = ({ media, ...props }) => {
-  console.log(media.data.atrributes, "testing");
+  console.log(media.data.atrributes, "next image content");
   const { url, alternativeText, width, height } = media.data.attributes;
 
   const loader = ({ src, width }) => {

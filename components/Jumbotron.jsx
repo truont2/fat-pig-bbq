@@ -10,7 +10,6 @@ import { Box } from "@mui/system";
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Alert from "@mui/material/Alert"
 import { styled } from "@mui/material/styles";
-import { signIn, signOut, useSession, getSession } from 'next-auth/react'
 import { useRouter } from 'next/router';
 
 export const Jumbotron = ({homepage}) => {

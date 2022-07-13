@@ -2,22 +2,23 @@ import { useRouter } from "next/router"
 import Hero from "./sections/hero"
 // import LargeVideo from "./sections/large-video"
 import FeatureColumnsGroup from "./sections/feature-columns-group"
-// import FeatureRowsGroup from "./sections/feature-rows-group"
+import FeatureRowsGroup from "./sections/feature-rows-group"
 // import BottomActions from "./sections/bottom-actions"
 // import TestimonialsGroup from "./sections/testimonials-group"
-// import RichText from "./sections/rich-text"
+import RichText from "./sections/rich-text";
 // import Pricing from "./sections/pricing"
 // import LeadForm from "./sections/lead-form"
-
+import location from '../components/Location';
 // Map Strapi sections to section components
 const sectionComponents = {
+  Location: location,
   ComponentSectionsHero: Hero,
 //   ComponentSectionsLargeVideo: LargeVideo,
   ComponentSectionsFeatureColumnsGroup: FeatureColumnsGroup,
-//   ComponentSectionsFeatureRowsGroup: FeatureRowsGroup,
+  ComponentSectionsFeatureRowsGroup: FeatureRowsGroup,
 //   ComponentSectionsBottomActions: BottomActions,
 //   ComponentSectionsTestimonialsGroup: TestimonialsGroup,
-//   ComponentSectionsRichText: RichText,
+  ComponentSectionsRichText: RichText,
 //   ComponentSectionsPricing: Pricing,
 //   ComponentSectionsLeadForm: LeadForm,
 }

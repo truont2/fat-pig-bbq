@@ -33,7 +33,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 
 const navigationLinks = [
   { name: "Menu", href: "/menu" },
-  { name: "About", href: "/about" },
+  { name: "About", href: "/about-page" },
   // { name: "Merchandise", href: "" },
   { name: "Contact Us", href: "/contact" },
 ];

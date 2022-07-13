@@ -61,10 +61,7 @@ export default function DynamicPage({
   }
 
   return (
-    <div style={{ marginTop: "90px", background: "white" }}>
-      {sections.map((section) => {
-        return <h1>{section.id}</h1>;
-      })}
+    <div style={{ margin: "100px auto", background: "white", paddingBottom: "50px"}}>
     {/* <Seo metadata={metadataWithDefaults} /> */}
     <Sections sections={sections} preview={preview} />
     </div>
@@ -119,7 +116,7 @@ export async function getStaticProps(context) {
   const slugString = (!params.slug ? [""] : params.slug).join("/");
   console.log(slugString, "slug");
   console.log(
-    `http://localhost:1337/api/pages?filters\[Slug\][$eq]=${slugString}&[populate]=deep`,
+    `http://localhost:1337/api/pages?filters[slug][$eq]=${slugString}&[populate]=deep`,
     "fetch request"
   );
   const res = await fetch(
