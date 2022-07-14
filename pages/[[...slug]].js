@@ -39,6 +39,7 @@ import { useRouter } from "next/router";
 import { NextSeo } from "next-seo";
 import Sections from "../components/section";
 import Seo from "../components/elements/seo";
+import Layout from "../components/layout";
 
 export default function DynamicPage({
   sections,
@@ -61,10 +62,22 @@ export default function DynamicPage({
     return <div className="container">Loading...</div>
   }
 
+    // Merge default site SEO settings with page specific SEO settings
+    if (metadata.shareImage?.data == null) {
+      delete metadata.shareImage
+    }
+    const metadataWithDefaults = {
+      ...global.attributes.metadata,
+      ...metadata,
+    }
+
   return (
     <div style={{ margin: "100px auto", background: "white", paddingBottom: "50px"}}>
     {/* <Seo metadata={metadataWithDefaults} /> */}
     <Sections sections={sections} preview={preview} />
+    <Layout global={global} pageContext={pageContext}>
+      <h1>layout section</h1>
+    </Layout>
     </div>
   );
 }
@@ -112,7 +125,8 @@ export async function getStaticProps(context) {
   // ?filters[slug]=my-article-slug
   // ?filters[slug][$eq]=my-article-slug
   // http://localhost:1337/api/pages?filters\[Slug\][$eq]=&[populate]=deep
-
+  const globalLocale = await getGlobalData(locale);
+  console.log(globalLocale, "global Locale")
   // getting local data for page
   console.log(params.slug);
   const slugString = (!params.slug ? ["homepage"] : params.slug).join("/");
@@ -159,7 +173,7 @@ export async function getStaticProps(context) {
       preview,
       sections: contentSections,
       metadata,
-      // global: globalLocale.data,
+      global: globalLocale,
       pageContext: {
         ...pageContext,
         localizedPaths,

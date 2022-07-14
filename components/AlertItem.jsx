@@ -11,15 +11,15 @@ import CloseIcon from "@mui/icons-material/Close";
 import { useSelector } from "react-redux";
 import styles from '../styles/Alert.module.css'
 
-export default function AlertItem({homepage}) {
+export default function AlertItem({data, bannerIsShown, setBannerIsShown}) {
   
-  const [open, setOpen] = useState(homepage.alert.status);
+  // const [open, setOpen] = useState(true);
 
   return (
   <>
     <CssBaseline />
           <Box sx={{ width: "100vw" }} className={styles.alert}>
-            <Collapse in={open}>
+            <Collapse in={bannerIsShown}>
               <Alert
                 className={styles.message}
                 severity="info"
@@ -29,7 +29,7 @@ export default function AlertItem({homepage}) {
                     color="inherit"
                     size="small"
                     onClick={() => {
-                      setOpen(false);
+                      setBannerIsShown(false);
                     }}
                   >
                     <CloseIcon fontSize="inherit" />
@@ -37,7 +37,7 @@ export default function AlertItem({homepage}) {
                 }
                 sx={{ mb: 2 }}
               >
-                {homepage.alert.text}
+                testing text
               </Alert>
             </Collapse>
             {/* <Button

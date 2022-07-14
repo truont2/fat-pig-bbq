@@ -9,9 +9,12 @@ import RichText from "./sections/rich-text";
 // import Pricing from "./sections/pricing"
 // import LeadForm from "./sections/lead-form"
 import location from '../components/Location';
+import Yelp  from "../components/Yelp";
+
 // Map Strapi sections to section components
 const sectionComponents = {
   Location: location,
+  ComponentSectionsReviews: Yelp,
   ComponentSectionsHero: Hero,
 //   ComponentSectionsLargeVideo: LargeVideo,
   ComponentSectionsFeatureColumnsGroup: FeatureColumnsGroup,

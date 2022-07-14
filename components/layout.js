@@ -2,7 +2,7 @@ import { useState } from "react"
 import Navbar from "./elements/navbar"
 import Footer from "./elements/footer"
 import NotificationBanner from "./elements/notification-banner"
-
+import AlertItem from './AlertItem';
 const Layout = ({ children, global, pageContext }) => {
   const { navbar, footer, notificationBanner } = global.attributes
 
@@ -12,11 +12,9 @@ const Layout = ({ children, global, pageContext }) => {
       {/* Aligned to the top */}
       <div className="flex-1">
         {notificationBanner && bannerIsShown && (
-          <NotificationBanner
-            data={notificationBanner}
-            closeSelf={() => setBannerIsShown(false)}
-          />
+          <AlertItem data={notificationBanner} setBannerIsShown={setBannerIsShown} bannerIsShown={bannerIsShown}/>
         )}
+        
         <Navbar navbar={navbar} pageContext={pageContext} />
         <div>{children}</div>
       </div>
