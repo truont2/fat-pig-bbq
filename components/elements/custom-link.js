@@ -1,17 +1,18 @@
-import Link from "next/link"
-import PropTypes from "prop-types"
-import { linkPropTypes } from "../../utils/types"
+import Link from "next/link";
+import PropTypes from "prop-types";
+import { linkPropTypes } from "../../utils/types";
+import styles from "../../styles/Navbar.module.css";
+import { MdSystemSecurityUpdate } from "react-icons/md";
 
 const CustomLink = ({ link, children }) => {
-  const isInternalLink = link.url.startsWith("/")
-
+  const isInternalLink = link.url.startsWith("/");
   // For internal links, use the Next.js Link component
   if (isInternalLink) {
     return (
       <Link href={link.url}>
-        <a>{children}</a>
+        {children}
       </Link>
-    )
+    );
   }
 
   // Plain <a> tags for external links
@@ -20,15 +21,15 @@ const CustomLink = ({ link, children }) => {
       <a href={link.url} target="_blank" rel="noopener noreferrer">
         {children}
       </a>
-    )
+    );
   }
 
   return (
     <a href={link.url} target="_self">
       {children}
     </a>
-  )
-}
+  );
+};
 
 CustomLink.propTypes = {
   link: linkPropTypes,
@@ -36,6 +37,6 @@ CustomLink.propTypes = {
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
   ]).isRequired,
-}
+};
 
-export default CustomLink
+export default CustomLink;

@@ -45,11 +45,11 @@ export default function MyApp(props) {
         <CssBaseline />
         {/* <SSRProvider> */}
           <Provider store={store}>
-            <LayoutDefault>
-              <Layout>
+            {/* <LayoutDefault> */}
+              {/* <Layout> */}
                 <Component {...pageProps} className={styles.app}/>
-              </Layout>
-            </LayoutDefault>
+              {/* </Layout> */}
+            {/* </LayoutDefault> */}
           </Provider>
           {/* </SSRProvider> */}
       </ThemeProvider>

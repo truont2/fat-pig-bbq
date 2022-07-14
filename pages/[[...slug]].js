@@ -53,31 +53,35 @@ export default function DynamicPage({
   // Check if the required data was provided
   if (!router.isFallback && !sections?.length) {
     // return <ErrorPage statusCode={404} />;
-    return <h1>broken</h1>
+    return <h1>broken</h1>;
   }
 
-  
   // Loading screen (only possible in preview mode)
   if (router.isFallback) {
-    return <div className="container">Loading...</div>
+    return <div className="container">Loading...</div>;
   }
 
-    // Merge default site SEO settings with page specific SEO settings
-    if (metadata.shareImage?.data == null) {
-      delete metadata.shareImage
-    }
-    const metadataWithDefaults = {
-      ...global.attributes.metadata,
-      ...metadata,
-    }
+  // Merge default site SEO settings with page specific SEO settings
+  if (metadata.shareImage?.data == null) {
+    delete metadata.shareImage;
+  }
+  const metadataWithDefaults = {
+    ...global.attributes.metadata,
+    ...metadata,
+  };
 
   return (
-    <div style={{ margin: "100px auto", background: "white", paddingBottom: "50px"}}>
-    {/* <Seo metadata={metadataWithDefaults} /> */}
-    <Sections sections={sections} preview={preview} />
-    <Layout global={global} pageContext={pageContext}>
-      <h1>layout section</h1>
-    </Layout>
+    <div
+      style={{
+        margin: "0px auto 150px",
+        background: "white",
+        paddingBottom: "50px",
+      }}
+    >
+      {/* <Seo metadata={metadataWithDefaults} /> */}
+      <Layout global={global} pageContext={pageContext}>
+        <Sections sections={sections} preview={preview} />
+      </Layout>
     </div>
   );
 }
@@ -126,7 +130,7 @@ export async function getStaticProps(context) {
   // ?filters[slug][$eq]=my-article-slug
   // http://localhost:1337/api/pages?filters\[Slug\][$eq]=&[populate]=deep
   const globalLocale = await getGlobalData(locale);
-  console.log(globalLocale, "global Locale")
+  console.log(globalLocale, "global Locale");
   // getting local data for page
   console.log(params.slug);
   const slugString = (!params.slug ? ["homepage"] : params.slug).join("/");

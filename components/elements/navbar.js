@@ -13,23 +13,13 @@ import ListItem from "@mui/material/ListItem";
 import Typography from "@mui/material/Typography";
 // import Container from "@mui/material/Container";
 import useScrollTrigger from "@mui/material/useScrollTrigger";
-import Slide from "@mui/material/Slide";
 import CssBaseline from "@mui/material/CssBaseline";
 import styles from "../../styles/navfooter.module.css";
-import pig from "../../public/assets/fatpig.png";
-import Image from "next/image";
 import Link from "@mui/material/Link";
-import fatpiglogo from "../../public/assets/fatpigbanner.jpg";
-import Button from "@mui/material/Button";
-import AdbIcon from "@mui/icons-material/Adb";
-import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
-import Tooltip from "@mui/material/Tooltip";
-
-import Navbar from 'react-bootstrap/Navbar';
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import NavDropdown from 'react-bootstrap/NavDropdown';
+import { useRouter } from "next/router";
+import Container from "react-bootstrap/Container";
+import NextImage from "./image";
+import CustomLink from "./custom-link";
 
 const navigationLinks = [
   { name: "Menu", href: "/menu" },
@@ -41,9 +31,9 @@ const navigationLinks = [
 const pages = ["Products", "Pricing", "Blog"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
-export default function ResponsiveAppBar({ user }) {
+export default function ResponsiveAppBar({ navbar, pageContext }) {
   const [open, setOpen] = useState(false);
-
+  const router = useRouter();
   return (
     <AppBar
       //AppBar Styling
@@ -58,13 +48,14 @@ export default function ResponsiveAppBar({ user }) {
             }}
           >
             <a href="/">
-              <Image
+              {/* <Image
                 src={fatpiglogo}
                 alt="Thiccc Pig"
                 width="220"
                 height={80}
                 layout="intrinsic"
-              />
+              /> */}
+              <NextImage width="220" height="80" media={navbar.logo} />
             </a>
           </Box>
           {/* <Box
@@ -103,7 +94,7 @@ export default function ResponsiveAppBar({ user }) {
 
           <Box sx={{ display: { xs: "flex", md: "flex" } }}>
             <Hidden mdDown>
-            {navigationLinks.map((item) => (
+              {/* {navigationLinks.map((item) => (
                 <Link
                   sx={{ m: 0.45 }}
                   color="textPrimary"
@@ -118,6 +109,29 @@ export default function ResponsiveAppBar({ user }) {
                 >
                   {item.name}
                 </Link>
+              ))} */}
+              {navbar.links.map((navLink, idx) => (
+                <ListItem>
+                  {/* <Link color="textPrimary" underline="none" href={navLink.url}>
+                {navLink.text}
+              </Link> */}
+                  {/* <CustomLink link={navLink} locale={router.locale}> */}
+                    <Link
+                      href={navLink.url}
+                      sx={{ m: 0.45 }}
+                      color="textPrimary"
+                      underline="none"
+                      style={{
+                        fontFamily: "Bebas Neue",
+                        color: "whitesmoke",
+                        fontSize: "25px",
+                      }}
+                      className={styles.navLink}
+                    >
+                      {navLink.text}
+                    </Link>
+                  {/* </CustomLink> */}
+                </ListItem>
               ))}
             </Hidden>
             <Hidden mdUp>
@@ -145,11 +159,16 @@ export default function ResponsiveAppBar({ user }) {
         <Divider />
         {/* Links as a list in the swipeable drawer */}
         <List>
-          {navigationLinks.map((item, idx) => (
+          {navbar.links.map((navLink, idx) => (
             <ListItem>
-              <Link color="textPrimary" underline="none" href={item.href}>
-                {item.name}
-              </Link>
+              {/* <Link color="textPrimary" underline="none" href={navLink.url}>
+                {navLink.text}
+              </Link> */}
+              <CustomLink link={navLink} locale={router.locale}>
+                <div className="hover:text-gray-900 px-2 py-1">
+                  {navLink.text}
+                </div>
+              </CustomLink>
             </ListItem>
           ))}
         </List>
@@ -157,7 +176,6 @@ export default function ResponsiveAppBar({ user }) {
     </AppBar>
   );
 }
-
 
 // import { useState } from "react"
 // import PropTypes from "prop-types"

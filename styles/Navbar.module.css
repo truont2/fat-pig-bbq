@@ -1,33 +1,27 @@
-.navlinks {
+/* .navlinks {
   font-size: 1rem;
   padding: 0.5rem 1rem;
-  /* display: flex;
-  justify-content: flex-end; */
   text-decoration: none;
-}
+} */
 /* Need to add hover effect for Navbar */
 /* .navlinks:hover {
 } */
-.navLink {
+/* .navLink {
   padding-left: 12px;
   padding-right: 12px;
-}
+} */
 
 .navLink:hover{
   background-color: rgb(95, 6, 6);
 }
 
 .navbar {
-  position: fixed;
+  position: relative;
   width: 100vw;
   max-width: 100vw;
   background-color: rgba(129, 52, 0, 255);
   display: flex;
-  z-index: 2;
-}
-
-.logo {
-  background-image: url(../public/assets/fatpiglogo.png);
+  box-shadow: none;
 }
 
 .hidden {
