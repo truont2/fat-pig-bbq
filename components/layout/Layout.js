@@ -11,10 +11,10 @@ export default function Layout({children}) {
   return (
     <div className={styles.body} >
       <div className={styles.content}>
-      <Navbar user={userInfo}/>
+      {/* <Navbar user={userInfo}/> */}
       {children}
       </div>
-      <Footer />
+      {/* <Footer /> */}
       
     </div>
   )

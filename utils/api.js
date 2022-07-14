@@ -274,94 +274,106 @@ export async function getPageData({ slug, locale, preview }) {
 
 // Get site data from Strapi (metadata, navbar, footer...)
 export async function getGlobalData(locale) {
-  const gqlEndpoint = getStrapiURL("/graphql")
-  const globalRes = await fetch(gqlEndpoint, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      query: `
-        fragment FileParts on UploadFileEntityResponse {
-          data {
-            id
-            attributes {
-              alternativeText
-              width
-              height
-              mime
-              url
-              formats
-            }
-          }
-        }
-        query GetGlobal($locale: I18NLocaleCode!) {
-          global(locale: $locale) {
-            data {
-              id
-              attributes {
-                favicon {
-                  ...FileParts
-                }
-                metadata {
-                  metaTitle
-                  metaDescription
-                  shareImage {
-                    ...FileParts
-                  }
-                  twitterCardType
-                  twitterUsername
-                }
-                metaTitleSuffix
-                notificationBanner {
-                  type
-                  text
-                }
-                navbar {
-                  logo {
-                    ...FileParts
-                  }
-                  links {
-                    id
-                    url
-                    newTab
-                    text
-                  }
-                  button {
-                    id
-                    url
-                    newTab
-                    text
-                    type
-                  }
-                }
-                footer {
-                  logo {
-                    ...FileParts
-                  }
-                  smallText
-                  columns {
-                    id
-                    title
-                    links {
-                      id
-                      url
-                      newTab
-                      text
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }      
-      `,
-      variables: {
-        locale,
+  // const gqlEndpoint = getStrapiURL("/graphql")
+  // const globalRes = await fetch(gqlEndpoint, {
+  //   method: "POST",
+  //   headers: {
+  //     "Content-Type": "application/json",
+  //   },
+  //   body: JSON.stringify({
+  //     query: `
+  //       fragment FileParts on UploadFileEntityResponse {
+  //         data {
+  //           id
+  //           attributes {
+  //             alternativeText
+  //             width
+  //             height
+  //             mime
+  //             url
+  //             formats
+  //           }
+  //         }
+  //       }
+  //       query GetGlobal($locale: I18NLocaleCode!) {
+  //         global(locale: $locale) {
+  //           data {
+  //             id
+  //             attributes {
+  //               favicon {
+  //                 ...FileParts
+  //               }
+  //               metadata {
+  //                 metaTitle
+  //                 metaDescription
+  //                 shareImage {
+  //                   ...FileParts
+  //                 }
+  //                 twitterCardType
+  //                 twitterUsername
+  //               }
+  //               metaTitleSuffix
+  //               notificationBanner {
+  //                 type
+  //                 text
+  //               }
+  //               navbar {
+  //                 logo {
+  //                   ...FileParts
+  //                 }
+  //                 links {
+  //                   id
+  //                   url
+  //                   newTab
+  //                   text
+  //                 }
+  //                 button {
+  //                   id
+  //                   url
+  //                   newTab
+  //                   text
+  //                   type
+  //                 }
+  //               }
+  //               footer {
+  //                 logo {
+  //                   ...FileParts
+  //                 }
+  //                 smallText
+  //                 columns {
+  //                   id
+  //                   title
+  //                   links {
+  //                     id
+  //                     url
+  //                     newTab
+  //                     text
+  //                   }
+  //                 }
+  //               }
+  //             }
+  //           }
+  //         }
+  //       }      
+  //     `,
+  //     variables: {
+  //       locale,
+  //     },
+  //   }),
+  // })
+
+  const globalRes = await fetch(
+    `http://localhost:1337/api/global?[populate]=deep`,
+    {
+      method: "GET", // *GET, POST, PUT, DELETE, etc.
+      headers: {
+        "Content-Type": "application/json",
+        // 'Content-Type': 'application/x-www-form-urlencoded',
       },
-    }),
-  })
+      // body: JSON.stringify(data) // body data type must match "Content-Type" header
+    }
+  );
 
   const global = await globalRes.json()
-  return global.data.global
+  return global.data;
 }

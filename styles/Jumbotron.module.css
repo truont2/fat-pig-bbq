@@ -2,9 +2,7 @@
 
 .jumbo {
   height: calc(80vh - 68px);
-  margin-top: 68px;
-  width: 100vw;
-  background-image: url(../public/assets/meal.jpeg);
+  width: 80vw;
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: scroll; 
@@ -13,6 +11,7 @@
   justify-content: center;
   align-items: center;
   box-shadow: none;
+  margin: 50px auto 0;
 }
 
 .container {

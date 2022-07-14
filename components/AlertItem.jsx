@@ -9,38 +9,36 @@ import Collapse from "@mui/material/Collapse";
 import Button from "@mui/material/Button";
 import CloseIcon from "@mui/icons-material/Close";
 import { useSelector } from "react-redux";
-import styles from '../styles/Alert.module.css'
+import styles from "../styles/Alert.module.css";
 
-export default function AlertItem({homepage}) {
-  
-  const [open, setOpen] = useState(homepage.alert.status);
+export default function AlertItem({ data, bannerIsShown, setBannerIsShown }) {
+  // const [open, setOpen] = useState(true);
 
   return (
-  <>
-    <CssBaseline />
-          <Box sx={{ width: "100vw" }} className={styles.alert}>
-            <Collapse in={open}>
-              <Alert
-                className={styles.message}
-                severity="info"
-                action={
-                  <IconButton
-                    aria-label="close"
-                    color="inherit"
-                    size="small"
-                    onClick={() => {
-                      setOpen(false);
-                    }}
-                  >
-                    <CloseIcon fontSize="inherit" />
-                  </IconButton>
-                }
-                sx={{ mb: 2 }}
+    <div>
+      <CssBaseline />
+      <Box sx={{ width: "100vw" }} className={styles.alert}>
+        <Collapse in={bannerIsShown}>
+          <Alert
+            className={styles.message}
+            severity="info"
+            action={
+              <IconButton
+                aria-label="close"
+                color="inherit"
+                size="small"
+                onClick={() => {
+                  setBannerIsShown(false);
+                }}
               >
-                {homepage.alert.text}
-              </Alert>
-            </Collapse>
-            {/* <Button
+                <CloseIcon fontSize="inherit" />
+              </IconButton>
+            }
+          >
+            {data.text}
+          </Alert>
+        </Collapse>
+        {/* <Button
               disabled={open}
               variant="outlined"
               onClick={() => {
@@ -49,9 +47,7 @@ export default function AlertItem({homepage}) {
             >
               Re-open
             </Button> */}
-          </Box>
-  </>
-        
+      </Box>
+    </div>
   )
 }
-

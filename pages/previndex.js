@@ -9,7 +9,6 @@ import { OrderSection } from "../components/OrderSection";
 import Location from "../components/Location";
 import { Yelp } from "../components/Yelp";
 import AlertItem from "../components/AlertItem";
-import { signIn, signOut, useSession, getSession } from 'next-auth/react'
 import { useRouter } from 'next/router';
 import {HomepageAlert} from '../components/HomepageAlert';
 
@@ -52,7 +51,6 @@ export default function Home({ homepage }) {
 
 export const getServerSideProps = async () => {
   const res = await axios.get("http://localhost:3000/api/homepage");
-  console.log(res.data);
   return {
     props: {
       homepage: res.data, 

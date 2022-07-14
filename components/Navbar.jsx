@@ -30,11 +30,10 @@ import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import { signIn, signOut, useSession, getSession } from 'next-auth/react'
 
 const navigationLinks = [
   { name: "Menu", href: "/menu" },
-  { name: "About", href: "/about" },
+  { name: "About", href: "/about-page" },
   // { name: "Merchandise", href: "" },
   { name: "Contact Us", href: "/contact" },
 ];
@@ -44,8 +43,6 @@ const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 export default function ResponsiveAppBar({ user }) {
   const [open, setOpen] = useState(false);
-  const { data: session } = useSession()
-  console.log(session)
 
   return (
     <AppBar
@@ -122,53 +119,6 @@ export default function ResponsiveAppBar({ user }) {
                   {item.name}
                 </Link>
               ))}
-            {session ? (
-                <Link
-                  sx={{ m: 0.45 }}
-                  color="textPrimary"
-                  underline="none"
-                  href="/profile"
-                  style={{
-                    fontFamily: "Bebas Neue",
-                    color: "whitesmoke",
-                    fontSize: "25px",
-                  }}
-                  className={styles.navLink}
-                >
-                  Profile
-                </Link>
-              ) : (
-                <>
-                  <Link
-                    sx={{ m: 0.45 }}
-                    color="textPrimary"
-                    underline="none"
-                    href="/login"
-                    style={{
-                      fontFamily: "Bebas Neue",
-                      color: "whitesmoke",
-                      fontSize: "25px",
-                    }}
-                    className={styles.navLink}
-                  >
-                    Login
-                  </Link>
-                  <Link
-                    sx={{ m: 0.45 }}
-                    color="textPrimary"
-                    underline="none"
-                    href="/signup"
-                    style={{
-                      fontFamily: "Bebas Neue",
-                      color: "whitesmoke",
-                      fontSize: "25px",
-                    }}
-                    className={styles.navLink}
-                  >
-                    Sign Up
-                  </Link>
-                </>
-              )}
             </Hidden>
             <Hidden mdUp>
               <IconButton>

@@ -1,8 +1,12 @@
+import Markdown from "react-markdown"
+// import { getButtonAppearance } from "utils/button"
+// import ButtonLink from "../elements/button-link"
+import NextImage from "../elements/image"
+
 import React from "react";
 import Paper from "@mui/material/Paper";
-import image from "../public/assets/flame.jpg";
 import CssBaseline from "@mui/material/CssBaseline";
-import styles from "../styles/Jumbotron.module.css";
+import styles from "../../styles/Jumbotron.module.css";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import { Button, Typography } from "@mui/material";
@@ -11,8 +15,10 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Alert from "@mui/material/Alert"
 import { styled } from "@mui/material/styles";
 import { useRouter } from 'next/router';
+import { getStrapiMedia } from "../../utils/media";
+import delve from 'dlv';
 
-export const Jumbotron = ({homepage}) => {
+const Hero = ({ data }) => {
   const router = useRouter();
   
   const theme = createTheme({
@@ -44,7 +50,7 @@ export const Jumbotron = ({homepage}) => {
   return (
     <div className={styles.container}>
       <CssBaseline />
-      <Paper className={styles.jumbo}>
+      <Paper className={styles.jumbo} style={{backgroundImage: `url(${getStrapiMedia(data.picture.data.attributes.url)})`}}>
         <Container className={styles.container} maxWidth="md">
           <Grid
             className={styles.content}
@@ -55,8 +61,8 @@ export const Jumbotron = ({homepage}) => {
           >
             <Grid item>
               <ThemeProvider theme={theme}>
-                <Typography align="center" variant="h1">{homepage.title}</Typography>
-                <Typography align="center" variant="h4">{homepage.desc}</Typography>
+                <Typography align="center" variant="h1">{data.title}</Typography>
+                <Typography align="center" variant="h4">{data.description}</Typography>
               </ThemeProvider>
             </Grid>
             <Grid item>
@@ -64,7 +70,16 @@ export const Jumbotron = ({homepage}) => {
             </Grid>
           </Grid>
         </Container>
+        {/* <img
+                width="200"
+                src={getStrapiMedia(data.picture.data.attributes.url)}
+                alt="testintg"
+              /> */}
       </Paper>
     </div>
-  );
-};
+  )
+}
+
+export default Hero
+
+
