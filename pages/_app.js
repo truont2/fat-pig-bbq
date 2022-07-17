@@ -6,7 +6,6 @@ import CssBaseline from "@mui/material/CssBaseline";
 import { CacheProvider } from "@emotion/react";
 import theme from "../src/theme";
 import createEmotionCache from "../src/createEmotionCache";
-import LayoutDefault from "../components/layout/Layout";
 import styles from "../styles/App.module.css";
 import { useState } from "react";
 import Box from "@mui/material/Box";
